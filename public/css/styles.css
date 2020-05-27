@@ -176,6 +176,7 @@ z-index: 99;
 #sample .portfolio-text{
     position: absolute;
     /* top: 10px; */
+    visibility: hidden;
     bottom: 0px;
     width: 100%;
     color: #FFFFFF;
@@ -184,6 +185,7 @@ z-index: 99;
 }
 #sample .portfolio-text p{
     text-align: center;
+    visibility: hidden;
 }
 
 /* skills */
