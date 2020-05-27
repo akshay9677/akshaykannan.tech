@@ -147,6 +147,9 @@ z-index: 99;
     min-height: 754px;
     color: white;
 }
+#sample .sampleProject{
+     margin-top: 40px;
+}
 #sample .single-portfolio{
     position: relative;
     overflow: hidden;
