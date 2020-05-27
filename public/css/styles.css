@@ -313,4 +313,8 @@ h2{
     #education h1{
         font-size: 2rem
     }
+    .newsletter{
+        visibility: hidden;
+        display: inline-block;
+    }
 }
