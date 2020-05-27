@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "12.16.3"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "animejs": "^3.2.0",
