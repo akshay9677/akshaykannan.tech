@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Akshay Kannan</title>
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="images/favi.png">
+        <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+    <body>
+      
+      <!--Navbar-->
+        <div class="imgBg">
+      <div class="container" data-aos="flip-right" data-aos-delay="200" >
+        <nav class="navbar bgImg container navbar-expand-lg navbar-dark ">
+          <a href="#intro" class="navabar-brand"><img class="logo2" src="images/favi.png"></a>  
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active zoom">
+                    <a class="nav-link" href="#intro">Bio</a>
+                  </li>
+                  <li class="nav-item active zoom">
+                    <a class="nav-link" href="#education">Education <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active zoom">
+                    <a class="nav-link" href="#skills">Skills</a>
+                  </li>
+                  <li class="nav-item active zoom">
+                    <a class="nav-link" href="#contact">Contact</a>
+                  </li>
+                  </ul>
+            </div>
+          </nav>
+      </div>
+      <div class="pokeBt zoom">
+        <button class="btn btn-danger btn-sm"><img class="pokeBall" src="/images/pokeball.png" alt=""></button>
+      </div>
+      <div id="pokeSection" class="container">
+        <div class="card text-center text-white bg-dark" style="width: 13rem;"> 
+          <div>
+            <button class="btn btn-outline-danger btn-sm cross" style="text-align: left;"></a><i class="fas fa-times fa-sm"></i></button>
+            <div class="card-header">Pokemon Generator</div>
+            <div class="card-body">
+               <form action="/">   
+                 <p><%= pokemon%><img src="<%=pokeImg%>" ></p>
+                 <button class="btn btn-outline-danger btn-sm pokeBt2"type="submit"><img class="pokeBall" src="/images/pokeball.png" alt=""> Generate</button>
+               </form>
+                  </div>
+                  </div>
+        </div>
+      </div>
+            <h1 class="name red">Akshay Kannan</h1>
+        <h2>Interactive Resume</h2>
+       <div class="downArrow" data-aos="flip-right" data-aos-delay="500" >
+            <i class="fas fa-angle-double-down fa-5x"></i>
+        </div>
+        </div>
+        
+     
+      <!--Intro-->
+        <div id="intro">
+            <div class="container" data-aos="fade-in" data-aos-delay="500" >
+              <h1 class="bio">Biography <i class="far fa-user"></i></h1>
+              <br>
+              <div class="row">
+                <div class="col-lg-1">
+                  <i class="fas fa-quote-left fa-lg quote"></i>
+                </div>
+                <div class="col-lg-4 "data-aos="fade-in" data-aos-delay="700">
+                  <h5 class="bioContent">  I am a Electrical Engineer in Chennai, India.I'm a developer and I can create responsive websites that run across various devices using the latest technologies available.</h5>
+                </div>
+                <div class="col-lg-3"data-aos="fade-in" data-aos-delay="800">
+                  <img class="myImg  bioContent" src="images/myImg.png" alt="">
+                <br>
+                <br>
+                </div>
+                <div class="col-lg-3"data-aos="fade-in" data-aos-delay="900">
+                  <h3>Details  <i class="far fa-id-badge"></i></h3>
+                  <h5>Name :</h5>
+                  <p>Akshay K</p>
+                  <h5>Age :</h5>
+                  <p>21</p>
+                  <h5>Location :</h5>
+                  <p>Porur, Chennai</p>
+                </div>
+                <div class="col-lg-1">
+                  
+                </div>
+              </div>
+               
+              <form action="/like" method="post">
+                <button class="btn btn-primary btn-md bt"type="submit"><i class="far fa-thumbs-up"></i> <%= likeContent %> Likes</button>
+              </form>
+                
+              </div>  
+        </div>
+       <!--Education-->
+       <div id="education" >
+        <div>
+          <h1  data-aos="fade-in" data-aos-delay="500" >Education & Internships <i class="fas fa-book"></i></h1>
+          <div class="row "> 
+              <div class="col-lg-4" data-aos="fade-in" data-aos-delay="700" >
+                <h5><i class="fas fa-school fa-sm"></i> School-Swamy's MHSS</h5>
+                <div class="loc2">
+                    <a href="https://www.google.com/maps/place/Swamy's+School/@13.023895,80.1514954,17z/data=!3m1!4b1!4m5!3m4!1s0x3a5260fb2933cd77:0xb7048e30ac58feb3!8m2!3d13.023895!4d80.1536841" class="location"><i class="fas fa-map-marker-alt fa-lg"></i></a>
+                </div>
+                <br>
+            </div>
+              <div class="col-lg-4" data-aos="fade-in" data-aos-delay="800">
+                  <h5><i class="fas fa-graduation-cap fa-sm"></i> College-SSNCE</h5>
+                  <div class="loc1">
+                      <a href="https://www.google.com/maps/place/SSN+College+of+Engineering/@12.7514957,80.1949704,17z/data=!3m1!4b1!4m5!3m4!1s0x3a52512f04729e11:0xbc4ea0ae50ca1aaa!8m2!3d12.7514957!4d80.1971591" class="location"><p><i class="fas fa-map-marker-alt fa-lg"></i></a>
+                  </div>
+                  <br>
+            </div>
+            <div class="col-lg-4" data-aos="fade-in" data-aos-delay="900" >
+              <h5><i class="fas fa-laptop fa-sm"></i> Internship - Facilio</h5>
+              <div class="loc3">
+                <a  href="https://www.google.com/maps/place/Facilio/@13.0109971,80.2127419,17z/data=!3m1!4b1!4m5!3m4!1s0x3a525d6e25c4334b:0xd5a8b92a511dfbc1!8m2!3d13.0109971!4d80.2149306" class="location"><p><i class="fas fa-map-marker-alt fa-lg"></i></a>
+              </div>
+              <br>
+            </div>
+          </div>
+         
+        </div>
+          
+          
+      </div>
+       <!--Skills-->
+       <div id="skills">
+        <div data-aos="fade-in" >
+          <h1>Skills <i class="fas fa-tools"></i></h1>
+          <div class="row">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="500" >
+                 
+                 <h4 class="zoom2"> Javascript <i class="fab fa-js-square"></i> : <i class="fas fa-star fa-sm star"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h5>
+                 <h4 class="zoom2">HTML <i class="fab fa-html5"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i></h5>  
+                 <h4 class="zoom2">CSS <i class="fab fa-css3-alt"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h5>
+                  <h4 class="zoom2">Java <i class="fab fa-java"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h4>
+                  <h4 class="zoom2">MySQL <i class="fas fa-database"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h4>
+                  
+                </div>
+              <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="500" >
+                  
+                <h4 class="zoom2">Bootstrap <i class="fab fa-bootstrap"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i></h5>
+                  <h4 class="zoom2">Reactjs <i class="fab fa-react"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h5>
+                  <h4 class="zoom2">Jquery <img src="/images/icons8-jquery-50.png" class="pokeBall"> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h5> 
+                  <h4 class="zoom2">Nodejs <i class="fab fa-node"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i></h4>
+                  <h4 class="zoom2">MongoDB <i class="fas fa-database"></i> : <i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></h4>
+                  
+              </div>
+              <div class="col-lg-2">
+  
+  
+              </div>
+          </div>
+          <br><br>
+         <h4 class="horizontalLine" data-aos="zoom-in" data-aos-delay="800" >Feel free <br>to checkout my work in github
+              
+         </h4>
+         <br>
+         <a data-aos="zoom-in" data-aos-delay="1000" href="https://github.com/akshay9677"><button type="button" class="btn btn-outline-light btn-lg bt"><i class="fab fa-github fa-lg"></i> Github</button></a>
+        </div>
+  </div>
+      <!-- Sample Projects -->
+         <div id="sample">
+          <br><br>
+
+          <h1 data-aos="fade-in" data-aos-delay="500">Sample Projects <i class="fas fa-laptop-code"></i></h1>
+ 
+         
+          <br><br><br><br>
+          <div class="row" >
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-4" data-aos="fade-in" data-aos-delay="900">
+              <a href="https://github.com/akshay9677/tinddog">
+                <div class="single-portfolio">
+                  <h3>Tindog App</h3>
+                  <br>
+                  <img class="portfolio-img"src="/images/Screenshot (15).png" class="d-block w-100" alt="...">
+                  <div class="portfolio-text">
+                     <h3>Tindog App</h3>
+                     <p>This is a replica of Tinder App , where I have used Bootstrap framework</p>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+            <div class="col-md-4" data-aos="fade-in" data-aos-delay="1000">
+              <a href="https://github.com/akshay9677/post-it">
+                <div class="single-portfolio">
+                  <h3>Post It App</h3>
+                  <br>
+                  <img class="portfolio-img"src="/images/Screenshot (20).png" class="d-block w-100" alt="...">
+                  <div class="portfolio-text">
+                     <h3>Post It</h3>
+                     <p>This is a sticky notes app with frontend built using Reactjs</p>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+          <div class="row">
+            
+            <div class="col-md-4" data-aos="fade-in" data-aos-delay="600">
+              <a href="https://github.com/akshay9677/Authentications">
+                <div class="single-portfolio">
+                  <h3>Secrets</h3>
+                  <br>
+                  <img class="portfolio-img"src="/images/Screenshot (21).png" class="d-block w-100" alt="...">
+                  <div class="portfolio-text container">
+                     <h4>Secrets</h4>
+                     <p>This is a web app where users can login to post anonymous secrets.This web app has a register page where new users can register and a login page where registered users can login.The password of the users are saved in a database (MongoDB) where the passwords are encrypted</p>
+                  </div>
+                </div>
+              
+              </a>
+               
+              
+            </div>
+            <div class="col-md-4" data-aos="fade-in" data-aos-delay="700">
+              <a href="https://akshay-newletter.herokuapp.com/">
+                <div class="single-portfolio">
+                  <h3>Newsletter Sign-Up</h3>
+                  <br>
+                  <img class="portfolio-img"src="/images/Screenshot (17).png" class="d-block w-100" alt="...">
+                  <div class="portfolio-text">
+                     <h3>Newsletter Sign-Up</h3>
+                     <p>This is a basic Newsletter sign-up app which uses Bootstrap framework and when the user signs up the user details are logged in Mailchimp API</p>
+                  </div>
+                </div>
+              </a>
+             
+            </div>
+            <div class="col-md-4" data-aos="fade-in" data-aos-delay="600">
+              <a href="https://github.com/akshay9677/random-pokemon-generator">
+                <div class="single-portfolio">
+                  <h3>Pokemon Generator</h3>
+                  <br>
+                  <img class="portfolio-img"src="/images/Screenshot (18).png" class="d-block w-100" alt="...">
+                  <div class="portfolio-text container">
+                     <h4>Random Pokemon Generator</h4>
+                     <p>This web app is a random pokemon generator app, which generates random pokemon by making a fetch request to Poke Api.</p>
+                  </div>
+                </div>
+              
+              </a>
+               
+              
+            </div>
+          </div>
+          <br><br>
+          
+          <br><br><br><br>
+         </div>
+        
+     
+
+      <!--Contact-->
+      <div id="contact" >
+        <div data-aos="fade-in" data-aos-delay="800" >
+          <h1>Get in touch <i class="fas fa-tty"></i></h1>
+          <p>Sign up to get in touch with me
+          </p>
+          <div class="row">
+            <div class="col-lg-4">
+  
+            </div>
+            <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="1000">
+              <div class="card text-left text-white bg-dark signUp" style="width: 15rem;">
+                <div class="card-header">Signup....<i class="fas fa-user-plus"></i>
+                  </div>
+                <div class="card-body">
+                    <form  action="/" method="post" onsubmit="validateForm()">
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Name <input class="form-control form-control-sm" name="name" type="text" placeholder="Name"></label>
+                          
+                        </div>
+                      
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email <input class="form-control form-control-sm" name="email" type="email" placeholder="name@example.com"></label>
+                        </div>
+                      
+                         <button class="btn btn-outline-light btn-sm sub"type="submit" name="button">Signup</button>
+                      </form>
+                      <br>
+                      
+                </div>
+        
+           
+        </div>
+            </div>
+            <div class="col">
+              
+            </div>
+  
+          </div>  
+              <div class="row logo">
+                  <div class="col">
+                      
+                      
+                  </div>
+                  <div class="col ">
+                      <a href="https://www.facebook.com/akshay.kannan.1840"><div class="zoom"><i class="fab fa-facebook fa-3x" style="color:#FFFFFF"></i></div></a>
+                     
+                  </div>
+                  <div class="col">
+                      <a href="https://www.instagram.com/_akshay_kannan_/"> <div class="zoom"><i class="fab fa-instagram fa-3x" style="color:#FFFFFF"></i></div></a>
+                     
+                     
+                  </div>
+                  <div class="col">
+                      <a href="https://www.linkedin.com/in/akshay-kannan-49964617a/"> <div class="zoom"><i class="fab fa-linkedin fa-3x" style="color:#FFFFFF"></i></div></a>
+                  </div>
+                  <!-- <div class="col">
+                      <a href="mailto:akshaykannan9677@gmail.com"><div class="zoom"><i class="fas fa-envelope-square fa-3x" style="color:#FFFFFF"></i></div></a>
+                  </div> -->
+                  <div class="col">
+                     
+                  </div>
+              </div>
+              
+              <br><br>
+  
+              
+              
+              
+             
+                      <br>
+              <p><i class="far fa-copyright fa-sm"></i> Akshay Kannan</p>
+        </div>
+        
+        </div>
+        
+        
+      <!-- footer -->
+      
+
+        
+     
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.js"></script>
+<script src="anime.js"></script>  
+<script>
+  
+ 
+ $(".pokeBt2").click(function(){
+   location.reload();
+ });
+ $(".cross").click(function(){
+  $("#pokeSection").fadeOut();
+  $(".pokeBt").fadeIn()
+ });
+ $("#pokeSection").hide();
+ $(".pokeBt").click(function(){
+   
+   $("#pokeSection").slideDown();
+   $(".pokeBt").hide();
+ })
+ function validateForm() {
+   location.reload();
+        alert("Thank you for signing up");
+}
+</script>
+        
+    </body>
+</html>
