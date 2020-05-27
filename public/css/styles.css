@@ -317,4 +317,8 @@ h2{
         visibility: hidden;
         display: inline-block;
     }
+    .portfolio-img{
+        width: 300;
+        height: 200;
+    }
 }
