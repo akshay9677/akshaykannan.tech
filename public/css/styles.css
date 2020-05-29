@@ -302,4 +302,8 @@ h2{
         
     visibility: hidden;
     }
+    .newsletter{
+        visibility: hidden;
+        position: absolute;
+    }
 }
