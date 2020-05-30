@@ -255,7 +255,7 @@
                 <div class="card-header">Signup....<i class="fas fa-user-plus"></i>
                   </div>
                 <div class="card-body">
-                    <form  action="/" method="post" >
+                    <form  action="/" method="post" onsubmit="validateForm()">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Name <input class="form-control form-control-sm" name="name" type="text" placeholder="Name"></label>
                           
@@ -345,10 +345,10 @@
    $("#pokeSection").slideDown();
    $(".pokeBt").hide();
  })
-//  function validateForm() {
-//    location.reload();
-//         alert("Thank you for signing up");
-// }
+ function validateForm() {
+   
+        alert("Thank you for signing up");
+}
 </script>
         
     </body>
