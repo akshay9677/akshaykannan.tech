@@ -273,6 +273,11 @@ h2{
  visibility: hidden;
 }
 
+.skillsLogo{
+width: 1.7rem;
+height: 1.7rem;
+}
+
 /* media */
 
 @media  (max-width: 1200px){
