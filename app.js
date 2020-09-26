@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.connect(
-  "mongodb+srv://admin-akshay:Test123@akshay-kannan-5pv2j.mongodb.net/myWeb",
+  "",
   { useUnifiedTopology: true, useNewUrlParser: true }
 );
 
