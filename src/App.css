@@ -1,0 +1,256 @@
+body {
+  font-family: "Montserrat", serif;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.17rem;
+}
+h4 {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 0.83rem;
+}
+h6 {
+  font-size: 0.67rem;
+}
+
+.imgBg {
+  color: white;
+  background-image: url(./images/IntroImg.jpg);
+  height: 100vh;
+  background-size: 1539px 852px;
+  background-color: transparent;
+  background-position: -2px -13px;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-weight: bolder;
+}
+.logo2 {
+  width: 50px;
+  height: 50px;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: 5rem;
+}
+
+/* intro */
+
+#intro {
+  padding-bottom: 30px;
+  color: black;
+}
+.bioContent {
+  margin-top: 60px;
+}
+
+#intro h5 {
+  text-align: left;
+  font-weight: bolder;
+}
+#intro p {
+  text-align: left;
+}
+#intro h3 {
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-bottom-color: rgba(0, 0, 0, 0.35);
+  display: inline-block;
+}
+.bio {
+  margin: 20px 0px 30px 0px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom-color: rgba(0, 0, 0, 0.35);
+  display: inline-block;
+}
+.quote {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.myImg {
+  width: 8rem;
+}
+.introTxt h1 {
+  font-size: 1rem;
+  padding: 20px 10px 20px 10px;
+}
+
+.bt {
+  margin: 4% 2% 4% 2%;
+}
+
+/* Contact */
+
+#contact {
+  background-repeat: no-repeat;
+  background-size: 1539px 852px;
+  background-color: transparent;
+  background-position: -2px -13px;
+  background-image: url(./images/contact.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 700px;
+  color: #ffffff;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m10 {
+  margin: 10px;
+}
+.p10 {
+  padding: 10px;
+}
+.p15 {
+  padding: 15px;
+}
+.pointer {
+  cursor: pointer;
+}
+.flex-end-col {
+  justify-content: flex-end;
+}
+.f30 {
+  font-size: 30px;
+}
+a:hover {
+  color: #888;
+  text-decoration: none;
+}
+.icon-social:hover {
+  color: #ccc;
+}
+.h45 {
+  height: 45.1rem;
+}
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mT5 {
+  margin-top: 5rem;
+}
+
+.pT10 {
+  padding-top: 10px;
+}
+.pB10 {
+  padding-bottom: 10px;
+}
+.pR10 {
+  padding-right: 10px;
+}
+
+.pL10 {
+  padding-left: 10px;
+}
+
+.richtext-drawer {
+  width: 40rem;
+}
+
+.font-medium {
+  font-weight: bold;
+}
+
+.navbar-header {
+  backdrop-filter: saturate(50%) blur(60px);
+}
+
+.post-body p {
+  margin-bottom: 10px;
+}
+
+.post-body a {
+  color: #dc3545;
+  text-decoration: underline;
+}
+.post-body code {
+  color: #dc3545;
+}
+.post-body a:hover {
+  color: #dc35468f;
+}
+.filter-dark {
+  filter: brightness(0.65);
+}
+@media (max-width: 1200px) {
+  body {
+    width: 71vh;
+  }
+  .imgBg {
+    width: 74vh;
+  }
+  #contact {
+    width: 74vh;
+  }
+  #intro {
+    width: 74vh;
+  }
+  #journey {
+    width: 74vh;
+  }
+  .App {
+    height: 46rem;
+  }
+  .richtext-drawer {
+    width: 60vh;
+  }
+  #intro h5 {
+    text-align: center;
+  }
+  #intro p {
+    text-align: center;
+  }
+  .quote {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+  }
+  .name {
+    font-size: 3rem;
+  }
+  #education h1 {
+    font-size: 2rem;
+  }
+  .newsletter {
+    visibility: hidden;
+    display: inline-block;
+  }
+
+  .portfolio-text {
+    visibility: hidden;
+  }
+  .newsletter {
+    visibility: hidden;
+    position: absolute;
+  }
+}
