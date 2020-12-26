@@ -22,7 +22,7 @@ function Journey(props) {
       backgroundColor: "#EfEfEf",
     },
     locationName: {
-      fontSize: "1.5rem",
+      fontSize: "1.2rem",
       fontWeight: "bold",
       color: "#dc3545",
     },
@@ -31,9 +31,8 @@ function Journey(props) {
       color: props.dark ? "white" : "black",
     },
     description: {
-      fontSize: "0.95rem",
+      fontSize: "0.8rem",
       color: props.dark ? "white" : "black",
-      width: "25rem",
     },
     textLine: {
       backgroundColor: props.dark ? "white" : "black",

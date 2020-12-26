@@ -15,7 +15,10 @@ function App() {
   return (
     <div
       className="App min-h-screen"
-      style={{ backgroundColor: darkTheme ? "#242526" : "#F0F2F5" }}
+      style={{
+        backgroundColor: darkTheme ? "#242526" : "#F0F2F5",
+        overflowX: "hidden",
+      }}
     >
       <Theme.Provider value={{ darkTheme }}>
         <Router route>
