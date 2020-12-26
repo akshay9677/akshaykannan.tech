@@ -27,18 +27,18 @@ function BlogBody(props) {
     avatar: {
       borderRadius: "0.5rem",
       background: "#DC3545",
-      color: props.dark ? "black" : "white",
     },
     blogContainer: {
       color: props.dark ? "white" : "black",
+      backgroundColor: props.dark ? "#242526" : "#F0F2F5",
       overflowY: "auto",
-      height: "42rem",
+      minHeight: "45rem",
     },
     createPostBtn: {
       position: "fixed",
       bottom: "24px",
       right: "30px",
-      color: props.dark ? "black" : "white",
+      color: "white",
     },
   };
 
@@ -69,7 +69,7 @@ function BlogBody(props) {
     history.push(`/blogs/${blog._id}`);
   };
   return (
-    <div style={styles.blogContainer} className='hideScroll '>
+    <div style={styles.blogContainer} className="hideScroll h-screen">
       <SnacksBar
         open={open}
         failed={failed}
@@ -89,70 +89,78 @@ function BlogBody(props) {
       />
       <button
         style={styles.createPostBtn}
-        type='button'
-        className='btn btn-danger btn-md'
+        type="button"
+        className="btn btn-danger btn-md"
         onClick={() => setOpenDrawer(true)}
       >
-        <i className='fas fa-feather text-base'></i>
+        <i className="fas fa-feather text-base"></i>
       </button>
 
       {loading ? (
-        <div className='flex flex-row justify-content-center pt-6'>
+        <div className="flex flex-row justify-content-center pt-6">
           <CircularProgress style={{ color: "#DC3545" }} />
         </div>
       ) : (
         blogs &&
         blogs.map((blog) => {
           return (
-            <div key={blog._id} className='flex  justify-center p10 mt-3'>
+            <div key={blog._id} className="flex  justify-center p10 mt-3">
               <div
                 style={{
                   backgroundColor: props.dark ? "#18191A" : "white",
                 }}
-                className='flex flex-row w-9/12 rounded-lg p-2'
+                className="flex flex-row w-10/12 rounded-lg p-2"
               >
-                <div className='my-4 mx-1'>
-                  <Avatar style={styles.avatar} variant='square'>
+                <div className="my-4 mx-1">
+                  <Avatar style={styles.avatar} variant="square">
                     {blog.email.slice(0, 1).toUpperCase()}
                   </Avatar>
                 </div>
-                <div className='flex flex-col truncate-text pL10 w-12/12'>
+                <div className="flex flex-col truncate-text pL10 w-12/12">
                   <div
-                    className='text-xl pointer'
+                    className="text-xl pointer"
                     style={{ fontWeight: "bold" }}
                     onClick={handleBlogClick.bind(this, blog)}
                   >
                     {blog.subject}
                   </div>
 
-                  <div className='truncate-text pT10 pB10 text-base	'>
+                  <div className="truncate-text pT10 pB10 text-sm	">
                     {stripHtml(blog.post)}
                   </div>
-                  <div className='flex-row'>
+                  {blog.tags && (
+                    <div className="flex-row pb-2">
+                      {blog.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="badge p-1.5 m-1"
+                          style={{
+                            backgroundColor: props.dark ? "#242526" : "#F0F2F5",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex-row">
                     <div style={{ fontSize: "0.8rem", color: "#888" }}>
                       {getTimeFromNow(blog.sysCreatedTime)}
                     </div>
 
                     <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
-                      <i className='fas fa-circle'></i>
+                      <i className="fas fa-circle"></i>
                     </div>
                     <div style={{ marginTop: "-4px" }}>
-                      <Tooltip title='Fire'>
-                        <span
-                          className='badge badge-danger'
-                          style={
-                            !props.dark
-                              ? { color: "white" }
-                              : { color: "black" }
-                          }
-                        >
-                          <i className='fas fa-fire mr-1'></i>
+                      <Tooltip title="Fire">
+                        <span className="badge badge-danger">
+                          <i className="fas fa-fire mr-1"></i>
                           {blog.likes ? blog.likes : 0}
                         </span>
                       </Tooltip>
                     </div>
                     <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
-                      <i className='fas fa-circle'></i>
+                      <i className="fas fa-circle"></i>
                     </div>
                     <div style={{ fontSize: "0.8rem", color: "#888" }}>
                       {blog.email}
@@ -165,7 +173,7 @@ function BlogBody(props) {
         })
       )}
       {blogs && (
-        <footer className='flex justify-center py-3' style={{ color: "#888" }}>
+        <footer className="flex justify-center py-3" style={{ color: "#888" }}>
           © Akshay Kannan
         </footer>
       )}

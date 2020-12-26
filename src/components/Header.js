@@ -1,44 +1,61 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Switchs from "react-switch";
 
 function Header(props) {
-  let conditionColor = props.dark ? { color: "white" } : { color: "#888" };
-  return (
-    <div
-      className='container navbar-header'
-      data-aos='flip-right'
-      data-aos-delay='200'
-    >
+  let conditionColor = { color: "#dc3545", fontWeight: "bold" };
+
+  function DarkModeicon() {
+    return (
       <div
-        className='flex-row flex-end-col pt-2 pr-3.5'
+        style={{ color: "#242526", paddingLeft: "10px", paddingTop: "1.8px" }}
+      >
+        <i className="fas fa-moon"></i>
+      </div>
+    );
+  }
+
+  function LightModeIcon() {
+    return (
+      <div style={{ color: "white", paddingLeft: "10px", paddingTop: "1.8px" }}>
+        <i className="fas fa-lightbulb"></i>
+      </div>
+    );
+  }
+  return (
+    <div className="navbar-header" data-aos="flip-right" data-aos-delay="200">
+      <div
+        className="flex-row flex-end-col pt-2 pr-3.5 container"
         style={{ fontWeight: "bold" }}
       >
-        <a
-          className='nav-item active zoom p10 no-style pointer'
+        <Link
+          className="nav-item active zoom p10 no-style pointer"
           style={conditionColor}
-          href='/#intro'
+          to="/"
         >
           About
-        </a>
-        <a
-          className='nav-item active zoom p10 no-style pointer'
+        </Link>
+        <Link
+          className="nav-item active zoom p10 no-style pointer"
           style={conditionColor}
-          href='/#contact'
-        >
-          Contact
-        </a>
-        <a
-          className='nav-item active zoom p10 no-style pointer'
-          style={conditionColor}
-          href='/blogs'
+          to="/blogs"
         >
           Blogs
-        </a>
+        </Link>
+
+        <div className="nav-item custom-control custom-switch pt-1.5 pr-2">
+          <Switchs
+            onChange={props.onChange}
+            checked={props.checked}
+            onColor="#dc3545"
+            offColor="#dc3545"
+            onHandleColor="#242526"
+            uncheckedIcon={<LightModeIcon />}
+            checkedIcon={<DarkModeicon />}
+            width={60}
+          />
+        </div>
       </div>
-      {/* <div class='pokeBt zoom'>
-    <button class='btn btn-danger btn-sm'>
-      <img class='pokeBall' src='/images/pokeball.png' alt='' />
-    </button>
-  </div> */}
     </div>
   );
 }

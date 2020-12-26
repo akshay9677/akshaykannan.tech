@@ -3,18 +3,16 @@ import Header from "./Header";
 function NavbarHead(props) {
   return (
     <div className={props.dark ? "filter-dark imgBg" : "imgBg"}>
-      <div style={{ zIndex: 99 }}>
+      <div style={{ zIndex: 99, paddingTop: "15rem" }}>
         <div style={styles.nameContainer}>
-          <div className='text-base'>Hey ,I'm</div>
-          <h1 className='name red'>Akshay Kannan</h1>
-
+          <div className="text-base">Hey ,I'm</div>
+          <h1 className="name red">Akshay Kannan</h1>
           <div
-            style={{ paddingTop: "8rem" }}
-            className='downArrow'
-            data-aos='flip-right'
-            data-aos-delay='500'
+            className="downArrow pt-5"
+            data-aos="flip-right"
+            data-aos-delay="500"
           >
-            <i className='fas fa-angle-double-down fa-5x'></i>
+            <i className="fas fa-angle-double-down fa-5x"></i>
           </div>
         </div>
       </div>
@@ -25,7 +23,6 @@ function NavbarHead(props) {
 const styles = {
   nameContainer: {
     textAlign: "center",
-    paddingTop: "10rem",
   },
   borderName: {
     borderBottom: "2px solid #FFFFFF",

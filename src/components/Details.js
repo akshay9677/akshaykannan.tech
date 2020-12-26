@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import MyImage from "../images/myImg.png";
+import Tooltip from "@material-ui/core/Tooltip";
+import { baseUrl } from "../config/baseUrl";
 function Details(props) {
   const [likes, setLikes] = useState(10);
   useEffect(() => {
     async function fetchData() {
-      let { data } = await axios.get("http://localhost:5000/api/v1/likes");
+      let { data } = await axios.get(`${baseUrl}/api/v1/likes`);
       let { likes } = data.data[0];
       setLikes(likes);
     }
@@ -24,28 +26,28 @@ function Details(props) {
   return (
     <Fragment>
       <div
-        id='intro'
+        id="intro"
         style={
           props.dark
             ? { backgroundColor: "#242526", color: "white" }
-            : { backgroundColor: "white", color: "black" }
+            : { backgroundColor: "#F0F2F5", color: "black" }
         }
       >
-        <div className='container'>
+        <div className="container">
           <div
-            className='row justify-center'
+            className="row justify-center"
             style={{ textAlign: "center", padding: "10px" }}
           >
-            <div className='col-lg-1'>
-              <i className='fas fa-quote-left fa-lg quote'></i>
+            <div className="col-lg-1" style={{ color: "#dc3545" }}>
+              <i className="fas fa-quote-left fa-lg quote"></i>
             </div>
             <div
-              className='col-lg-7'
+              className="col-lg-7"
               style={{ textAlign: "left" }}
-              data-aos='fade-in'
-              data-aos-delay='700'
+              data-aos="fade-in"
+              data-aos-delay="700"
             >
-              <h4 className='bioContent'>
+              <h4 className="bioContent">
                 {" "}
                 I am a Undergraduate Electrical Engineer working as a Software
                 Developer at{" "}
@@ -67,39 +69,68 @@ function Details(props) {
               </h4>
             </div>
             <div
-              className='col-lg-2 flex justify-center'
-              data-aos='fade-in'
-              data-aos-delay='800'
+              className="col-lg-2 flex justify-center"
+              data-aos="fade-in"
+              data-aos-delay="800"
             >
-              <img className='myImg  bioContent' src={MyImage} alt='' />
+              <img className="myImg  bioContent" src={MyImage} alt="" />
             </div>
           </div>
 
           <div style={{ textAlign: "center" }}>
             <button
               onClick={handleLikeClick}
-              className='btn btn-primary btn-md bt'
-              type='submit'
+              className="btn btn-danger btn-md bt"
+              type="submit"
             >
-              <i className='far fa-thumbs-up'></i> {likes} {" Likes"}
+              <i className="far fa-thumbs-up"></i> {likes} {" Likes"}
             </button>
           </div>
           <div
-            className='flex-row flex-center text-center container'
-            style={props.dark ? { color: "white" } : { color: "black" }}
+            className="flex-row flex-center text-center container p10"
+            style={{ color: "#dc3545" }}
           >
-            <div className='p10 f30 pointer icon-social'>
-              <i className='fab fa-github'></i>
-            </div>
-            <div className='p10 f30 pointer icon-social'>
-              <i className='fab fa-linkedin'></i>
-            </div>
-            <div className='p10 f30 pointer icon-social'>
-              <i className='fab fa-instagram'></i>
-            </div>
-            <div className='p10 f30 pointer icon-social'>
-              <i className='fab fa-twitter'></i>
-            </div>
+            <Tooltip title="Github">
+              <a
+                href="https://github.com/akshay9677"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pr-3 f30 pointer icon-social"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+            </Tooltip>
+
+            <Tooltip title="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/akshay-kannan-49964617a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pr-3 f30 pointer icon-social"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </Tooltip>
+            <Tooltip title="Instagram">
+              <a
+                href="https://www.instagram.com/_akshay_kannan_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pr-3 f30 pointer icon-social"
+              >
+                <i className="fab fa-instagram"></i>
+              </a>
+            </Tooltip>
+            <Tooltip title="Twitter">
+              <a
+                href="http://twitter.com/_akshay_kannan_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="f30 pointer icon-social"
+              >
+                <i className="fab fa-twitter"></i>
+              </a>
+            </Tooltip>
           </div>
         </div>
       </div>

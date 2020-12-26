@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import BlogsList from "../components/BlogsList";
+import { Theme } from "../App";
 
 function Blogs(props) {
+  const { darkTheme } = useContext(Theme);
   return (
     <div
-      id='blogs'
+      id="blogs-list"
       style={{
-        backgroundColor: props.dark ? "#242526" : "#F0F2F5",
+        backgroundColor: darkTheme ? "#242526" : "#F0F2F5",
         paddingTop: "3rem",
       }}
-      className='h45'
     >
-      <BlogsList dark={props.dark} />
+      <BlogsList dark={darkTheme} />
     </div>
   );
 }

@@ -65,12 +65,13 @@ h6 {
   border-bottom-color: rgba(0, 0, 0, 0.35);
   display: inline-block;
 }
+#blogs-list {
+  height: 100vh;
+}
 .bio {
   margin: 20px 0px 30px 0px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgb(0, 0, 0);
-  border-bottom-color: rgba(0, 0, 0, 0.35);
   display: inline-block;
+  font-size: 22px;
 }
 .quote {
   position: absolute;
@@ -87,20 +88,6 @@ h6 {
 
 .bt {
   margin: 4% 2% 4% 2%;
-}
-
-/* Contact */
-
-#contact {
-  background-repeat: no-repeat;
-  background-size: 1539px 852px;
-  background-color: transparent;
-  background-position: -2px -13px;
-  background-image: url(./images/contact.jpg);
-  background-attachment: fixed;
-  background-position: center;
-  min-height: 700px;
-  color: #ffffff;
 }
 
 .flex-row {
@@ -144,7 +131,7 @@ a:hover {
   text-decoration: none;
 }
 .icon-social:hover {
-  color: #ccc;
+  color: #dc3546cc;
 }
 .h45 {
   height: 45.1rem;
@@ -189,18 +176,40 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.post-body h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 10px;
+}
+
 .post-body a {
   color: #dc3545;
   text-decoration: underline;
 }
 .post-body code {
   color: #dc3545;
+  margin: 10px 0px;
+  font-weight: bold;
 }
 .post-body a:hover {
   color: #dc35468f;
 }
 .filter-dark {
-  filter: brightness(0.65);
+  filter: brightness(0.9);
+}
+.ak-font-color {
+  color: #dc3545;
+}
+.social-contact {
+  margin-top: 13rem;
+  margin-left: 4rem;
+}
+.web-dev-contact {
+  margin-top: 1rem;
+  margin-left: 4rem;
 }
 @media (max-width: 1200px) {
   body {
@@ -211,15 +220,22 @@ a:hover {
   }
   #contact {
     width: 74vh;
+    background-attachment: unset;
+  }
+  #skill {
+    width: 74vh;
   }
   #intro {
     width: 74vh;
   }
+  #blogs-list {
+    min-height: 152vh;
+  }
+  #blogs {
+    min-height: 152vh;
+  }
   #journey {
     width: 74vh;
-  }
-  .App {
-    height: 46rem;
   }
   .richtext-drawer {
     width: 60vh;
@@ -252,5 +268,11 @@ a:hover {
   .newsletter {
     visibility: hidden;
     position: absolute;
+  }
+  .social-contact {
+    display: none;
+  }
+  .web-dev-contact {
+    display: none;
   }
 }

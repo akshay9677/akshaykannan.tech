@@ -1,5 +1,8 @@
 import Axios from "axios";
 import React, { useState } from "react";
+import SnacksBar from "./Snackbar";
+import Social from "../images/social_media.svg";
+import Webdev from "../images/web_developer.svg";
 
 function Contact(props) {
   const [email, setEmail] = useState("");
@@ -7,7 +10,11 @@ function Contact(props) {
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function handleContactSave() {
+  const [open, setopen] = useState(false);
+  const [failed, setfailed] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
+  async function handleContactSave() {
     if (name !== "" && email !== "") {
       let params = {
         name: name,
@@ -15,86 +22,135 @@ function Contact(props) {
         description: description,
       };
       setLoading(true);
-      let { data } = Axios.post("http://localhost:5000/api/v1/users", params);
-      setTimeout(() => {
-        setLoading(false);
-        setName("");
-        setEmail("");
-        setDescription("");
-      }, [3000]);
+      let { data } = await Axios.post(
+        "http://localhost:5000/api/v1/users",
+        params
+      );
+      setLoading(false);
+      setName("");
+      setEmail("");
+      setDescription("");
+      setopen(true);
+      if (!data.error) {
+        setfailed(false);
+        setSnackMessage("Signed up!!");
+      } else {
+        setfailed(true);
+        setSnackMessage("Error occured");
+      }
     }
   }
 
+  const styles = {
+    cardContainer: {
+      padding: "20px",
+      marginTop: "80px",
+      backgroundColor: !props.dark ? "white" : "#18191A",
+      borderRadius: "0.5rem",
+      width: "20rem",
+      height: "26rem",
+    },
+    labelLight: { textAlign: "left", color: "black" },
+    labelDark: { textAlign: "left", color: "white" },
+    textLine: {
+      backgroundColor: props.dark ? "white" : "black",
+      height: "3px",
+      width: "40px",
+      marginTop: "14px",
+    },
+  };
+
   return (
     <div
-      id='contact'
-      className='text-center'
-      style={
-        !props.dark
-          ? { filter: "brightness(1)" }
-          : { filter: "brightness(0.7)" }
-      }
+      style={{ backgroundColor: props.dark ? "#242526" : "#F0F2F5" }}
+      className="text-center"
+      id="contact"
     >
-      <h1 style={{ color: "white" }}>Get in touch</h1>
-      <div className='row flex-center '>
-        <div
-          className='col-lg-3 card-header'
-          style={!props.dark ? styles.cardLight : styles.cardBlack}
+      <SnacksBar
+        open={open}
+        failed={failed}
+        message={snackMessage}
+        onClose={() => setopen(false)}
+      />
+      <div className="text-center flex flex-row justify-content-center">
+        <div className="mr-2" style={styles.textLine}></div>
+        <h2
+          style={{
+            color: "#DC3545",
+            fontWeight: "bold",
+          }}
         >
-          <div className='form-group'>
+          Get in touch
+        </h2>
+        <div className="ml-2" style={styles.textLine}></div>
+      </div>
+      <div className="row flex-center ">
+        <div className="col-lg-4 social-contact opacity-70">
+          <img src={Social} alt="Social" style={{ width: "24rem" }} />
+        </div>
+
+        <div className="col-lg-3 pt-4" style={styles.cardContainer}>
+          <div
+            style={{
+              color: "#dc3545",
+              textAlign: "left",
+              fontSize: "19px",
+              fontWeight: "bold",
+              paddingBottom: "10px",
+            }}
+          >
+            Newsletter Signup
+          </div>
+          <div className="form-group">
             <div style={!props.dark ? styles.labelLight : styles.labelDark}>
               Name{" "}
             </div>
 
             <input
-              className='form-control '
-              type='text'
-              placeholder='Name'
-              autoComplete='off'
+              className="form-control border-danger"
+              type="text"
+              placeholder="Name"
+              autoComplete="off"
               value={name}
               onChange={(event) => setName(event.target.value)}
             />
           </div>
 
-          <div className='form-group'>
+          <div className="form-group">
             <div style={!props.dark ? styles.labelLight : styles.labelDark}>
               Email{" "}
             </div>
             <input
-              className='form-control'
-              type='email'
-              placeholder='name@example.com'
-              autoComplete='off'
+              className="form-control border-danger"
+              type="email"
+              placeholder="name@example.com"
+              autoComplete="off"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
           </div>
 
-          <div className='form-group'>
+          <div className="form-group">
             <div style={!props.dark ? styles.labelLight : styles.labelDark}>
               Leave a message{" "}
             </div>
 
             <textarea
-              className='form-control'
-              id='exampleFormControlTextarea1'
-              rows='3'
-              placeholder='Leave a message'
-              autoComplete='off'
+              className="form-control border-danger"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Leave a message"
+              autoComplete="off"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
             ></textarea>
           </div>
-          <div className='flex' style={{ textAlign: "right" }}>
+          <div className="flex" style={{ textAlign: "right" }}>
             <button
               onClick={handleContactSave}
-              className={
-                props.dark
-                  ? "btn btn-light btn-sm sub"
-                  : "btn btn-dark btn-sm sub"
-              }
-              type='submit'
-              name='button'
+              className="btn btn-danger btn-sm sub mt-3"
+              type="submit"
+              name="button"
             >
               {loading && (
                 <div
@@ -103,43 +159,29 @@ function Contact(props) {
                       ? "spinner-border text-dark spinner-border-sm"
                       : "spinner-border text-light spinner-border-sm"
                   }
-                  role='status'
+                  role="status"
                 >
-                  <span className='sr-only'>Loading...</span>
+                  <span className="sr-only">Loading...</span>
                 </div>
               )}{" "}
               Signup
             </button>
           </div>
         </div>
+        <div className="web-dev-contact col-lg-4 opacity-70">
+          <img src={Webdev} alt="Social" style={{ width: "23rem" }} />
+        </div>
       </div>
-      <div style={{ marginTop: "150px" }}>
+      <div
+        style={{ marginTop: "100px", color: props.dark ? "white" : "black" }}
+      >
         {" "}
         <p>
-          <i className='far fa-copyright fa-sm'></i> Akshay Kannan
+          <i className="far fa-copyright fa-sm"></i> Akshay Kannan
         </p>{" "}
       </div>
     </div>
   );
 }
-
-const styles = {
-  cardLight: {
-    padding: "20px",
-    marginTop: "80px",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "0.7rem",
-    width: "20rem",
-  },
-  cardBlack: {
-    padding: "20px",
-    marginTop: "80px",
-    backgroundColor: "#242526",
-    borderRadius: "0.7rem",
-    width: "20rem",
-  },
-  labelLight: { textAlign: "left", color: "black" },
-  labelDark: { textAlign: "left", color: "white" },
-};
 
 export default Contact;
