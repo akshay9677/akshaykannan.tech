@@ -33,6 +33,7 @@ function Journey(props) {
     description: {
       fontSize: "0.8rem",
       color: props.dark ? "white" : "black",
+      width: "20rem",
     },
     textLine: {
       backgroundColor: props.dark ? "white" : "black",

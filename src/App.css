@@ -212,6 +212,31 @@ h6 {
   margin-left: 4rem;
 }
 @media (max-width: 1200px) {
+  body {
+    width: 71vh;
+  }
+  .imgBg {
+    width: 74vh;
+  }
+  #contact {
+    width: 74vh;
+    background-attachment: unset;
+  }
+  #skill {
+    width: 74vh;
+  }
+  #intro {
+    width: 74vh;
+  }
+  #blogs-list {
+    min-height: 152vh;
+  }
+  #blogs {
+    min-height: 152vh;
+  }
+  #journey {
+    width: 74vh;
+  }
   .richtext-drawer {
     width: 60vh;
   }
