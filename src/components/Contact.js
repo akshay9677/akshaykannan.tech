@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import SnacksBar from "./Snackbar";
+import Tooltip from "@material-ui/core/Tooltip";
 import Social from "../images/social_media.svg";
 import Webdev from "../images/web_developer.svg";
 
@@ -84,6 +85,7 @@ function Contact(props) {
         </h2>
         <div className="ml-2" style={styles.textLine}></div>
       </div>
+
       <div className="row flex-center ">
         <div className="col-lg-4 social-contact opacity-70">
           <img src={Social} alt="Social" style={{ width: "24rem" }} />
@@ -107,7 +109,7 @@ function Contact(props) {
             </div>
 
             <input
-              className="form-control border-danger"
+              className="form-control"
               type="text"
               placeholder="Name"
               autoComplete="off"
@@ -121,7 +123,7 @@ function Contact(props) {
               Email{" "}
             </div>
             <input
-              className="form-control border-danger"
+              className="form-control"
               type="email"
               placeholder="name@example.com"
               autoComplete="off"
@@ -136,7 +138,7 @@ function Contact(props) {
             </div>
 
             <textarea
-              className="form-control border-danger"
+              className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
               placeholder="Leave a message"
@@ -171,6 +173,53 @@ function Contact(props) {
         <div className="web-dev-contact col-lg-4 opacity-70">
           <img src={Webdev} alt="Social" style={{ width: "23rem" }} />
         </div>
+      </div>
+
+      <div
+        className="flex-row flex-center text-center container pt-3"
+        style={{ color: "#dc3545" }}
+      >
+        <Tooltip title="Github">
+          <a
+            href="https://github.com/akshay9677"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pr-4 f30 pointer icon-social"
+          >
+            <i className="fab fa-github"></i>
+          </a>
+        </Tooltip>
+
+        <Tooltip title="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/akshay-kannan-49964617a"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pr-4 f30 pointer icon-social"
+          >
+            <i className="fab fa-linkedin"></i>
+          </a>
+        </Tooltip>
+        <Tooltip title="Instagram">
+          <a
+            href="https://www.instagram.com/_akshay_kannan_/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pr-4 f30 pointer icon-social"
+          >
+            <i className="fab fa-instagram"></i>
+          </a>
+        </Tooltip>
+        <Tooltip title="Twitter">
+          <a
+            href="http://twitter.com/_akshay_kannan_"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="f30 pointer icon-social"
+          >
+            <i className="fab fa-twitter"></i>
+          </a>
+        </Tooltip>
       </div>
       <div
         style={{ marginTop: "100px", color: props.dark ? "white" : "black" }}

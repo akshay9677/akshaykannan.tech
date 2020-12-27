@@ -79,7 +79,9 @@ h6 {
   left: 50px;
 }
 .myImg {
-  width: 8rem;
+  width: 9rem;
+  height: 9rem;
+  margin-top: 2rem;
 }
 .introTxt h1 {
   font-size: 1rem;
@@ -204,7 +206,7 @@ h6 {
   color: #dc3545;
 }
 .social-contact {
-  margin-top: 13rem;
+  margin-top: 10rem;
   margin-left: 4rem;
 }
 .web-dev-contact {
@@ -217,6 +219,7 @@ h6 {
   }
   .imgBg {
     width: 74vh;
+    background-attachment: unset;
   }
   #contact {
     width: 74vh;

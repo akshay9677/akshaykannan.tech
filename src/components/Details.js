@@ -38,6 +38,13 @@ function Details(props) {
             className="row justify-center"
             style={{ textAlign: "center", padding: "10px" }}
           >
+            <div
+              className="col-lg-2 flex justify-center"
+              data-aos="fade-in"
+              data-aos-delay="800"
+            >
+              <img className="myImg mt-7" src={MyImage} alt="" />
+            </div>
             <div className="col-lg-1" style={{ color: "#dc3545" }}>
               <i className="fas fa-quote-left fa-lg quote"></i>
             </div>
@@ -68,16 +75,9 @@ function Details(props) {
                 technologies available.
               </h4>
             </div>
-            <div
-              className="col-lg-2 flex justify-center"
-              data-aos="fade-in"
-              data-aos-delay="800"
-            >
-              <img className="myImg  bioContent" src={MyImage} alt="" />
-            </div>
           </div>
 
-          <div style={{ textAlign: "center" }}>
+          <div className="text-center h-16">
             <button
               onClick={handleLikeClick}
               className="btn btn-danger btn-md bt"
@@ -85,52 +85,6 @@ function Details(props) {
             >
               <i className="far fa-thumbs-up"></i> {likes} {" Likes"}
             </button>
-          </div>
-          <div
-            className="flex-row flex-center text-center container p10"
-            style={{ color: "#dc3545" }}
-          >
-            <Tooltip title="Github">
-              <a
-                href="https://github.com/akshay9677"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pr-3 f30 pointer icon-social"
-              >
-                <i className="fab fa-github"></i>
-              </a>
-            </Tooltip>
-
-            <Tooltip title="LinkedIn">
-              <a
-                href="https://www.linkedin.com/in/akshay-kannan-49964617a"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pr-3 f30 pointer icon-social"
-              >
-                <i className="fab fa-linkedin"></i>
-              </a>
-            </Tooltip>
-            <Tooltip title="Instagram">
-              <a
-                href="https://www.instagram.com/_akshay_kannan_/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pr-3 f30 pointer icon-social"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </Tooltip>
-            <Tooltip title="Twitter">
-              <a
-                href="http://twitter.com/_akshay_kannan_"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="f30 pointer icon-social"
-              >
-                <i className="fab fa-twitter"></i>
-              </a>
-            </Tooltip>
           </div>
         </div>
       </div>

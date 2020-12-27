@@ -11,7 +11,7 @@ import "./App.css";
 export const Theme = React.createContext();
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
   return (
     <div
       className="App min-h-screen"

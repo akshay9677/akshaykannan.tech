@@ -46,7 +46,7 @@ function Projects(props) {
         </h2>
         <div className="ml-2" style={styles.textLine}></div>
       </div>
-      <div className="flex flex-row justify-center mt-10 container">
+      <div className="flex flex-row justify-center mt-10 mR10 container">
         <div style={{ color: props.dark ? "white" : "black" }}>
           <SkillRating
             skillName={"Javascript"}

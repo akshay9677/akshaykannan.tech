@@ -118,7 +118,7 @@ function BlogBody(props) {
                 </div>
                 <div className="flex flex-col truncate-text pL10 w-12/12">
                   <div
-                    className="text-xl pointer"
+                    className="truncate-text text-xl pointer"
                     style={{ fontWeight: "bold" }}
                     onClick={handleBlogClick.bind(this, blog)}
                   >
