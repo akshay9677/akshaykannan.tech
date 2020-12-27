@@ -87,7 +87,7 @@ function Contact(props) {
       </div>
 
       <div className="row flex-center ">
-        <div className="col-lg-4 social-contact opacity-70">
+        <div className="col-lg-4 social-contact opacity-90">
           <img src={Social} alt="Social" style={{ width: "24rem" }} />
         </div>
 
@@ -170,7 +170,7 @@ function Contact(props) {
             </button>
           </div>
         </div>
-        <div className="web-dev-contact col-lg-4 opacity-70">
+        <div className="web-dev-contact col-lg-4 opacity-90">
           <img src={Webdev} alt="Social" style={{ width: "23rem" }} />
         </div>
       </div>
