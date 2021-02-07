@@ -4,6 +4,7 @@ import SnacksBar from "./Snackbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Social from "../images/social_media.svg";
 import Webdev from "../images/web_developer.svg";
+import { baseUrl } from "../config/baseUrl";
 
 function Contact(props) {
   const [email, setEmail] = useState("");
@@ -23,10 +24,7 @@ function Contact(props) {
         description: description,
       };
       setLoading(true);
-      let { data } = await Axios.post(
-        "http://localhost:5000/api/v1/users",
-        params
-      );
+      let { data } = await Axios.post(`${baseUrl}/api/v1/users`, params);
       setLoading(false);
       setName("");
       setEmail("");
