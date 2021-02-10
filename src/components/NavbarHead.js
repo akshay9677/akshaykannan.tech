@@ -5,7 +5,7 @@ function NavbarHead(props) {
     <div className={props.dark ? "filter-dark imgBg" : "imgBg"}>
       <div style={{ zIndex: 99, paddingTop: "15rem" }}>
         <div style={styles.nameContainer}>
-          <div className="text-base">Hey ,I'm</div>
+          <div className="text-4xl">Hey ,I'm</div>
           <h1 className="name red">Akshay Kannan</h1>
           <div
             className="downArrow pt-5"

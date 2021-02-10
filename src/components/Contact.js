@@ -48,6 +48,7 @@ function Contact(props) {
       borderRadius: "0.5rem",
       width: "20rem",
       height: "26rem",
+      boxShadow: "rgba(0, 0, 0, 0.24) 13px 16px",
     },
     labelLight: { textAlign: "left", color: "black" },
     labelDark: { textAlign: "left", color: "white" },
@@ -85,9 +86,9 @@ function Contact(props) {
       </div>
 
       <div className="row flex-center ">
-        <div className="col-lg-4 social-contact opacity-90">
+        {/* <div className="col-lg-4 social-contact opacity-90">
           <img src={Social} alt="Social" style={{ width: "24rem" }} />
-        </div>
+        </div> */}
 
         <div className="col-lg-3 pt-4" style={styles.cardContainer}>
           <div
@@ -168,13 +169,13 @@ function Contact(props) {
             </button>
           </div>
         </div>
-        <div className="web-dev-contact col-lg-4 opacity-90">
+        {/* <div className="web-dev-contact col-lg-4 opacity-90">
           <img src={Webdev} alt="Social" style={{ width: "23rem" }} />
-        </div>
+        </div> */}
       </div>
 
       <div
-        className="flex-row flex-center text-center container pt-3"
+        className="flex-row flex-center text-center container pt-10"
         style={{ color: "#dc3545" }}
       >
         <Tooltip title="Github">
