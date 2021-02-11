@@ -6,13 +6,11 @@ import Avatar from "@material-ui/core/Avatar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { baseUrl } from "../config/baseUrl";
 import { getTimeFromNow } from "../util/time";
-import BlogDrawer from "./RichText/BlogDrawer";
 import SnacksBar from "./Snackbar";
 import { Tooltip } from "@material-ui/core";
 
 function BlogBody(props) {
   const [blogs, setBlogs] = useState(null);
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [loading, setloading] = useState(false);
   const [open, setopen] = useState(false);
   const [failed, setfailed] = useState(false);
@@ -76,25 +74,6 @@ function BlogBody(props) {
         message={snackMessage}
         onClose={() => setopen(false)}
       />
-      <BlogDrawer
-        dark={props.dark}
-        open={openDrawer}
-        onClose={() => {
-          setOpenDrawer(false);
-        }}
-        onSave={(isSaved) => {
-          setOpenDrawer(false);
-          fetchData(true, isSaved);
-        }}
-      />
-      <button
-        style={styles.createPostBtn}
-        type="button"
-        className="btn btn-danger btn-md"
-        onClick={() => setOpenDrawer(true)}
-      >
-        <i className="fas fa-feather text-base"></i>
-      </button>
 
       {loading ? (
         <div className="flex flex-row justify-content-center pt-6">

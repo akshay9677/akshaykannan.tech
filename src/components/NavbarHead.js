@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 function NavbarHead(props) {
   return (
     <div className={props.dark ? "filter-dark imgBg" : "imgBg"}>

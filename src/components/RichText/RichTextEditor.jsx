@@ -30,7 +30,6 @@ function RichText(props) {
   const [placeholderText, setplaceholderText] = useState(
     "Write something awesome"
   );
-  const [url, seturl] = useState("");
   const editorRef = useRef(null);
 
   const styleMap = {
@@ -40,8 +39,6 @@ function RichText(props) {
   };
 
   const onChange = (editor) => {
-    const currentContent = editor.getCurrentContent();
-    const oldContent = editorState.getCurrentContent();
     setEditorState(editor);
       const html = convertToHTML({
         entityToHTML: (entity, originalText) => {
@@ -98,7 +95,6 @@ function RichText(props) {
 
   const addLink = () => {
     let urlLink = window.prompt("Paste link here");
-    seturl(urlLink);
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
       "LINK",

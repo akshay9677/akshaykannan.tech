@@ -2,8 +2,6 @@ import Axios from "axios";
 import React, { useState } from "react";
 import SnacksBar from "./Snackbar";
 import Tooltip from "@material-ui/core/Tooltip";
-import Social from "../images/social_media.svg";
-import Webdev from "../images/web_developer.svg";
 import { baseUrl } from "../config/baseUrl";
 
 function Contact(props) {

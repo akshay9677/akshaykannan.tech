@@ -36,7 +36,7 @@ function BlogDrawer(props) {
         post: post,
         tags: tags,
       };
-      let { data, error } = await Axios.post(`${baseUrl}/api/v1/blog`, params);
+      let {  error } = await Axios.post(`${baseUrl}/api/v1/blog`, params);
       error ? (isSaved = false) : (isSaved = true);
     } catch (e) {
       isSaved = false;

@@ -174,31 +174,6 @@ a:hover {
   backdrop-filter: saturate(50%) blur(60px);
 }
 
-.post-body p {
-  margin-bottom: 10px;
-}
-
-.post-body h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 10px;
-}
-
-.post-body a {
-  color: #dc3545;
-  text-decoration: underline;
-}
-.post-body code {
-  color: #dc3545;
-  margin: 10px 0px;
-  font-weight: bold;
-}
-.post-body a:hover {
-  color: #dc35468f;
-}
 .filter-dark {
   filter: brightness(0.9);
 }

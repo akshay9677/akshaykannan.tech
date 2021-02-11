@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import MyImage from "../images/myImg.png";
-import Tooltip from "@material-ui/core/Tooltip";
 import { baseUrl } from "../config/baseUrl";
 function Details(props) {
   const [likes, setLikes] = useState(10);
@@ -16,7 +15,7 @@ function Details(props) {
 
   async function handleLikeClick() {
     setLikes(likes + 1);
-    let data = await axios.post("http://localhost:5000/api/v1/likes");
+    await axios.post(`${baseUrl}/api/v1/likes`);
   }
 
   function facilioClick() {
