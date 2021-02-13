@@ -1,24 +1,21 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from 'react'
 
-import NavbarHead from "../components/NavbarHead";
-import Details from "../components/Details";
-import Journey from "../components/Journey";
-import Contact from "../components/Contact";
-import Skills from "../components/Skills";
-
-import { Theme } from "../App";
+import IntroPage from '../components/IntroPage'
+import Details from '../components/Details'
+import Journey from '../components/Journey'
+import Contact from '../components/Contact'
+import Skills from '../components/Skills'
 
 function Main(props) {
-  const { darkTheme } = useContext(Theme);
   return (
     <Fragment>
-      <NavbarHead dark={darkTheme} />
-      <Details dark={darkTheme} />
-      <Journey dark={darkTheme} />
-      <Skills dark={darkTheme} />
-      <Contact dark={darkTheme} />
+      <IntroPage />
+      <Details />
+      <Journey />
+      <Skills />
+      <Contact />
     </Fragment>
-  );
+  )
 }
 
-export default Main;
+export default Main

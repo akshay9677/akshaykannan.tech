@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", serif;
+  font-family: 'Montserrat', serif;
 }
 h1 {
   font-size: 2rem;
@@ -19,22 +19,18 @@ h5 {
 h6 {
   font-size: 0.67rem;
 }
-
-.imgBg {
-  color: white;
-  background-image: url(./images/IntroImg.jpg);
-  height: 100vh;
-  background-size: 1539px 852px;
-  background-color: transparent;
-  background-position: -2px -13px;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  font-weight: bolder;
+.block-header {
+  margin: 10px 0px;
 }
-.logo2 {
-  width: 50px;
-  height: 50px;
+.block-header::before,
+.block-header::after {
+  content: ' ';
+  height: 3px;
+  width: 80px;
+  margin: 10px 10px;
+  display: inline-block;
+  zoom: 1;
+  background: #ef4444;
 }
 
 .name {
@@ -44,27 +40,10 @@ h6 {
 
 /* intro */
 
-#intro {
-  padding-bottom: 30px;
-  color: black;
-}
 .bioContent {
   margin-top: 60px;
 }
 
-#intro h5 {
-  text-align: left;
-  font-weight: bolder;
-}
-#intro p {
-  text-align: left;
-}
-#intro h3 {
-  padding-bottom: 20px;
-  border-bottom: 2px solid rgb(0, 0, 0);
-  border-bottom-color: rgba(0, 0, 0, 0.35);
-  display: inline-block;
-}
 #blogs-list {
   height: 100vh;
 }
@@ -189,40 +168,8 @@ a:hover {
   margin-left: 4rem;
 }
 @media (max-width: 1200px) {
-  body {
-    width: 71vh;
-  }
-  .imgBg {
-    width: 74vh;
-    background-attachment: unset;
-  }
-  #contact {
-    width: 74vh;
-    background-attachment: unset;
-  }
-  #skill {
-    width: 74vh;
-  }
-  #intro {
-    width: 74vh;
-  }
-  #blogs-list {
-    min-height: 152vh;
-  }
-  #blogs {
-    min-height: 152vh;
-  }
-  #journey {
-    width: 74vh;
-  }
   .richtext-drawer {
     width: 60vh;
-  }
-  #intro h5 {
-    text-align: center;
-  }
-  #intro p {
-    text-align: center;
   }
   .quote {
     position: absolute;

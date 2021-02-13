@@ -1,64 +1,58 @@
-import React, { useState, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Fragment } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import Main from "./pages/Main";
-import Blogs from "./pages/Blogs";
-import PostBody from "./pages/PostBody";
-import Header from "./components/Header";
-import "./assets/main.css";
-import "./App.css";
+import Main from './pages/Main'
+import Blogs from './pages/Blogs'
+import PostBody from './pages/PostBody'
+import Header from './components/Header'
+import './assets/main.css'
+import './App.css'
 
-export const Theme = React.createContext();
+export const Theme = React.createContext()
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const changeTheme = () => {
+    const body = document.querySelector('body')
+    if (body.classList.contains('dark')) body.classList.remove('dark')
+    else body.classList.add('dark')
+  }
   return (
     <div
-      className="App min-h-screen"
+      className="App min-h-screen font-sans bg-gray-100	dark:bg-gray-900 text-gray-700	dark:text-white "
       style={{
-        backgroundColor: darkTheme ? "#242526" : "#F0F2F5",
-        overflowX: "hidden",
+        overflowX: 'hidden',
       }}
     >
-      <Theme.Provider value={{ darkTheme }}>
-        <Router route>
-          <Route to="/">
-            <Fragment>
-              <div
-                style={{
-                  position: "fixed",
-                  top: "0px",
-                  right: "1px",
-                  zIndex: 99,
-                  width: "100%",
-                }}
-              >
-                <Header
-                  dark={darkTheme}
-                  blog={true}
-                  onChange={() => {
-                    setDarkTheme(!darkTheme);
-                  }}
-                  checked={darkTheme}
-                />
-              </div>
-            </Fragment>
-            <Switch>
-              <Route exact path="/">
-                <Main />
-              </Route>
-              <Route exact path="/blogs">
-                <Blogs />
-              </Route>
-              <Route path="/blogs/:id">
-                <PostBody />
-              </Route>
-            </Switch>
-          </Route>
-        </Router>
-      </Theme.Provider>
+      <Router route>
+        <Route to="/">
+          <Fragment>
+            <div
+              style={{
+                position: 'fixed',
+                top: '0px',
+                right: '1px',
+                zIndex: 99,
+                width: '100%',
+              }}
+            >
+              <Header blog={true} onChange={changeTheme} />
+            </div>
+          </Fragment>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route exact path="/blogs">
+              <Blogs />
+            </Route>
+            <Route path="/blogs/:id">
+              <PostBody />
+            </Route>
+          </Switch>
+        </Route>
+      </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,49 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Switchs from "react-switch";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Switchs from 'react-switch'
 
 function Header(props) {
-  let conditionColor = { color: "#dc3545", fontWeight: "bold" };
+  // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
 
   function DarkModeicon() {
     return (
       <div
-        style={{ color: "#242526", paddingLeft: "10px", paddingTop: "1.8px" }}
+        style={{ color: '#242526', paddingLeft: '10px', paddingTop: '1.8px' }}
       >
         <i className="fas fa-moon"></i>
       </div>
-    );
+    )
   }
 
   function LightModeIcon() {
     return (
-      <div style={{ color: "white", paddingLeft: "10px", paddingTop: "1.8px" }}>
+      <div style={{ color: 'white', paddingLeft: '10px', paddingTop: '1.8px' }}>
         <i className="fas fa-lightbulb"></i>
       </div>
-    );
+    )
   }
   return (
     <div className="navbar-header" data-aos="flip-right" data-aos-delay="200">
-      <div
-        className="flex-row flex-end-col pt-2 pr-3.5 container"
-        style={{ fontWeight: "bold" }}
-      >
+      <div className="flex-row flex-end-col pt-2 pr-3.5 container">
         <Link
-          className="nav-item active zoom p10 no-style pointer"
-          style={conditionColor}
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 hover:underline"
           to="/"
         >
           About
         </Link>
         <Link
-          className="nav-item active zoom p10 no-style pointer"
-          style={conditionColor}
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 hover:underline"
           to="/blogs"
         >
           Blogs
         </Link>
 
-        <div className="nav-item custom-control custom-switch pt-1.5 pr-2">
+        <div className="nav-item custom-control custom-switch pt-1.5 px-2">
           <Switchs
             onChange={props.onChange}
             checked={props.checked}
@@ -57,7 +52,7 @@ function Header(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
