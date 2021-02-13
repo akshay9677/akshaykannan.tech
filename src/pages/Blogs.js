@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import BlogsList from '../components/BlogsList'
-import { Theme } from '../App'
 
 function Blogs(props) {
-  const { darkTheme } = useContext(Theme)
   return (
     <div
       id="blogs-list"
@@ -11,7 +9,7 @@ function Blogs(props) {
         paddingTop: '3rem',
       }}
     >
-      <BlogsList dark={darkTheme} />
+      <BlogsList />
     </div>
   )
 }

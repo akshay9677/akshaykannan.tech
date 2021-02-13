@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import BlogPost from "../components/BlogPost";
-
-import { Theme } from "../App";
+import React from 'react'
+import BlogPost from '../components/BlogPost'
 
 function PostBody(props) {
-  const { darkTheme } = useContext(Theme);
-  return <BlogPost dark={darkTheme} />;
+  return <BlogPost />
 }
 
-export default PostBody;
+export default PostBody

@@ -26,13 +26,13 @@ function Header(props) {
     <div className="navbar-header" data-aos="flip-right" data-aos-delay="200">
       <div className="flex-row flex-end-col pt-2 pr-3.5 container">
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 hover:underline"
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 "
           to="/"
         >
           About
         </Link>
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 hover:underline"
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 "
           to="/blogs"
         >
           Blogs
