@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import Avatar from '@material-ui/core/Avatar'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import { baseUrl } from '../config/baseUrl'
 import { getTimeFromNow } from '../util/time'
 import SnacksBar from './Snackbar'
-import { Tooltip } from '@material-ui/core'
 
 function BlogBody(props) {
   const [blogs, setBlogs] = useState(null)
@@ -25,6 +22,11 @@ function BlogBody(props) {
     avatar: {
       borderRadius: '0.5rem',
       background: '#DC3545',
+      width: '2.5rem',
+      height: '2.5rem',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     blogContainer: {
       overflowY: 'auto',
@@ -69,7 +71,12 @@ function BlogBody(props) {
 
       {loading ? (
         <div className="flex flex-row justify-center items-center h-5/6 pt-6">
-          <CircularProgress style={{ color: '#DC3545' }} />
+          <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+            <div
+              style={{ borderTopColor: 'transparent' }}
+              class="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
+            ></div>
+          </div>
         </div>
       ) : (
         blogs &&
@@ -78,9 +85,9 @@ function BlogBody(props) {
             <div key={blog._id} className="flex  justify-center p10 mt-3">
               <div className="flex flex-row w-10/12 rounded-lg p-2 bg-white dark:bg-gray-800	">
                 <div className="my-4 mx-1">
-                  <Avatar style={styles.avatar} variant="square">
+                  <div className="w-10 h-10 rounded-lg text-2xl text-white flex justify-center items-center bg-red-500">
                     {blog.email.slice(0, 1).toUpperCase()}
-                  </Avatar>
+                  </div>
                 </div>
                 <div className="flex flex-col truncate-text pL10 w-12/12">
                   <div
@@ -107,27 +114,24 @@ function BlogBody(props) {
                     </div>
                   )}
                   <div className="flex-row">
-                    <div style={{ fontSize: '0.8rem', color: '#888' }}>
+                    <div style={{ marginTop: '-4px' }}>
+                      <span className="badge badge-danger text-sm text-red-500">
+                        <i className="fas fa-fire mr-1"></i>
+                        {blog.likes ? blog.likes : 0}
+                      </span>
+                    </div>
+
+                    <div style={{ fontSize: '4px', padding: '7.2px 6px' }}>
+                      <i className="fas fa-circle"></i>
+                    </div>
+                    <div className="text-sm text-gray-500">
                       {getTimeFromNow(blog.sysCreatedTime)}
                     </div>
 
                     <div style={{ fontSize: '4px', padding: '7.2px 6px' }}>
                       <i className="fas fa-circle"></i>
                     </div>
-                    <div style={{ marginTop: '-4px' }}>
-                      <Tooltip title="Fire">
-                        <span className="badge badge-danger">
-                          <i className="fas fa-fire mr-1"></i>
-                          {blog.likes ? blog.likes : 0}
-                        </span>
-                      </Tooltip>
-                    </div>
-                    <div style={{ fontSize: '4px', padding: '7.2px 6px' }}>
-                      <i className="fas fa-circle"></i>
-                    </div>
-                    <div style={{ fontSize: '0.8rem', color: '#888' }}>
-                      {blog.email}
-                    </div>
+                    <div className="text-sm text-gray-500">{blog.email}</div>
                   </div>
                 </div>
               </div>

@@ -29,22 +29,22 @@ function Header(props) {
     )
   }
   return (
-    <div className="navbar-header" data-aos="flip-right" data-aos-delay="200">
+    <div className="navbar-header">
       <div className="flex-row flex-end-col pt-2 pr-3.5 container">
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 "
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
           to="/"
         >
           About
         </Link>
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 "
+          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
           to="/blogs"
         >
           Blogs
         </Link>
 
-        <div className="nav-item custom-control custom-switch pt-1.5 px-2">
+        <div className="nav-item custom-control custom-switch pt-1.5 px-5">
           <Switchs
             onChange={changeTheme}
             checked={isDark}
