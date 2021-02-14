@@ -84,7 +84,7 @@ function BlogBody(props) {
                 </div>
                 <div className="flex flex-col truncate-text pL10 w-12/12">
                   <div
-                    className="truncate-text text-xl pointer"
+                    className="text-xl pointer"
                     style={{ fontWeight: 'bold' }}
                     onClick={handleBlogClick.bind(this, blog)}
                   >
@@ -95,7 +95,7 @@ function BlogBody(props) {
                     {stripHtml(blog.post)}
                   </div>
                   {blog.tags && (
-                    <div className="py-2">
+                    <div className="py-2 flex flex-wrap">
                       {blog.tags.map((tag, index) => (
                         <span
                           key={index}

@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Switchs from 'react-switch'
 
 function Header(props) {
   // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
+  const [isDark, setDark] = useState(false)
+
+  const changeTheme = () => {
+    setDark(!isDark)
+    props.onChange()
+  }
 
   function DarkModeicon() {
     return (
@@ -40,8 +46,8 @@ function Header(props) {
 
         <div className="nav-item custom-control custom-switch pt-1.5 px-2">
           <Switchs
-            onChange={props.onChange}
-            checked={props.checked}
+            onChange={changeTheme}
+            checked={isDark}
             onColor="#dc3545"
             offColor="#dc3545"
             onHandleColor="#242526"

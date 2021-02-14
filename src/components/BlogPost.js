@@ -86,12 +86,26 @@ function BlogPage(props) {
           blog && (
             <div style={{ width: '63%', minHeight: '42rem' }}>
               <h1 className="text-center mb-4 font-bold">{blog.subject}</h1>
+              <div className="ml-1 mt-1">
+                {blog.tags ? (
+                  blog.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="rounded-full text-white bg-red-100 text-red-500 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))
+                ) : (
+                  <span></span>
+                )}
+              </div>
               <div>{getBlogPost()}</div>
               <div className="flex flex-row m-4">
                 <ToolTip title="Fire" aria-label="add">
                   <button
                     type="button"
-                    className="px-2 py-1 mt-1 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 md:mb-80"
+                    className="px-2 py-1 mt-1 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
                     onClick={handleLikeClick}
                   >
                     {blog.likes ? blog.likes : 0}
@@ -99,21 +113,6 @@ function BlogPage(props) {
                     <i className="fas fa-fire mr-1"></i>
                   </button>
                 </ToolTip>
-                <div className="ml-4 mt-1">{blog.tags && 'Tags :'}</div>
-                <div className="ml-1 mt-1">
-                  {blog.tags ? (
-                    blog.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="rounded-full text-white bg-red-100 text-red-500 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-                      >
-                        {tag}
-                      </span>
-                    ))
-                  ) : (
-                    <span></span>
-                  )}
-                </div>
               </div>
             </div>
           )

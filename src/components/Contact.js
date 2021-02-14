@@ -48,7 +48,7 @@ function Contact(props) {
 
       <div className="text-4xl font-bold text-center block-header">Contact</div>
 
-      <div className="my-10 max-w-md mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-sm">
+      <div className="my-10 max-w-sm mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-sm">
         <div className="md:flex justify-center flex-col p-5">
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold p-1">
             Newsletter Signup

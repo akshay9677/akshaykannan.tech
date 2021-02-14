@@ -63,7 +63,7 @@ function Projects(props) {
             />
           </div>
           <div className="p-8">
-            <div className="text-xl font-bold">JS</div>
+            <div className="text-xl font-bold">Backend</div>
             <SkillRating
               skillName={'MongoDB'}
               skillValue={4}
