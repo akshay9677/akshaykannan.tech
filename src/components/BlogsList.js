@@ -6,7 +6,7 @@ import { baseUrl } from '../config/baseUrl'
 import { getTimeFromNow } from '../util/time'
 import SnacksBar from './Snackbar'
 
-function BlogBody(props) {
+const BlogBody = (props) => {
   const [blogs, setBlogs] = useState(null)
   const [loading, setloading] = useState(false)
   const [open, setopen] = useState(false)
@@ -71,10 +71,10 @@ function BlogBody(props) {
 
       {loading ? (
         <div className="flex flex-row justify-center items-center h-5/6 pt-6">
-          <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+          <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
             <div
               style={{ borderTopColor: 'transparent' }}
-              class="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
+              className="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
             ></div>
           </div>
         </div>

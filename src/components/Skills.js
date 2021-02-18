@@ -1,22 +1,15 @@
 import React from 'react'
-import Rating from '@material-ui/lab/Rating'
+import Rating from './Rating'
 
 function Projects(props) {
   const SkillRating = (props) => {
     return (
-      <div className="flex justify-center py-2">
-        <div className="row">
+      <div className="flex justify-center items-center py-2">
+        <div className="row pr-2">
           {props.skillIcon}
           {props.skillName}
         </div>
-        <Rating
-          name="read-only"
-          defaultValue={props.skillValue}
-          precision={0.5}
-          readOnly
-          className="pl-5"
-          style={{ color: '#DC3545' }}
-        />
+        <Rating name="read-only" value={props.skillValue} color="#EF4444" />
       </div>
     )
   }
@@ -30,7 +23,7 @@ function Projects(props) {
 
             <SkillRating
               skillName={'React'}
-              skillValue={4.5}
+              skillValue={4}
               skillIcon={<i className="fab fa-react text-2xl mr-1"></i>}
             />
             <SkillRating
@@ -43,7 +36,7 @@ function Projects(props) {
             <div className="text-xl font-bold">Languages</div>
             <SkillRating
               skillName={'Java'}
-              skillValue={3.5}
+              skillValue={3}
               skillIcon={<i className="fab fa-java text-2xl mr-2"></i>}
             />
             <SkillRating
