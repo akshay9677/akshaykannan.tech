@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogsList from '../components/BlogsList'
+import BlogsList from '../components/BlogsList.jsx'
 
 function Blogs(props) {
   return (

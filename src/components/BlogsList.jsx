@@ -4,7 +4,9 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { baseUrl } from '../config/baseUrl'
 import { getTimeFromNow } from '../util/time'
-import SnacksBar from './Snackbar'
+
+import AkTags from '../ak-components/AkTags'
+import AkSnackBar from '../ak-components/AkSnackBar'
 
 const BlogBody = (props) => {
   const [blogs, setBlogs] = useState(null)
@@ -62,7 +64,7 @@ const BlogBody = (props) => {
   }
   return (
     <div style={styles.blogContainer} className="hideScroll h-screen">
-      <SnacksBar
+      <AkSnackBar
         open={open}
         failed={failed}
         message={snackMessage}
@@ -91,7 +93,7 @@ const BlogBody = (props) => {
                 </div>
                 <div className="flex flex-col truncate-text pL10 w-12/12">
                   <div
-                    className="text-xl pointer"
+                    className="truncate-text text-xl pointer"
                     style={{ fontWeight: 'bold' }}
                     onClick={handleBlogClick.bind(this, blog)}
                   >
@@ -104,12 +106,7 @@ const BlogBody = (props) => {
                   {blog.tags && (
                     <div className="py-2 flex flex-wrap">
                       {blog.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="rounded-full text-white bg-red-100 text-red-500 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-                        >
-                          {tag}
-                        </span>
+                        <AkTags key={index} name={tag} />
                       ))}
                     </div>
                   )}

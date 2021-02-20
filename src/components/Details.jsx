@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
 import { baseUrl } from '../config/baseUrl'
+
+import AkButton from '../ak-components/AkButton'
+
 function Details(props) {
   const [likes, setLikes] = useState(10)
   useEffect(() => {
@@ -43,13 +46,15 @@ function Details(props) {
           </span>
         </div>
 
-        <div className="text-center h-16">
-          <button
+        <div className="flex justify-center mb-10">
+          <AkButton
             onClick={handleLikeClick}
-            className="py-2 px-4 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
-          >
-            <i className="far fa-thumbs-up"></i> {likes} {' Likes'}
-          </button>
+            children={
+              <span>
+                <i className="far fa-thumbs-up"></i> {likes} {' Likes'}
+              </span>
+            }
+          />
         </div>
       </div>
     </Fragment>

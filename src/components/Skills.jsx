@@ -1,5 +1,5 @@
 import React from 'react'
-import Rating from './Rating'
+import AkRating from '../ak-components/AkRating'
 
 function Projects(props) {
   const SkillRating = (props) => {
@@ -9,7 +9,7 @@ function Projects(props) {
           {props.skillIcon}
           {props.skillName}
         </div>
-        <Rating name="read-only" value={props.skillValue} color="#EF4444" />
+        <AkRating name="read-only" value={props.skillValue} color="#EF4444" />
       </div>
     )
   }

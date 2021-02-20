@@ -1,7 +1,9 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
-import SnacksBar from './Snackbar'
+import AkSnacksBar from '../ak-components/AkSnackBar'
 import { baseUrl } from '../config/baseUrl'
+
+import AkButton from '../ak-components/AkButton'
 
 function Contact(props) {
   const [email, setEmail] = useState('')
@@ -11,7 +13,7 @@ function Contact(props) {
 
   const [open, setopen] = useState(false)
   const [failed, setfailed] = useState(false)
-  const [snackMessage, setSnackMessage] = useState('')
+  const [snackMessage, setSnackMessage] = useState('Signed up!!')
 
   async function handleContactSave() {
     if (name !== '' && email !== '') {
@@ -39,10 +41,10 @@ function Contact(props) {
 
   return (
     <div id="contact">
-      <SnacksBar
+      <AkSnacksBar
         open={open}
         failed={failed}
-        message={snackMessage}
+        content={snackMessage}
         onClose={() => setopen(false)}
       />
 
@@ -63,7 +65,7 @@ function Contact(props) {
                 autoComplete="off"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="w-full	px-3 py-2 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
+                className="w-full	px-3 py-2 text-gray-900 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
               />
             </div>
           </div>
@@ -77,7 +79,7 @@ function Contact(props) {
                 autoComplete="off"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full	px-3 py-2 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
+                className="w-full	px-3 py-2 text-gray-900 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
               />
             </div>
           </div>
@@ -91,28 +93,15 @@ function Contact(props) {
                 autoComplete="off"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
-                className="w-full	px-3 py-2 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
+                className="w-full	px-3 py-2 text-gray-900 border border-transparent rounded shadow focus:outline-none focus:ring-2  focus:ring-blue-300 focus:border-transparent"
               ></textarea>
             </div>
           </div>
-          <button
+          <AkButton
             onClick={handleContactSave}
-            className="w-40 my-3 py-1 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
-          >
-            {loading && (
-              <div
-                className={
-                  props.dark
-                    ? 'spinner-border text-dark spinner-border-sm'
-                    : 'spinner-border text-light spinner-border-sm'
-                }
-                role="status"
-              >
-                <span className="sr-only">Loading...</span>
-              </div>
-            )}{' '}
-            Signup
-          </button>
+            loading={loading}
+            children={<span>Signup</span>}
+          />
         </div>
       </div>
       <footer className="flex justify-center py-3" style={{ color: '#888' }}>

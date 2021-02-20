@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Main from './pages/Main'
 import Blogs from './pages/Blogs'
 import PostBody from './pages/PostBody'
-import Header from './components/Header'
+import Header from './components/Header.jsx'
 import './assets/main.css'
 import './App.css'
 

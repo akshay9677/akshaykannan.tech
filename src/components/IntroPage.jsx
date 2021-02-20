@@ -1,7 +1,9 @@
 import React from 'react'
 import Webdev from '../images/coding_.svg'
 
-function IntroPage(props) {
+import AkButton from '../ak-components/AkButton'
+
+function IntroPage() {
   const openGithub = () => {
     window.open('https://github.com/akshay9677')
   }
@@ -48,12 +50,12 @@ function IntroPage(props) {
               <i className="fab fa-twitter"></i>
             </a>
           </div>
-          <button
-            onClick={openGithub}
-            className="w-40 py-2 my-8 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 md:mb-80"
-          >
-            Check My work
-          </button>
+          <div className="mt-8 md:mb-60">
+            <AkButton
+              onClick={openGithub}
+              children={<span>Check My Work</span>}
+            />
+          </div>
         </div>
         <div className="opacity-90 py-10">
           <img src={Webdev} alt="Social" style={{ width: '40rem' }} />

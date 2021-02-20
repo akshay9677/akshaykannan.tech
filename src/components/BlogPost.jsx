@@ -7,6 +7,7 @@ import '../assets/blogpost.css'
 
 import CustomEslintPlugin from '../mdx-blogs/CustomEslintPlugin.mdx'
 import ESFeatures from '../mdx-blogs/ES2020.mdx'
+import AkTags from '../ak-components/AkTags'
 
 const postsHash = [
   {
@@ -78,10 +79,10 @@ function BlogPage(props) {
       <div className="flex justify-center">
         {loading ? (
           <div className="flex flex-row justify-center items-center h-5/6 p-6">
-            <div class="right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+            <div className="right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
               <div
                 style={{ borderTopColor: 'transparent' }}
-                class="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
+                className="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
               ></div>
             </div>
           </div>
@@ -92,12 +93,7 @@ function BlogPage(props) {
               <div className="ml-1 mt-1">
                 {blog.tags ? (
                   blog.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="rounded-full text-white bg-red-100 text-red-500 text-xs font-bold mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1"
-                    >
-                      {tag}
-                    </span>
+                    <AkTags key={index} name={tag} />
                   ))
                 ) : (
                   <span></span>
