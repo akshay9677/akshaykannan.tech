@@ -41,8 +41,17 @@ p {
   font-weight: bold;
 }
 
+.blog-post-content a {
+  color: #dc3545 !important;
+  text-decoration: underline !important;
+}
+
+.blog-post-content code {
+  color: #6366f1;
+}
+
 a:hover {
-  color: #dc35468f;
+  color: #dc35468f !important;
 }
 
 code[class*='language-'],

@@ -107,10 +107,6 @@ h6 {
 .f30 {
   font-size: 30px;
 }
-a:hover {
-  color: #888;
-  text-decoration: none;
-}
 .icon-social:hover {
   color: #dc3546cc;
 }

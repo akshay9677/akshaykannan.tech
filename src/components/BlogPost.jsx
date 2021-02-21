@@ -4,10 +4,11 @@ import axios from 'axios'
 import { baseUrl } from '../config/baseUrl'
 import ErrorSvg from '../assets/Error404.svg'
 import '../assets/blogpost.css'
+import AkTags from '../ak-components/AkTags'
 
 import CustomEslintPlugin from '../mdx-blogs/CustomEslintPlugin.mdx'
 import ESFeatures from '../mdx-blogs/ES2020.mdx'
-import AkTags from '../ak-components/AkTags'
+import TypescriptImportance from '../mdx-blogs/TypescriptImportance.mdx'
 
 const postsHash = [
   {
@@ -17,6 +18,10 @@ const postsHash = [
   {
     id: '5fe57ec407543e5777d060ec',
     post: () => <ESFeatures />,
+  },
+  {
+    id: '6032245c0b8c9646a0f12f2b',
+    post: () => <TypescriptImportance />,
   },
 ]
 
@@ -99,7 +104,7 @@ function BlogPage(props) {
                   <span></span>
                 )}
               </div>
-              <div>{getBlogPost()}</div>
+              <div className="blog-post-content">{getBlogPost()}</div>
               <div className="flex flex-row m-4">
                 <button
                   type="button"
