@@ -93,9 +93,9 @@ function BlogPage(props) {
           </div>
         ) : (
           blog && (
-            <div style={{ width: '63%', minHeight: '42rem' }}>
+            <div style={{ width: '80%', minHeight: '42rem' }}>
               <h1 className="text-center mb-4 font-bold">{blog.subject}</h1>
-              <div className="ml-1 mt-1">
+              <div className="mt-1">
                 {blog.tags ? (
                   blog.tags.map((tag, index) => (
                     <AkTags key={index} name={tag} />
