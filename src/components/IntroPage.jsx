@@ -1,7 +1,7 @@
 import React from 'react'
 import Webdev from '../images/coding_.svg'
 
-import { Button, Text } from 'ak-palette'
+import AkButton from '../ak-components/AkButton'
 
 function IntroPage() {
   const openGithub = () => {
@@ -11,14 +11,10 @@ function IntroPage() {
     <div className="flex justify-around rounded-xl overflow-hidden h-screen p-10">
       <div className="md:flex mt-10">
         <div className="p-8 flex flex-col justify-center">
-          <Text size="xxxlarge" className="dark:text-white">
-            Hey, I'm{' '}
-            <span className="text-red-500 font-medium dark:text-white">
-              Akshay
-            </span>
-            ,
-          </Text>
-          <Text size="large" className="mt-2 text-xl dark:text-white">
+          <div className="tracking-wide text-5xl font-semibold">
+            Hey, I'm <span className="text-red-500 font-medium">Akshay</span>,
+          </div>
+          <p className="mt-2 text-xl">
             <span>
               I'm a <span className="text-red-500">self-taught</span> programmer
               &
@@ -27,7 +23,7 @@ function IntroPage() {
               {' '}
               Software Developer
             </span>
-          </Text>
+          </p>
           <div className="pt-3 text-red-500">
             <a
               href="https://www.linkedin.com/in/akshay-kannan-49964617a"
@@ -55,9 +51,10 @@ function IntroPage() {
             </a>
           </div>
           <div className="mt-8 md:mb-60">
-            <Button type="danger" onClick={openGithub}>
-              Check My Work
-            </Button>
+            <AkButton
+              onClick={openGithub}
+              children={<span>Check My Work</span>}
+            />
           </div>
         </div>
         <div className="opacity-90 py-10">

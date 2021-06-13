@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { baseUrl } from '../config/baseUrl'
 import ErrorSvg from '../assets/Error404.svg'
 import '../assets/blogpost.css'
 import AkTags from '../ak-components/AkTags'
-import { BLOG_LIST } from './BlogsList'
 
 import CustomEslintPlugin from '../mdx-blogs/CustomEslintPlugin.mdx'
 import ESFeatures from '../mdx-blogs/ES2020.mdx'
@@ -27,13 +28,33 @@ const postsHash = [
 function BlogPage(props) {
   const { id } = useParams()
   const [blog, setblog] = useState(null)
+  const [loading, setloading] = useState(false)
   useEffect(() => {
     async function fetchData() {
-      setblog(BLOG_LIST.find((blog) => blog._id === id))
+      setloading(true)
+      try {
+        let { data } = await axios.post(`${baseUrl}/api/v1/blog/summary`, {
+          _id: id,
+        })
+        let { error } = data
+        if (error) {
+          throw error
+        } else {
+          setblog(data.data)
+        }
+      } catch (e) {}
+      setloading(false)
     }
     fetchData()
     // eslint-disable-next-line
   }, [])
+  function handleLikeClick() {
+    setblog((preValue) => {
+      return { ...preValue, likes: preValue.likes + 1 }
+    })
+
+    axios.put(`${baseUrl}/api/v1/blog/like`, blog)
+  }
   const getBlogPost = () => {
     let currPost = postsHash.find((post) => post.id === id)
     if (currPost) {
@@ -59,20 +80,44 @@ function BlogPage(props) {
     }
   }
   return (
-    <div className="pt-14 flex items-center flex-col">
-      <div className="flex justify-center w-3/4">
-        {blog && (
-          <div style={{ width: '80%', minHeight: '42rem' }}>
-            <h1 className="text-center mb-4 font-bold">{blog.subject}</h1>
-            <div className="mt-1">
-              {blog.tags ? (
-                blog.tags.map((tag, index) => <AkTags key={index} name={tag} />)
-              ) : (
-                <span></span>
-              )}
+    <div className="pt-14">
+      <div className="flex justify-center">
+        {loading ? (
+          <div className="flex flex-row justify-center items-center h-5/6 p-6">
+            <div className="right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+              <div
+                style={{ borderTopColor: 'transparent' }}
+                className="border-solid animate-spin  rounded-full border-red-500 border-4 h-10 w-10"
+              ></div>
             </div>
-            <div className="blog-post-content">{getBlogPost()}</div>
           </div>
+        ) : (
+          blog && (
+            <div style={{ width: '80%', minHeight: '42rem' }}>
+              <h1 className="text-center mb-4 font-bold">{blog.subject}</h1>
+              <div className="mt-1">
+                {blog.tags ? (
+                  blog.tags.map((tag, index) => (
+                    <AkTags key={index} name={tag} />
+                  ))
+                ) : (
+                  <span></span>
+                )}
+              </div>
+              <div className="blog-post-content">{getBlogPost()}</div>
+              <div className="flex flex-row m-4">
+                <button
+                  type="button"
+                  className="px-2 py-1 mt-1 bg-red-500	text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                  onClick={handleLikeClick}
+                >
+                  {blog.likes ? blog.likes : 0}
+                  &nbsp;
+                  <i className="fas fa-fire mr-1"></i>
+                </button>
+              </div>
+            </div>
+          )
         )}
       </div>
       <div className="flex justify-center py-3" style={{ color: '#888' }}>

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import AkSnacksBar from '../ak-components/AkSnackBar'
 import { baseUrl } from '../config/baseUrl'
 
-import { Button, Text } from 'ak-palette'
+import AkButton from '../ak-components/AkButton'
 
 function Contact(props) {
   const [email, setEmail] = useState('')
@@ -48,12 +48,7 @@ function Contact(props) {
         onClose={() => setopen(false)}
       />
 
-      <Text
-        size="xxxlarge"
-        className="text-4xl font-bold text-center block-header dark:text-white"
-      >
-        Contact
-      </Text>
+      <div className="text-4xl font-bold text-center block-header">Contact</div>
 
       <div className="my-10 max-w-sm mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-sm">
         <div className="md:flex justify-center flex-col p-5">
@@ -102,9 +97,11 @@ function Contact(props) {
               ></textarea>
             </div>
           </div>
-          <Button type="danger" onClick={handleContactSave} disabled={loading}>
-            <span>Signup</span>{' '}
-          </Button>
+          <AkButton
+            onClick={handleContactSave}
+            loading={loading}
+            children={<span>Signup</span>}
+          />
         </div>
       </div>
       <footer className="flex justify-center py-3" style={{ color: '#888' }}>

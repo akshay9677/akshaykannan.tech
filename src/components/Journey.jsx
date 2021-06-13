@@ -1,4 +1,4 @@
-import { Text } from 'ak-palette'
+import React from 'react'
 import Full from '../images/full.svg'
 import Facilio from '../images/facilio-blue.svg'
 import LTI from '../images/LTI.png'
@@ -27,12 +27,7 @@ function Journey(props) {
   }
   return (
     <div id="journey" className="text-gray-700 text-xl dark:text-white">
-      <Text
-        size="xxxlarge"
-        className="text-4xl font-bold text-center block-header dark:text-white"
-      >
-        Journey
-      </Text>
+      <div className="text-4xl font-bold text-center block-header">Journey</div>
       <div className="py-10">
         <div className="max-w-md mx-auto rounded-xl overflow-hidden md:max-w-2xl">
           <div className="md:flex">
