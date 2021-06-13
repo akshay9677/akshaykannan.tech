@@ -5,7 +5,7 @@ import Main from './pages/Main'
 import Blogs from './pages/Blogs'
 import PostBody from './pages/PostBody'
 import Header from './components/Header.jsx'
-import './assets/main.css'
+import 'tailwindcss/tailwind.css'
 import './App.css'
 
 export const Theme = React.createContext()
