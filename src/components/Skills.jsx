@@ -1,5 +1,6 @@
 import React from 'react'
 import AkRating from '../ak-components/AkRating'
+import { Text } from 'ak-palette'
 
 function Projects(props) {
   const SkillRating = (props) => {
@@ -15,7 +16,12 @@ function Projects(props) {
   }
   return (
     <div className="text-center pb-5" id="skill">
-      <div className="text-4xl font-bold text-center block-header">Skills</div>
+      <Text
+        size="xxxlarge"
+        className="text-4xl font-bold text-center block-header dark:text-white"
+      >
+        Skills
+      </Text>
       <div className="mx-auto rounded-xl overflow-hidden ">
         <div className="md:flex justify-center align-items-center">
           <div className="p-8">

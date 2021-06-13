@@ -3,6 +3,7 @@ import axios from 'axios'
 import { baseUrl } from '../config/baseUrl'
 
 import AkButton from '../ak-components/AkButton'
+import { Text } from 'ak-palette'
 
 function Details(props) {
   const [likes, setLikes] = useState(10)
@@ -27,8 +28,16 @@ function Details(props) {
   return (
     <Fragment>
       <div>
-        <div className="text-4xl font-bold text-center block-header">About</div>
-        <div className="max-w-md mx-auto overflow-hidden md:max-w-2xl md:flex flex-column justify-center relative text-gray-700 text-xl dark:text-white p-5">
+        <Text
+          size="xxxlarge"
+          className="text-4xl font-bold text-center block-header dark:text-white"
+        >
+          About
+        </Text>
+        <Text
+          size="large"
+          className="max-w-md mx-auto overflow-hidden md:max-w-2xl md:flex flex-column justify-center relative text-gray-700 text-xl dark:text-white p-5"
+        >
           <span>
             {' '}
             I'm an Undergraduate Electrical Engineer working as a Software Dev{' '}
@@ -44,7 +53,7 @@ function Details(props) {
             responsive webapps and scalable mobile apps using the latest
             technologies available.
           </span>
-        </div>
+        </Text>
 
         <div className="flex justify-center mb-10">
           <AkButton
