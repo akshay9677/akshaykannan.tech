@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "craco start",
-    "build": "npm run watch:css && react-scripts build",
+    "start": "npm run watch:css && node scripts/start.js",
+    "build": "npm run watch:css && node scripts/build.js",
     "test": "node scripts/test.js",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@babel/core": "7.12.3",
-    "@craco/craco": "^6.1.2",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@mapbox/rehype-highlight-code-block": "^1.0.0",
     "@mapbox/rehype-prism": "^0.5.0",
@@ -50,6 +49,12 @@
     "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
+    "postcss": "^8.1.14",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-loader": "3.0.0",
+    "postcss-normalize": "8.0.1",
+    "postcss-preset-env": "6.7.0",
+    "postcss-safe-parser": "5.0.2",
     "prompts": "2.4.0",
     "react": "^16.13.1",
     "react-app-polyfill": "^2.0.0",
@@ -58,7 +63,6 @@
     "react-redux": "^7.2.2",
     "react-refresh": "^0.8.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
     "react-switch": "^5.0.1",
     "redux": "^4.0.5",
     "resolve": "1.18.1",
@@ -72,6 +76,7 @@
     "typescript": "^4.1.5",
     "url-loader": "4.1.1",
     "webpack": "4.44.2",
+    "webpack-dev-server": "3.11.0",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "5.1.4"
   },
@@ -81,8 +86,9 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@mdx-js/loader": "^1.6.22",
-    "@tailwindcss/postcss7-compat": "^2.1.2",
     "autoprefixer": "^9.8.6",
+    "postcss-cli": "^8.3.0",
+    "tailwindcss": "^2.0.1",
     "eslint": "^7.11.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
@@ -91,9 +97,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.9.2",
-    "eslint-webpack-plugin": "^2.1.0",
-    "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
+    "eslint-webpack-plugin": "^2.1.0"
   },
   "browserslist": {
     "production": [
