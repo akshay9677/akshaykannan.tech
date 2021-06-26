@@ -1,4 +1,13 @@
-/node_modules
-npm-debug.log
 .DS_Store
-/*.env
+.thumbs.db
+workflow*
+node_modules/
+dist/
+npm-debug.log*
+cordova/platforms
+cordova/plugins
+src/pages/Play.vue
+.idea/
+.env.development
+
+.eslintcache
