@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Switchs from 'react-switch'
 
@@ -6,9 +6,16 @@ function Header(props) {
   // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
   const [isDark, setDark] = useState(false)
 
+  useEffect(() => {
+    changeTheme()
+    // eslint-disable-next-line
+  }, [])
+
   const changeTheme = () => {
     setDark(!isDark)
-    props.onChange()
+    const body = document.querySelector('body')
+    if (body.classList.contains('dark')) body.classList.remove('dark')
+    else body.classList.add('dark')
   }
 
   function DarkModeicon() {
@@ -32,16 +39,16 @@ function Header(props) {
     <div className="navbar-header">
       <div className="flex-row flex-end-col pt-2 pr-3.5 container">
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
+          className="no-underline	nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
           to="/"
         >
           About
         </Link>
         <Link
-          className="nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
+          className="no-underline	nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
           to="/blogs"
         >
-          Blogs
+          Blog
         </Link>
 
         <div className="nav-item custom-control custom-switch pt-1.5 px-5">

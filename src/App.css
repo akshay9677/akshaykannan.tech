@@ -163,6 +163,9 @@ h6 {
   margin-top: 1rem;
   margin-left: 4rem;
 }
+.text-xs {
+  font-size: 12px;
+}
 @media (max-width: 1200px) {
   .richtext-drawer {
     width: 60vh;
@@ -195,5 +198,8 @@ h6 {
   }
   .web-dev-contact {
     display: none;
+  }
+  p {
+    font-size: 12px;
   }
 }

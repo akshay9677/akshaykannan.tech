@@ -4,6 +4,7 @@ import AkCard from '../ak-components/AkCard'
 import Reactor from '../images/Reactor.png'
 import FlashChat from '../images/FlashChat.png'
 import ESLint from '../images/ESLint.png'
+import { Text } from 'ak-palette'
 
 const Projects = () => {
   const openGit = (link) => {
@@ -11,9 +12,12 @@ const Projects = () => {
   }
   return (
     <React.Fragment>
-      <div className="text-4xl font-bold text-center block-header">
+      <Text
+        size="xxxlarge"
+        className="text-4xl font-bold text-center block-header dark:text-white"
+      >
         Projects
-      </div>
+      </Text>
       <div className="flex justify-center grid xl:grid-cols-3">
         <div className="flex justify-center">
           <AkCard

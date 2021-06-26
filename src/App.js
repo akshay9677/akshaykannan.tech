@@ -8,14 +8,7 @@ import Header from './components/Header.jsx'
 import 'tailwindcss/tailwind.css'
 import './App.css'
 
-export const Theme = React.createContext()
-
 function App() {
-  const changeTheme = () => {
-    const body = document.querySelector('body')
-    if (body.classList.contains('dark')) body.classList.remove('dark')
-    else body.classList.add('dark')
-  }
   return (
     <div
       className="App min-h-screen font-sans bg-gray-100	dark:bg-gray-900 text-gray-900	dark:text-white "
@@ -35,7 +28,7 @@ function App() {
                 width: '100%',
               }}
             >
-              <Header blog={true} onChange={changeTheme} />
+              <Header blog={true} />
             </div>
           </Fragment>
           <Switch>

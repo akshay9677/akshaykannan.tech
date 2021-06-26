@@ -1,30 +1,34 @@
 import React from 'react'
-import Webdev from '../images/coding_.svg'
+import Webdev from '../images/coding.svg'
 
-import AkButton from '../ak-components/AkButton'
+import { Button, Text } from 'ak-palette'
 
 function IntroPage() {
   const openGithub = () => {
     window.open('https://github.com/akshay9677')
   }
   return (
-    <div className="flex justify-around rounded-xl overflow-hidden h-screen p-10">
-      <div className="md:flex mt-10">
-        <div className="p-8 flex flex-col justify-center">
-          <div className="tracking-wide text-5xl font-semibold">
-            Hey, I'm <span className="text-red-500 font-medium">Akshay</span>,
-          </div>
-          <p className="mt-2 text-xl">
+    <div className="flex justify-around rounded-xl overflow-hidden p-10">
+      <div className="md:flex mt-14 sm:mt-5">
+        <div className="px-4 flex flex-col justify-center">
+          <Text size="xxxlarge" className="dark:text-white">
+            Hey, I'm{' '}
+            <span className="text-red-500 dark:text-white">Akshay</span>,
+          </Text>
+          <Text size="large" className="mt-2 text-xl dark:text-white">
             <span>
               I'm a <span className="text-red-500">self-taught</span> programmer
               &
             </span>
-            <span className="text-indigo-500 font-mono	">
+            <span
+              className="text-indigo-500 font-mono"
+              style={{ fontSize: '18px' }}
+            >
               {' '}
               Software Developer
             </span>
-          </p>
-          <div className="pt-3 text-red-500">
+          </Text>
+          <div className="pt-3 text-red-500 mb-2">
             <a
               href="https://www.linkedin.com/in/akshay-kannan-49964617a"
               target="_blank"
@@ -50,11 +54,13 @@ function IntroPage() {
               <i className="fab fa-twitter"></i>
             </a>
           </div>
-          <div className="mt-8 md:mb-60">
-            <AkButton
+          <div>
+            <Button
+              style={{ backgroundColor: '#F04444', fontWeight: 'bold' }}
               onClick={openGithub}
-              children={<span>Check My Work</span>}
-            />
+            >
+              Check My Work
+            </Button>
           </div>
         </div>
         <div className="opacity-90 py-10">

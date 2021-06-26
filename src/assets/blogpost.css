@@ -17,10 +17,6 @@ h6 {
   font-weight: bolder !important;
 }
 
-p {
-  font-size: 17px;
-}
-
 .light-theme pre {
   background-color: #f6f8fa;
   color: #18191a;
@@ -40,6 +36,16 @@ p {
   color: #f6f8fa;
   font-weight: bold;
 }
+.blog-post-header {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.blog-post-content,
+.blog-post-content p {
+  font-size: 16px;
+}
 
 .blog-post-content a {
   color: #dc3545 !important;
@@ -48,6 +54,20 @@ p {
 
 .blog-post-content code {
   color: #6366f1;
+}
+
+@media (max-width: 600px) {
+  .blog-post-header {
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .blog-post-content,
+  .blog-post-content p {
+    font-size: 14px;
+  }
+  .blog-post-content code {
+    font-size: 12px;
+  }
 }
 
 a:hover {
