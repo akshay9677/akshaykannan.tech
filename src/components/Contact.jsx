@@ -1,19 +1,15 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
-import AkSnacksBar from '../ak-components/AkSnackBar'
 import { baseUrl } from '../config/baseUrl'
 
 import { Button, Text } from 'ak-palette'
+import { toast } from 'ak-palette'
 
 function Contact(props) {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [loading, setLoading] = useState(false)
-
-  const [open, setopen] = useState(false)
-  const [failed, setfailed] = useState(false)
-  const [snackMessage, setSnackMessage] = useState('Signed up!!')
 
   async function handleContactSave() {
     if (name !== '' && email !== '') {
@@ -28,26 +24,16 @@ function Contact(props) {
       setName('')
       setEmail('')
       setDescription('')
-      setopen(true)
       if (!data.error) {
-        setfailed(false)
-        setSnackMessage('Signed up!!')
+        toast.success('Signed up!!')
       } else {
-        setfailed(true)
-        setSnackMessage('Error occured')
+        toast.danger('Error Occured')
       }
     }
   }
 
   return (
     <div id="contact">
-      <AkSnacksBar
-        open={open}
-        failed={failed}
-        content={snackMessage}
-        onClose={() => setopen(false)}
-      />
-
       <Text
         size="xxxlarge"
         className="text-4xl font-bold text-center block-header dark:text-white"

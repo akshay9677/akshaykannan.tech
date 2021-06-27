@@ -31,7 +31,7 @@ function Journey(props) {
         size="xxxlarge"
         className="text-4xl font-bold text-center block-header dark:text-white"
       >
-        Journey
+        Experience
       </Text>
       <div className="py-10">
         <div className="max-w-md mx-auto rounded-xl overflow-hidden md:max-w-2xl">

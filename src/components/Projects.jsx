@@ -2,7 +2,7 @@ import React from 'react'
 
 import AkCard from '../ak-components/AkCard'
 import Reactor from '../images/Reactor.png'
-import FlashChat from '../images/FlashChat.png'
+import FlashChat from '../images/Palette.png'
 import ESLint from '../images/ESLint.png'
 import { Text } from 'ak-palette'
 
@@ -39,8 +39,8 @@ const Projects = () => {
 
         <div className="flex justify-center">
           <AkCard
-            content="Flash chat is a group chating app built using Google's Flutter. This is a group chatting app where registered users can login and chat with each other"
-            title="Flash Chat"
+            content="Palette is design system and minimal component library for react."
+            title="Palette Design System"
             image={
               <img
                 className="h-56 w-full object-cover mt-2"

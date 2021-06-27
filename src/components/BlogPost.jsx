@@ -63,7 +63,9 @@ function BlogPage(props) {
       <div className="flex justify-center w-10/12 ">
         {blog && (
           <div style={{ width: '100%', minHeight: '42rem' }}>
-            <h1 className="blog-post-header">{blog.subject}</h1>
+            <h1 className="blog-post-header text-center py-3">
+              {blog.subject}
+            </h1>
             <div className="mt-1 flex flex-wrap">
               {blog.tags ? (
                 blog.tags.map((tag, index) => <AkTags key={index} name={tag} />)
