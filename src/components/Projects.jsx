@@ -50,7 +50,7 @@ const Projects = () => {
             }
             click={openGit.bind(
               this,
-              'https://github.com/akshay9677/Flash-Chat-Flutter'
+              'https://github.com/akshay9677/ak-palette'
             )}
           />
         </div>
