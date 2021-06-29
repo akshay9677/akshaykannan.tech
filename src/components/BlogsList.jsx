@@ -1,66 +1,65 @@
-import React from 'react'
+import React from "react";
 
-import { useHistory } from 'react-router-dom'
-import { getTimeFromNow } from '../util/time'
+import { useHistory } from "react-router-dom";
 
-import AkTags from '../ak-components/AkTags'
+import AkTags from "../ak-components/AkTags";
 
 export const BLOG_LIST = [
   {
-    email: 'akshaykannan9677@gmail.com',
+    email: "akshaykannan9677@gmail.com",
     likes: 6,
-    subject: '5 Most Important ES2020 features JS',
-    sysCreatedTime: 1608875716124,
-    tags: ['Javascript', 'ES2020'],
-    _id: '5fe57ec407543e5777d060ec',
+    subject: "5 Most Important ES2020 features JS",
+    sysCreatedTime: "Dec 25, 2020",
+    tags: ["Javascript", "ES2020"],
+    _id: "5fe57ec407543e5777d060ec",
     body: `ES (ECMA Standard) defines the ECMAScript Language. Since the publication of the first edition in 1997, ECMAScript has become the world’s most widely used general-purpose programming languages...`,
   },
   {
-    email: 'akshaykannan9677@gmail.com',
+    email: "akshaykannan9677@gmail.com",
     likes: 5,
-    subject: 'Writing a custom eslint plugin',
-    sysCreatedTime: 1612714209486,
-    tags: ['ESLint', 'Javascript', 'AST', 'Espree'],
+    subject: "Writing a custom eslint plugin",
+    sysCreatedTime: "Feb 07, 2021",
+    tags: ["ESLint", "Javascript", "AST", "Espree"],
     __v: 0,
-    _id: '602010e1aa66c40048eda73e',
+    _id: "602010e1aa66c40048eda73e",
     body: `Developers have different code writing styles, so when it comes to collabrations people face a lot of problems in understanding other developers code. So we have
     to ensure a common coding style...`,
   },
   {
-    email: 'akshaykannan9677@gmail.com',
+    email: "akshaykannan9677@gmail.com",
     likes: 100,
-    subject: 'When you should opt for typescript ?',
-    sysCreatedTime: 1613915938266,
-    tags: ['Typescript', 'Javascript', 'Static Programming', 'TSC'],
+    subject: "When you should opt for typescript ?",
+    sysCreatedTime: "Feb 21, 2021",
+    tags: ["Typescript", "Javascript", "Static Programming", "TSC"],
     __v: 0,
-    _id: '6032245c0b8c9646a0f12f2b',
+    _id: "6032245c0b8c9646a0f12f2b",
     body: `Typescript is gaining a lot of popularity in recent days and also I have been planning
     to learn Typescript for a really long time...`,
   },
-]
+];
 
 const BlogBody = (props) => {
-  const history = useHistory()
+  const history = useHistory();
 
   const styles = {
     avatar: {
-      borderRadius: '0.5rem',
-      background: '#DC3545',
-      width: '2.5rem',
-      height: '2.5rem',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
+      borderRadius: "0.5rem",
+      background: "#DC3545",
+      width: "2.5rem",
+      height: "2.5rem",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     blogContainer: {
-      overflowY: 'auto',
-      minHeight: '45rem',
+      overflowY: "auto",
+      minHeight: "45rem",
     },
-  }
+  };
 
   const handleBlogClick = (blog) => {
-    history.push(`/blogs/${blog._id}`)
-  }
+    history.push(`/blogs/${blog._id}`);
+  };
   return (
     <div style={styles.blogContainer} className="hideScroll h-screen">
       {BLOG_LIST.map((blog) => {
@@ -75,7 +74,7 @@ const BlogBody = (props) => {
               <div className="flex flex-col break-words	 pL10 w-12/12">
                 <div
                   className="break-normal	pointer text-sm sm:text-lg"
-                  style={{ fontWeight: '500' }}
+                  style={{ fontWeight: "500" }}
                   onClick={handleBlogClick.bind(this, blog)}
                 >
                   {blog.subject}
@@ -95,26 +94,26 @@ const BlogBody = (props) => {
                   </div>
                 )}
                 <div className="flex-row">
-                  <div className="text-gray-500" style={{ fontSize: '12px' }}>
-                    {getTimeFromNow(blog.sysCreatedTime)}
+                  <div className="text-gray-500" style={{ fontSize: "12px" }}>
+                    {blog.sysCreatedTime}
                   </div>
-                  <div style={{ fontSize: '4px', padding: '7.2px 6px' }}>
+                  <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
                     <i className="fas fa-circle"></i>
                   </div>
-                  <div className="text-gray-500" style={{ fontSize: '12px' }}>
+                  <div className="text-gray-500" style={{ fontSize: "12px" }}>
                     akshaykannan9677@gmail.com
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        )
+        );
       })}
-      <footer className="flex justify-center py-3" style={{ color: '#888' }}>
+      <footer className="flex justify-center py-3" style={{ color: "#888" }}>
         © Akshay Kannan
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default BlogBody
+export default BlogBody;

@@ -9,5 +9,5 @@ cordova/plugins
 src/pages/Play.vue
 .idea/
 .env.development
-
+build/
 .eslintcache

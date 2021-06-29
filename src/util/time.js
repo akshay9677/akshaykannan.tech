@@ -1,9 +1,3 @@
-import moment from "moment";
-
-export function getTimeFromNow(date) {
-  return moment(parseInt(date)).fromNow();
-}
-
 export const isEmpty = (value) => {
   return (
     value === undefined ||
