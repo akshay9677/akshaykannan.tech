@@ -1,5 +1,5 @@
 body {
-  font-family: 'Montserrat', serif;
+  font-family: "Montserrat", serif;
 }
 h1 {
   font-size: 2rem;
@@ -24,7 +24,7 @@ h6 {
 }
 .block-header::before,
 .block-header::after {
-  content: ' ';
+  content: " ";
   height: 3px;
   width: 80px;
   margin: 10px 10px;
@@ -201,5 +201,12 @@ h6 {
   }
   p {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-text-container {
+    align-items: center;
+    text-align: center;
   }
 }

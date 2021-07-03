@@ -1,4 +1,3 @@
-import React from "react";
 import Webdev from "../images/coding.svg";
 
 import { Button, Text } from "ak-palette";
@@ -10,7 +9,7 @@ function IntroPage() {
   return (
     <div className="flex justify-around rounded-xl overflow-hidden p-10">
       <div className="md:flex mt-14 sm:mt-5">
-        <div className="px-4 flex flex-col justify-center">
+        <div className="px-4 flex flex-col justify-center intro-text-container">
           <Text size="xxxlarge" className="dark:text-white">
             Hey, I'm{" "}
             <span className="text-red-500 dark:text-white">Akshay</span>,

@@ -3,7 +3,7 @@ import Full from "../images/full.svg";
 import Facilio from "../images/facilio-blue.svg";
 import LTI from "../images/LTI.png";
 
-function Journey(props) {
+function Journey() {
   const styles = {
     image: {
       width: "12rem",
@@ -31,7 +31,7 @@ function Journey(props) {
         size="xxxlarge"
         className="text-4xl font-bold text-center block-header dark:text-white"
       >
-        Experience
+        Journey
       </Text>
       <div className="py-10">
         <div className="max-w-md mx-auto rounded-xl overflow-hidden md:max-w-2xl">
