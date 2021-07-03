@@ -7,23 +7,14 @@ import AkTags from "../ak-components/AkTags";
 export const BLOG_LIST = [
   {
     email: "akshaykannan9677@gmail.com",
-    likes: 6,
-    subject: "5 Most Important ES2020 features JS",
-    sysCreatedTime: "Dec 25, 2020",
-    tags: ["Javascript", "ES2020"],
-    _id: "5fe57ec407543e5777d060ec",
-    body: `ES (ECMA Standard) defines the ECMAScript Language. Since the publication of the first edition in 1997, ECMAScript has become the world’s most widely used general-purpose programming languages...`,
-  },
-  {
-    email: "akshaykannan9677@gmail.com",
-    likes: 5,
-    subject: "Writing a custom eslint plugin",
-    sysCreatedTime: "Feb 07, 2021",
-    tags: ["ESLint", "Javascript", "AST", "Espree"],
+    likes: 100,
+    subject: "Webassembly - a brief overview",
+    sysCreatedTime: "July 3, 2021",
+    tags: ["Web Assembly", "Javascript", "Machine Language", "Assembly Script"],
     __v: 0,
-    _id: "602010e1aa66c40048eda73e",
-    body: `Developers have different code writing styles, so when it comes to collabrations people face a lot of problems in understanding other developers code. So we have
-    to ensure a common coding style...`,
+    _id: "6032245c0b8c9646a0f13f4fd",
+    body: `Have you ever wondered how complex web apps like figma or google earth were able to scale? 
+    Building such a complex apps only with javascript is not optimal`,
   },
   {
     email: "akshaykannan9677@gmail.com",
@@ -38,14 +29,23 @@ export const BLOG_LIST = [
   },
   {
     email: "akshaykannan9677@gmail.com",
-    likes: 100,
-    subject: "Webassembly - a brief overview",
-    sysCreatedTime: "July 3, 2021",
-    tags: ["Web Assembly", "Javascript", "Machine Language", "Assembly Script"],
+    likes: 5,
+    subject: "Writing a custom eslint plugin",
+    sysCreatedTime: "Feb 07, 2021",
+    tags: ["ESLint", "Javascript", "AST", "Espree"],
     __v: 0,
-    _id: "6032245c0b8c9646a0f13f4fd",
-    body: `Have you ever wondered how complex web apps like figma or google earth were able to scale? 
-    Building such a complex apps only with javascript is not optimal`,
+    _id: "602010e1aa66c40048eda73e",
+    body: `Developers have different code writing styles, so when it comes to collabrations people face a lot of problems in understanding other developers code. So we have
+    to ensure a common coding style...`,
+  },
+  {
+    email: "akshaykannan9677@gmail.com",
+    likes: 6,
+    subject: "5 Most Important ES2020 features JS",
+    sysCreatedTime: "Dec 25, 2020",
+    tags: ["Javascript", "ES2020"],
+    _id: "5fe57ec407543e5777d060ec",
+    body: `ES (ECMA Standard) defines the ECMAScript Language. Since the publication of the first edition in 1997, ECMAScript has become the world’s most widely used general-purpose programming languages...`,
   },
 ];
 
