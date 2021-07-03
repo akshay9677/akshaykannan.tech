@@ -74,8 +74,8 @@ a:hover {
   color: #dc35468f !important;
 }
 
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   color: #f8f8f2;
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -90,13 +90,13 @@ pre[class*='language-'] {
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 1em;
   overflow: auto;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   background: #11151f;
   margin: 20px 0px;
   border-radius: 10px;
@@ -106,7 +106,7 @@ pre[class*='language-'] {
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
@@ -185,4 +185,18 @@ pre[class*='language-'] {
 
 .token.entity {
   cursor: help;
+}
+
+blockquote {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 3rem 0rem;
+  padding: 0.75rem 1rem;
+  width: 98%;
+  border-left: 4px solid #dc3545;
+  --tw-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }

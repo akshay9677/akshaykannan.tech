@@ -1,18 +1,18 @@
-import React from 'react'
-import Webdev from '../images/coding.svg'
+import React from "react";
+import Webdev from "../images/coding.svg";
 
-import { Button, Text } from 'ak-palette'
+import { Button, Text } from "ak-palette";
 
 function IntroPage() {
   const openGithub = () => {
-    window.open('https://github.com/akshay9677')
-  }
+    window.open("https://github.com/akshay9677");
+  };
   return (
     <div className="flex justify-around rounded-xl overflow-hidden p-10">
       <div className="md:flex mt-14 sm:mt-5">
         <div className="px-4 flex flex-col justify-center">
           <Text size="xxxlarge" className="dark:text-white">
-            Hey, I'm{' '}
+            Hey, I'm{" "}
             <span className="text-red-500 dark:text-white">Akshay</span>,
           </Text>
           <Text size="large" className="mt-2 text-xl dark:text-white">
@@ -22,9 +22,9 @@ function IntroPage() {
             </span>
             <span
               className="text-indigo-500 font-mono"
-              style={{ fontSize: '18px' }}
+              style={{ fontSize: "18px" }}
             >
-              {' '}
+              {" "}
               Software Developer
             </span>
           </Text>
@@ -56,7 +56,7 @@ function IntroPage() {
           </div>
           <div>
             <Button
-              style={{ backgroundColor: '#F04444', fontWeight: 'bold' }}
+              style={{ backgroundColor: "#F04444", fontWeight: "bold" }}
               onClick={openGithub}
             >
               Check My Work
@@ -64,11 +64,11 @@ function IntroPage() {
           </div>
         </div>
         <div className="opacity-90 py-10">
-          <img src={Webdev} alt="Social" style={{ width: '40rem' }} />
+          <img src={Webdev} alt="Social" style={{ width: "40rem" }} />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default IntroPage
+export default IntroPage;

@@ -1,39 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Switchs from 'react-switch'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Switchs from "react-switch";
 
 function Header(props) {
   // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
-  const [isDark, setDark] = useState(false)
-
-  useEffect(() => {
-    changeTheme()
-    // eslint-disable-next-line
-  }, [])
+  const [isDark, setDark] = useState(false);
 
   const changeTheme = () => {
-    setDark(!isDark)
-    const body = document.querySelector('body')
-    if (body.classList.contains('dark')) body.classList.remove('dark')
-    else body.classList.add('dark')
-  }
+    setDark(!isDark);
+    const body = document.querySelector("body");
+    if (body.classList.contains("dark")) body.classList.remove("dark");
+    else body.classList.add("dark");
+  };
 
   function DarkModeicon() {
     return (
       <div
-        style={{ color: '#242526', paddingLeft: '10px', paddingTop: '1.8px' }}
+        style={{ color: "#242526", paddingLeft: "10px", paddingTop: "1.8px" }}
       >
         <i className="fas fa-moon"></i>
       </div>
-    )
+    );
   }
 
   function LightModeIcon() {
     return (
-      <div style={{ color: 'white', paddingLeft: '10px', paddingTop: '1.8px' }}>
+      <div style={{ color: "white", paddingLeft: "10px", paddingTop: "1.8px" }}>
         <i className="fas fa-lightbulb"></i>
       </div>
-    )
+    );
   }
   return (
     <div className="navbar-header">
@@ -65,7 +60,7 @@ function Header(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

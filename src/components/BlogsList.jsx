@@ -34,7 +34,18 @@ export const BLOG_LIST = [
     __v: 0,
     _id: "6032245c0b8c9646a0f12f2b",
     body: `Typescript is gaining a lot of popularity in recent days and also I have been planning
-    to learn Typescript for a really long time...`,
+    to learn Typescript for a really long time`,
+  },
+  {
+    email: "akshaykannan9677@gmail.com",
+    likes: 100,
+    subject: "Webassembly - a brief overview",
+    sysCreatedTime: "July 3, 2021",
+    tags: ["Web Assembly", "Javascript", "Machine Language", "Assembly Script"],
+    __v: 0,
+    _id: "6032245c0b8c9646a0f13f4fd",
+    body: `Have you ever wondered how complex web apps like figma or google earth were able to scale? 
+    Building such a complex apps only with javascript is not optimal`,
   },
 ];
 
@@ -64,7 +75,7 @@ const BlogBody = (props) => {
     <div style={styles.blogContainer} className="hideScroll h-screen">
       {BLOG_LIST.map((blog) => {
         return (
-          <div key={blog._id} className="flex  justify-center p10 mt-3">
+          <div key={blog._id} className="flex  justify-center p-0.5 mt-3">
             <div className="flex flex-row w-11/12 sm:w-10/12 rounded-lg p-2">
               <div className="my-4 mx-1">
                 <div className="w-10 h-10 rounded-lg text-2xl text-white flex justify-center items-center bg-red-500">

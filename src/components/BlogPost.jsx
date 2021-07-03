@@ -8,6 +8,7 @@ import { BLOG_LIST } from "./BlogsList";
 import CustomEslintPlugin from "../mdx-blogs/CustomEslintPlugin.mdx";
 import ESFeatures from "../mdx-blogs/ES2020.mdx";
 import TypescriptImportance from "../mdx-blogs/TypescriptImportance.mdx";
+import WebAssembly from "../mdx-blogs/WebAssembly.mdx";
 
 const postsHash = [
   {
@@ -21,6 +22,10 @@ const postsHash = [
   {
     id: "6032245c0b8c9646a0f12f2b",
     post: () => <TypescriptImportance />,
+  },
+  {
+    id: "6032245c0b8c9646a0f13f4fd",
+    post: () => <WebAssembly />,
   },
 ];
 
@@ -66,7 +71,7 @@ function BlogPage(props) {
             <h1 className="blog-post-header text-center py-3">
               {blog.subject}
             </h1>
-            <div className="mt-1 flex flex-wrap">
+            <div className="mt-1 flex flex-wrap mb-3">
               {blog.tags ? (
                 blog.tags.map((tag, index) => <AkTags key={index} name={tag} />)
               ) : (

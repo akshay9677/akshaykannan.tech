@@ -1,5 +1,3 @@
-<br />
-
 Typescript is gaining a lot of popularity in recent days and also I have been planning
 to learn Typescript for a really long time. In a stack overflow survey 60% of Javascript
 developers use typescript and 22% of developers are trying to enforce Typescript permanently
@@ -21,9 +19,9 @@ One classic example is NaN (Not a number). We get NaN when a mathematical calcul
 cannot be represented as a number. This happens in one such case,
 
 ```js
-let a = 'hello'
-let b = 1
-console.log(a - b) //Nan
+let a = "hello";
+let b = 1;
+console.log(a - b); //Nan
 ```
 
 The above code may look absurd, why would anyone subtract a string with a number, but imagine these
@@ -31,9 +29,9 @@ two variables are coming from different files, where you are not sure of their t
 cases having typescript is really useful.This can be avoided by the following typescript code,
 
 ```ts
-let a: string = 'hello'
-let b: number = 1
-console.log(a - b) //'Argument of type 'string' is not assignable to parameter of type 'number''
+let a: string = "hello";
+let b: number = 1;
+console.log(a - b); //'Argument of type 'string' is not assignable to parameter of type 'number''
 ```
 
 As you can see that variable `a` has a type annotation of string and `b` has a type annotation of number.
@@ -141,11 +139,11 @@ function `sub` also has types of `number` each.
 
 ```tsx
 const sub = (a: number, b: number): number => {
-  return a - b
-}
+  return a - b;
+};
 
-sub(2, 1) // 1
-sub('helo', 1) // Argument of type 'string' is not assignable to parameter of type 'number'
+sub(2, 1); // 1
+sub("helo", 1); // Argument of type 'string' is not assignable to parameter of type 'number'
 ```
 
 Therefore while reusing the component Person the programmer knows what props he should
