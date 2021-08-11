@@ -1,12 +1,6 @@
-a {
-  color: #dc3545;
-  text-decoration: underline;
-}
-
 .post-body p {
   margin-bottom: 10px !important;
 }
-
 .post-body h1,
 h2,
 h3,
@@ -15,6 +9,7 @@ h5,
 h6 {
   margin: 10px 0px !important;
   font-weight: bolder !important;
+  filter: brightness(2);
 }
 
 .light-theme pre {
@@ -36,19 +31,16 @@ h6 {
   color: #f6f8fa;
   font-weight: bold;
 }
-.blog-post-header {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
 
 .blog-post-content,
 .blog-post-content p {
   font-size: 16px;
+  line-height: 1.8;
+  color: inherit;
 }
 
 .blog-post-content a {
-  color: #dc3545 !important;
+  color: #3b82f6 !important;
   text-decoration: underline !important;
 }
 
@@ -68,10 +60,6 @@ h6 {
   .blog-post-content code {
     font-size: 12px;
   }
-}
-
-a:hover {
-  color: #dc35468f !important;
 }
 
 code[class*="language-"],

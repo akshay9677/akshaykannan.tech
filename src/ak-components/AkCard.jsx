@@ -1,24 +1,17 @@
-import AkButton from "./AkButton";
-
-const AkCard = ({ title, content, image, click }) => {
+const AkCard = ({ title, content, click }) => {
   return (
-    <div className="max-w-xs bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden my-10 pointer">
-      {image}
-      <div className="px-2 py-2">
-        <h1 className="uppercase tracking-wide text-sm text-indigo-500 font-semibold p-1">
+    <div>
+      <div className="py-2">
+        <h1 className="uppercase tracking-wide text-sm text-blue-600 dark:text-blue-500 font-semibold pb-1">
           {title}
         </h1>
         <p className="text-sm mt-1">{content}</p>
-        <div className="pt-5 py-3">
-          <AkButton
-            onClick={click}
-            children={
-              <span>
-                Git <i className="fab fa-github"></i>
-              </span>
-            }
-            loading={false}
-          />
+        <div className="py-2">
+          <div onClick={click} className="pointer">
+            <span className="text-sm">
+              <i className="fab fa-github"></i> Learn More
+            </span>
+          </div>
         </div>
       </div>
     </div>

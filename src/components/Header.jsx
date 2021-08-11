@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Switchs from "react-switch";
+import { Text, Button } from "ak-palette";
 
 function Header(props) {
   // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
@@ -15,9 +15,7 @@ function Header(props) {
 
   function DarkModeicon() {
     return (
-      <div
-        style={{ color: "#242526", paddingLeft: "10px", paddingTop: "1.8px" }}
-      >
+      <div style={{ color: "#fff", width: "20px" }}>
         <i className="fas fa-moon"></i>
       </div>
     );
@@ -25,38 +23,28 @@ function Header(props) {
 
   function LightModeIcon() {
     return (
-      <div style={{ color: "white", paddingLeft: "10px", paddingTop: "1.8px" }}>
+      <div style={{ color: "#fff", width: "20px" }}>
         <i className="fas fa-lightbulb"></i>
       </div>
     );
   }
   return (
     <div className="navbar-header">
-      <div className="flex-row flex-end-col pt-2 pr-3.5 container">
-        <Link
-          className="no-underline	nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
-          to="/"
-        >
-          About
-        </Link>
-        <Link
-          className="no-underline	nav-item active zoom p10 no-style pointer text-red-500 hover:text-red-700 font-bold"
-          to="/blogs"
-        >
-          Blog
-        </Link>
-
-        <div className="nav-item custom-control custom-switch pt-1.5 px-5">
-          <Switchs
-            onChange={changeTheme}
-            checked={isDark}
-            onColor="#dc3545"
-            offColor="#dc3545"
-            onHandleColor="#242526"
-            uncheckedIcon={<LightModeIcon />}
-            checkedIcon={<DarkModeicon />}
-            width={60}
-          />
+      <div className="flex justify-between max-w-4xl mx-auto py-5 pl-8 lg:pl-0">
+        <Button type={isDark ? "info" : "default"} onClick={changeTheme}>
+          {isDark ? <LightModeIcon /> : <DarkModeicon />}
+        </Button>
+        <div className="flex">
+          <Link className="pr-10 pointer font-medium" to="/">
+            <Text size="large" className="dark:text-white">
+              Home
+            </Text>
+          </Link>
+          <Link className="pr-10 pointer font-medium" to="/blogs">
+            <Text size="large" className="dark:text-white">
+              Blogs
+            </Text>
+          </Link>
         </div>
       </div>
     </div>

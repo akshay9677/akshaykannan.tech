@@ -22,6 +22,10 @@ h6 {
 .block-header {
   margin: 10px 0px;
 }
+.App {
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
 .block-header::before,
 .block-header::after {
   content: " ";
@@ -108,7 +112,7 @@ h6 {
   font-size: 30px;
 }
 .icon-social:hover {
-  color: #dc3546cc;
+  opacity: 0.6;
 }
 .h45 {
   height: 45.1rem;

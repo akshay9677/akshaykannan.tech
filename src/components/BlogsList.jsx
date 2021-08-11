@@ -1,8 +1,7 @@
 import React from "react";
-
 import { useHistory } from "react-router-dom";
-
 import AkTags from "../ak-components/AkTags";
+import { Text } from "ak-palette";
 
 export const BLOG_LIST = [
   {
@@ -72,24 +71,19 @@ const BlogBody = (props) => {
     history.push(`/blogs/${blog._id}`);
   };
   return (
-    <div style={styles.blogContainer} className="hideScroll h-screen">
+    <div style={styles.blogContainer} className="hideScroll h-screen pt-6">
       {BLOG_LIST.map((blog) => {
         return (
-          <div key={blog._id} className="flex  justify-center p-0.5 mt-3">
-            <div className="flex flex-row w-11/12 sm:w-10/12 rounded-lg p-2">
-              <div className="my-4 mx-1">
-                <div className="w-10 h-10 rounded-lg text-2xl text-white flex justify-center items-center bg-red-500">
-                  {blog.email.slice(0, 1).toUpperCase()}
-                </div>
-              </div>
+          <div key={blog._id} className="flex p-0.5 mt-2">
+            <div className="flex flex-row rounded-lg p-2">
               <div className="flex flex-col break-words	 pL10 w-12/12">
-                <div
-                  className="break-normal	pointer text-sm sm:text-lg"
+                <Text
+                  className="lg:text-xl text-xl font-semibold text-gray-600 dark:text-white break-normal pointer"
                   style={{ fontWeight: "500" }}
                   onClick={handleBlogClick.bind(this, blog)}
                 >
                   {blog.subject}
-                </div>
+                </Text>
                 <p
                   className="text-sm text-gray-800	dark:text-gray-400 my-1"
                   onClick={handleBlogClick.bind(this, blog)}

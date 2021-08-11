@@ -1,19 +1,19 @@
-import React, { Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Main from './pages/Main'
-import Blogs from './pages/Blogs'
-import PostBody from './pages/PostBody'
-import Header from './components/Header.jsx'
-import 'tailwindcss/tailwind.css'
-import './App.css'
+import Main from "./pages/Main";
+import Blogs from "./pages/Blogs";
+import PostBody from "./pages/PostBody";
+import Header from "./components/Header.jsx";
+import "tailwindcss/tailwind.css";
+import "./App.css";
 
 function App() {
   return (
     <div
       className="App min-h-screen font-sans bg-gray-100	dark:bg-gray-900 text-gray-900	dark:text-white "
       style={{
-        overflowX: 'hidden',
+        overflowX: "hidden",
       }}
     >
       <Router route>
@@ -21,11 +21,11 @@ function App() {
           <Fragment>
             <div
               style={{
-                position: 'fixed',
-                top: '0px',
-                right: '1px',
+                position: "fixed",
+                top: "0px",
+                right: "1px",
                 zIndex: 99,
-                width: '100%',
+                width: "100%",
               }}
             >
               <Header blog={true} />
@@ -45,7 +45,7 @@ function App() {
         </Route>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

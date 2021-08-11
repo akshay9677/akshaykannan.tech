@@ -1,23 +1,19 @@
-import React, { Fragment } from 'react'
+import React from "react";
 
-import IntroPage from '../components/IntroPage.jsx'
-import Details from '../components/Details.jsx'
-import Journey from '../components/Journey.jsx'
-import Contact from '../components/Contact.jsx'
-import Skills from '../components/Skills.jsx'
-import Project from '../components/Projects'
+import IntroPage from "../components/IntroPage.jsx";
+import Contact from "../components/Contact.jsx";
+import Skills from "../components/Skills.jsx";
+import Project from "../components/Projects";
 
 function Main(props) {
   return (
-    <Fragment>
+    <div className="max-w-3xl px-8 lg:px-3 mx-auto pb-5">
       <IntroPage />
-      <Details />
-      <Journey />
       <Project />
       <Skills />
       <Contact />
-    </Fragment>
-  )
+    </div>
+  );
 }
 
-export default Main
+export default Main;

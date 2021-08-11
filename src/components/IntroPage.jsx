@@ -1,38 +1,28 @@
+import { Text } from "ak-palette";
 import Webdev from "../images/coding.svg";
 
-import { Button, Text } from "ak-palette";
-
 function IntroPage() {
-  const openGithub = () => {
-    window.open("https://github.com/akshay9677");
-  };
   return (
-    <div className="flex justify-around rounded-xl overflow-hidden p-10">
-      <div className="md:flex mt-14 sm:mt-5">
-        <div className="px-4 flex flex-col justify-center intro-text-container">
-          <Text size="xxxlarge" className="dark:text-white">
-            Hey, I'm{" "}
-            <span className="text-red-500 dark:text-white">Akshay</span>,
+    <div className="flex justify-around rounded-xl overflow-hidden pt-10 pb-8">
+      <div className="flex flex-col mt-20">
+        <div className="flex flex-col justify-center  intro-text-container">
+          <Text className="lg:text-4xl text-3xl font-semibold text-gray-600 dark:text-white">
+            Hey, I'm <span style={{ color: "#F15957" }}>Akshay</span>
           </Text>
-          <Text size="large" className="mt-2 text-xl dark:text-white">
-            <span>
-              I'm a <span className="text-red-500">self-taught</span> programmer
-              &
-            </span>
-            <span
-              className="text-indigo-500 font-mono"
-              style={{ fontSize: "18px" }}
-            >
-              {" "}
-              Software Developer
-            </span>
+          <Text
+            size="large"
+            className="leading-7 text-gray-500 dark:text-gray-400 pt-3"
+          >
+            I am a self taught developer and software engineer. I'm a Front-end
+            Engineer & Javascript enthusisat and can create responsive and
+            scalable web apps using the latest technologies available.
           </Text>
-          <div className="pt-3 text-red-500 mb-2">
+          <Text className="pt-3 flex items-center dark:text-white mb-2">
             <a
               href="https://www.linkedin.com/in/akshay-kannan-49964617a"
               target="_blank"
               rel="noopener noreferrer"
-              className="pr-4 f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social"
             >
               <i className="fab fa-linkedin"></i>
             </a>
@@ -40,7 +30,7 @@ function IntroPage() {
               href="https://www.instagram.com/_akshay_kannan_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="pr-4 f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social"
             >
               <i className="fab fa-instagram"></i>
             </a>
@@ -48,22 +38,26 @@ function IntroPage() {
               href="http://twitter.com/_akshay_kannan_"
               target="_blank"
               rel="noopener noreferrer"
-              className="f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social"
             >
               <i className="fab fa-twitter"></i>
             </a>
-          </div>
-          <div>
-            <Button
-              style={{ backgroundColor: "#F04444", fontWeight: "bold" }}
-              onClick={openGithub}
+            <a
+              href="https://github.com/akshay9677"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pb-1 f30 pointer icon-social"
             >
-              Check My Work
-            </Button>
-          </div>
+              <i className="fab fa-github"></i>
+            </a>
+          </Text>
         </div>
-        <div className="opacity-90 py-10">
-          <img src={Webdev} alt="Social" style={{ width: "40rem" }} />
+        <div className="opacity-90">
+          <img
+            src={Webdev}
+            alt="Social"
+            style={{ width: "25rem", margin: "0px auto" }}
+          />
         </div>
       </div>
     </div>

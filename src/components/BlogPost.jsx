@@ -4,6 +4,7 @@ import ErrorSvg from "../assets/Error404.svg";
 import "../assets/blogpost.css";
 import AkTags from "../ak-components/AkTags";
 import { BLOG_LIST } from "./BlogsList";
+import { Text } from "ak-palette";
 
 import CustomEslintPlugin from "../mdx-blogs/CustomEslintPlugin.mdx";
 import ESFeatures from "../mdx-blogs/ES2020.mdx";
@@ -64,13 +65,13 @@ function BlogPage(props) {
     }
   };
   return (
-    <div className="pt-14 flex items-center flex-col">
+    <div className="pt-20 flex items-center flex-col blog-parent max-w-5xl px-8 lg:px-3 mx-auto pb-5">
       <div className="flex justify-center w-10/12 ">
         {blog && (
           <div style={{ width: "100%", minHeight: "42rem" }}>
-            <h1 className="blog-post-header text-center py-3">
+            <Text size="xxlarge" className="dark:text-white text-center mb-8">
               {blog.subject}
-            </h1>
+            </Text>
             <div className="mt-1 flex flex-wrap mb-3">
               {blog.tags ? (
                 blog.tags.map((tag, index) => <AkTags key={index} name={tag} />)
@@ -78,7 +79,9 @@ function BlogPage(props) {
                 <span></span>
               )}
             </div>
-            <div className="blog-post-content">{getBlogPost()}</div>
+            <div className="blog-post-content dark:text-gray-400">
+              {getBlogPost()}
+            </div>
           </div>
         )}
       </div>
