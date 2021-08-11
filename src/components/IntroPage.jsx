@@ -3,10 +3,13 @@ import Webdev from "../images/coding.svg";
 
 function IntroPage() {
   return (
-    <div className="flex justify-around rounded-xl overflow-hidden pt-10 pb-8">
+    <div className="flex justify-around rounded-xl overflow-hidden pt-8 pb-8">
       <div className="flex flex-col mt-20">
         <div className="flex flex-col justify-center  intro-text-container">
-          <Text className="lg:text-4xl text-3xl font-semibold text-gray-600 dark:text-white">
+          <Text
+            size="xxxlarge"
+            className="font-semibold text-gray-600 dark:text-white"
+          >
             Hey, I'm <span style={{ color: "#F15957" }}>Akshay</span>
           </Text>
           <Text

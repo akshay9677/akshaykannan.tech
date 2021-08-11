@@ -78,7 +78,8 @@ const BlogBody = (props) => {
             <div className="flex flex-row rounded-lg p-2">
               <div className="flex flex-col break-words	 pL10 w-12/12">
                 <Text
-                  className="lg:text-xl text-xl font-semibold text-gray-600 dark:text-white break-normal pointer"
+                  size="xlarge"
+                  className="font-semibold text-gray-600 dark:text-white break-normal pointer"
                   style={{ fontWeight: "500" }}
                   onClick={handleBlogClick.bind(this, blog)}
                 >
