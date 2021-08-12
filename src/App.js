@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   return (
     <div
-      className="App min-h-screen font-sans bg-gray-100	dark:bg-gray-900 text-gray-900	dark:text-white "
+      className="App min-h-screen font-sans bg-gray-100	dark:bg-black text-gray-900	dark:text-white "
       style={{
         overflowX: "hidden",
       }}

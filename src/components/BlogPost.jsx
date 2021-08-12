@@ -65,14 +65,23 @@ function BlogPage(props) {
     }
   };
   return (
-    <div className="pt-20 flex items-center flex-col blog-parent max-w-5xl px-8 lg:px-3 mx-auto pb-5">
+    <div className="pt-20 flex items-center flex-col blog-parent max-w-5xl px-2 mx-auto pb-5">
       <div className="flex justify-center w-10/12 ">
         {blog && (
           <div style={{ width: "100%", minHeight: "42rem" }}>
-            <Text size="xxlarge" className="dark:text-white text-center mb-8">
+            <Text size="xxxlarge" className="dark:text-white text-left mb-1">
               {blog.subject}
             </Text>
-            <div className="mt-1 flex flex-wrap mb-3">
+            <div className="ml-2 mb-3 flex items-center">
+              <Text className="dark:text-white">Akshay K,</Text>
+              <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
+                <i className="fas fa-circle"></i>
+              </div>
+              <Text className="dark:text-white flex">
+                {blog.sysCreatedTime}
+              </Text>
+            </div>
+            <div className="flex flex-wrap mb-3">
               {blog.tags ? (
                 blog.tags.map((tag, index) => <AkTags key={index} name={tag} />)
               ) : (

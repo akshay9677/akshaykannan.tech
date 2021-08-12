@@ -16,8 +16,8 @@ function IntroPage() {
             size="large"
             className="leading-7 text-gray-500 dark:text-gray-400 pt-3"
           >
-            I am a self taught developer and software engineer. I'm a Front-end
-            Engineer & Javascript enthusisat and can create responsive and
+            I am a self taught programmer and software engineer. I'm a Front-end
+            developer & Javascript enthusiast and can create responsive and
             scalable web apps using the latest technologies available.
           </Text>
           <Text className="pt-3 flex items-center dark:text-white mb-2">

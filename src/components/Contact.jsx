@@ -35,13 +35,13 @@ function Contact(props) {
   return (
     <div id="contact">
       <Text size="xxxlarge" className="dark:text-white">
-        Signup
+        Newsletter Signup
       </Text>
       <div className="rounded-xl overflow-hidden md:max-w-sm pt-2 pb-8">
         <div className="md:flex justify-center flex items-center p-1">
           <input
             type="email"
-            placeholder="name@example.com"
+            placeholder="Enter your email"
             autoComplete="off"
             value={email}
             onChange={(event) => setEmail(event.target.value)}

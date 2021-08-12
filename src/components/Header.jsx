@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Text, Button } from "ak-palette";
+import Logo from "../images/logo.svg";
 
 function Header(props) {
   // let conditionColor = { color: '#dc3545', fontWeight: 'bold' }
@@ -30,21 +31,22 @@ function Header(props) {
   }
   return (
     <div className="navbar-header">
-      <div className="flex justify-between max-w-4xl mx-auto py-5 pl-8 lg:pl-0">
-        <Button type={isDark ? "info" : "default"} onClick={changeTheme}>
-          {isDark ? <LightModeIcon /> : <DarkModeicon />}
-        </Button>
-        <div className="flex">
-          <Link className="pr-10 pointer font-medium" to="/">
+      <div className="flex justify-between max-w-4xl mx-auto py-5 px-8 lg:pl-0">
+        <Link className="pointer flex items-center hover:opacity-60" to="/">
+          <img src={Logo} alt="errorSvg" />
+        </Link>
+        <div className="flex items-center">
+          <Link
+            className="mr-10 pointer font-medium hover:opacity-60"
+            to="/blogs"
+          >
             <Text size="large" className="dark:text-white">
-              Home
+              Blog
             </Text>
           </Link>
-          <Link className="pr-10 pointer font-medium" to="/blogs">
-            <Text size="large" className="dark:text-white">
-              Blogs
-            </Text>
-          </Link>
+          <Button type={isDark ? "info" : "default"} onClick={changeTheme}>
+            {isDark ? <LightModeIcon /> : <DarkModeicon />}
+          </Button>
         </div>
       </div>
     </div>

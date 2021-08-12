@@ -1,4 +1,5 @@
-import Webassembly from "../images/Webassembly.png";
+import Webassembly from "../images/WebAssembly.svg";
+import WasmLogo from "../images/WasmLogo.png";
 
 Have you ever wondered how web apps like figma or google earth were able to scale inspite of their complexity ?
 Building such a complex app only with javascript is not optimal. This is where web assembly
@@ -6,6 +7,17 @@ comes into play. So what is web assembly ? and how it is used in the browsers ? 
 a machine language which is now accepted by browsers, they have less compilation time and run in near native speed.
 Does this mean javascript will be replaced ? Well no, Web assembly was created with a motive to work along side javascript,
 which means we can write a web assembly code and import it into javascript file with appropriate loaders.
+
+<div
+  style={{
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+    padding: "30px 0px",
+  }}
+>
+  <img src={WasmLogo} />
+</div>
 
 ## Overview of Web assembly
 
@@ -15,17 +27,23 @@ memory for variables and do the necessary computations, well web - assembly is t
 browsers. Even-though Web-assembly is a language itself, it was created to act as a link between
 other languages like C, C++, Rust etc. Therefore, now programmers from different coding language background
 can write codes for browsers.
-Therefore you can use web assembly when something requires complex computation in the web, or if you want to run other
-languages code in the browser. Webassmebly can be written in different languages and they have respective
-compilers to convert them to web assembly. Thus it can be used to build web-based
-games, video & audio manipulation in the web, etc. This opens a window of oppurtunity for new complex web apps which can run
-faster and smoother in the browser. Check out the [list of applications](https://madewithwebassembly.com/all-projects)
-that were built using web assembly.
 
-Also as I said earlier Web assembly is not here to replace javascript, it is developed to co-exist with javascript.
-it is designed in such a way that javascript is required for starting and initializing it, we'll look into, how to use Web assembly in javascript in the later part of the
-blog. A good example for this is figma, which has a outer ui made of react and the inner design tool is written in C++ and compiled
-to Web assembly code.
+You can use web assembly when something requires complex computation in the web,
+or if you want to run other languages code in the browser. Webassmebly can be
+written in different languages and they have respective compilers to convert
+them to web assembly. Thus it can be used to build web-based games, video &
+audio manipulation in the web, etc. This opens a window of oppurtunity for new
+complex web apps which can run faster and smoother in the browser. Check out the
+[list of applications](https://madewithwebassembly.com/all-projects) that were
+built using web assembly.
+
+<br />
+Also as I said earlier Web assembly is not here to replace javascript, it is developed
+to co-exist with javascript. it is designed in such a way that javascript is required
+for starting and initializing it, we'll look into, how to use Web assembly in javascript
+in the later part of the blog. A good example for this is figma, which has a outer
+ui made of react and the inner design tool is written in C++ and compiled to Web
+assembly code.
 
 #### Why Web assembly is faster ?
 

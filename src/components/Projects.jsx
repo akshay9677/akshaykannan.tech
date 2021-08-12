@@ -17,6 +17,18 @@ const Projects = () => {
       </Text>
       <div className="flex flex-col">
         <AkCard
+          content="Palette is light-weight design system and minimal component library for react."
+          title="Palette Design System"
+          image={
+            <img
+              className="h-56 w-full object-cover mt-2"
+              src={FlashChat}
+              alt="NIKE AIR"
+            />
+          }
+          click={openGit.bind(this, "https://github.com/akshay9677/ak-palette")}
+        />
+        <AkCard
           content="Reactor-gen is a cli tool which helps in adding the required templates for redux and react-router-dom while initialising a react project"
           title="Reactor gen"
           image={
@@ -32,18 +44,6 @@ const Projects = () => {
           )}
         />
 
-        <AkCard
-          content="Palette is light-weight design system and minimal component library for react."
-          title="Palette Design System"
-          image={
-            <img
-              className="h-56 w-full object-cover mt-2"
-              src={FlashChat}
-              alt="NIKE AIR"
-            />
-          }
-          click={openGit.bind(this, "https://github.com/akshay9677/ak-palette")}
-        />
         <AkCard
           content="Eslint Plugin ak is a custom eslint plugin where users can add new rules"
           title="ESLint Plugin Ak"

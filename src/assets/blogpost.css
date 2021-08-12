@@ -12,26 +12,6 @@ h6 {
   filter: brightness(2);
 }
 
-.light-theme pre {
-  background-color: #f6f8fa;
-  color: #18191a;
-}
-
-.dark-theme pre,
-.light-theme pre {
-  padding: 16px;
-  overflow: auto;
-  line-height: 1.45;
-  border-radius: 6px;
-  margin: 20px !important;
-}
-
-.dark-theme pre {
-  background-color: #18191a;
-  color: #f6f8fa;
-  font-weight: bold;
-}
-
 .blog-post-content,
 .blog-post-content p {
   font-size: 16px;
@@ -75,6 +55,7 @@ pre[class*="language-"] {
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
+  font-size: 14px;
 }
 
 /* Code blocks */
@@ -85,9 +66,10 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #11151f;
+  background: #101827;
+  border: solid 1px #374251;
   margin: 20px 0px;
-  border-radius: 10px;
+  border-radius: 5px;
   --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -183,8 +165,5 @@ blockquote {
   margin: 3rem 0rem;
   padding: 0.75rem 1rem;
   width: 98%;
-  border-left: 4px solid #dc3545;
-  --tw-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.25);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  border-left: 8px solid #2a52cc;
 }
