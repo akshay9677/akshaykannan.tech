@@ -36,6 +36,16 @@ function Header(props) {
           <img src={Logo} alt="errorSvg" />
         </Link>
         <div className="flex items-center">
+          <a
+            className="mr-10 pointer font-medium hover:opacity-60"
+            href="https://www.polywork.com/_akshay_kannan_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Text size="large" className="dark:text-white">
+              Timeline
+            </Text>
+          </a>
           <Link
             className="mr-10 pointer font-medium hover:opacity-60"
             to="/blogs"
