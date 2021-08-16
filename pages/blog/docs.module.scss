@@ -1,0 +1,72 @@
+.docsContent {
+  width: 100%;
+  padding: 10px 50px 10px 20px;
+  overflow: hidden;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 10px 0px !important;
+    font-weight: bolder !important;
+    filter: brightness(2);
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: inherit;
+  }
+
+  a {
+    color: #3b82f6 !important;
+    text-decoration: none !important;
+  }
+
+  li {
+    padding: 5px 0px;
+  }
+
+  code {
+    color: #6366f1;
+  }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+    font-size: 14px;
+  }
+
+  /* Code blocks */
+  pre[class*="language-"] {
+    padding: 1em;
+    overflow: auto;
+  }
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: #101827;
+    border: solid 1px #374251;
+    margin: 20px 0px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 800px) {
+  .docsContent {
+    padding: 5px 0px;
+    p {
+      font-size: 14px;
+    }
+  }
+}

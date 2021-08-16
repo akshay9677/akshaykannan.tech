@@ -1,0 +1,127 @@
+---
+title: "Webassembly - a brief overview"
+sysCreatedTime: "July 3, 2021"
+tags: ["Web Assembly", "Javascript", "Machine Language", "Assembly Script"]
+body: "Brief overview on webassembly, when, where and how to use it. Also explained about AssemblyScript and how it can be used to incorporate Webassembly into a Javascript code."
+---
+
+Have you ever wondered how web apps like figma or google earth were able to scale inspite of their complexity ?
+Building such a complex app only with javascript is not optimal. This is where web assembly
+comes into play. So what is web assembly ? and how it is used in the browsers ? Web-assembly is
+a machine language which is now accepted by browsers, they have less compilation time and run in near native speed.
+Does this mean javascript will be replaced ? Well no, Web assembly was created with a motive to work along side javascript,
+which means we can write a web assembly code and import it into javascript file with appropriate loaders.
+
+<Image alt={`WASM Logo`} src={`/WasmLogo.png`} width={2248} height={1000} />
+
+## Overview of Web assembly
+
+If you had a micro processor or micro controller course in engineering like me, then you must
+have learned to code for microprocessors like 8086, 8086, etc, where you will have to allocate
+memory for variables and do the necessary computations, well web - assembly is that but for the
+browsers. Even-though Web-assembly is a language itself, it was created to act as a link between
+other languages like C, C++, Rust etc. Therefore, now programmers from different coding language background
+can write codes for browsers.
+
+You can use web assembly when something requires complex computation in the web,
+or if you want to run other languages code in the browser. Webassmebly can be
+written in different languages and they have respective compilers to convert
+them to web assembly. Thus it can be used to build web-based games, video &
+audio manipulation in the web, etc. This opens a window of oppurtunity for new
+complex web apps which can run faster and smoother in the browser. Check out the
+[list of applications](https://madewithwebassembly.com/all-projects) that were
+built using web assembly.
+
+Also as I said earlier Web assembly is not here to replace javascript, it is developed
+to co-exist with javascript. it is designed in such a way that javascript is required
+for starting and initializing it, we'll look into, how to use Web assembly in javascript
+in the later part of the blog. A good example for this is figma, which has a outer
+ui made of react and the inner design tool is written in C++ and compiled to Web
+assembly code.
+
+#### Why Web assembly is faster ?
+
+Javascript is a compiled language which means the code you write is parsed, compiled and optimised before you get an executable code or before the browser engine
+runs your code, but in case of Web Assembly, being a machine language it is just decoded and compiled, no need of extra compilation time,
+and that is why it is faster.
+
+<Image
+  alt={`WebAssembly`}
+  src={`/WebAssembly.svg`}
+  width={2248}
+  height={1000}
+/>
+
+There are various
+libraries out there to convert different languages to web assembly, for example
+to convert C++ to Web assembly there is Emscripten, also there is > Asterius, a
+Haskell to WebAssembly compiler, one such library is assembly script.
+
+### Assembly Script
+
+Assembly script accepts a typescirpt like syntax which is compiled to Webassmebly code. This means that you can write
+a typescript code, which gets converted to Webassmebly code which you can import it and use that in
+your js files.
+
+Lets take a look on how to write a assembly script code. As I said earlier everything
+needs to be allocated some memory, similarly in case of assembly script we allocate memory like defining a type in typescript. Thus it is a javascript code with web assembly types. For example,
+
+```ts
+function add(a: i32, b: i32): i32 {
+  return a + b;
+}
+```
+
+As you can see the two arguments are a 32 bit integer type and the
+function returns a 32 bit integer, which means that few types are quite different from actual typescript code. To know about assembly
+script types, check out [this](https://www.assemblyscript.org/types.html#webassembly-types) link.
+
+There a lot of quirks and conditions in writing code in assembly script, for instance you can't create
+objects directly like `var a = {}`, this is not permitted, instead this should be done,
+
+```ts
+var a = new Map<string, string>();
+a.set("sayhello", "hello, world");
+```
+
+Also assembly script does not allow union types, which means a value should have only one type.
+
+```ts
+function add(a: i32 | string): void {}
+```
+
+The above code is not a valid syntax in assembly script. Check out [assembly script docs](https://www.assemblyscript.org/) to get a better
+understanding on how to write assembly script code.
+
+### Getting Started
+
+```shell
+npm install @assemblyscript/loader
+npm install -D assemblyscript
+npx asinit
+```
+
+There are the two packages required for compiling your assembly script code, Install those loader and compiler and then create a new assembly
+script project using `npx asinit`. This adds the starter files for writing your web assembly project. To compile the assembly script code to web assembly code run
+`npm run asbuild`
+
+Now an optimised wasm file will be produced which can be imported in your js files and can be used right away.
+Lets take a look on how to use a web assembly code in javascript.
+
+Lets assume that you have a web assembly code called example.wasm (yes web assembly codes have .wasm extension and
+the equivalent text format has a .wat extension) which is compiled from assembly script, you can use that in a js file as such
+
+```js
+const compiledwasm = new WebAssembly.Module(
+  fs.readFileSync(__dirname + "./example.wasm")
+);
+const instance = new WebAssembly.Instance(compiledwasm);
+module.exports = instance.exports;
+```
+
+The WebAssembly.Module() constructor creates a new module object containing WebAssembly code that
+has been already compiled. The WebAssembly.Instance() constructor creates an executable instance form the
+module object from WebAssembly.Module()
+
+Therefore by using assembly script we were able to write typescript like code and compile it to a web assembly module and
+then used it in a js file.

@@ -1,13 +1,20 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  mode: "jit",
+  purge: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
+    "./data/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {},
   },
   variants: {
-    extend: {
-      translate: ["dark"],
-    },
+    extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
 };

@@ -1,0 +1,163 @@
+---
+title: "When you should opt for typescript ?"
+sysCreatedTime: "Feb 21, 2021"
+tags: ["Typescript", "Javascript", "Static Programming", "TSC"]
+body: "Typescript overview and breif explanation on when to use it. Also explained about setting up typescript in react"
+---
+
+When I started web development typescript was one of the "buzz words" I came accross a lot and so I decided
+to learn about it after I had some knowledge in JS and web development as such. When I started going through typescript,
+I had few doubts on what kind of project should I use typescript and should I use it in every app I build,
+etc. So after some research I come to a conclusion and shared my thoughts on it.
+This blog mainly concentrates on when to use typescript and when not to use it. I
+have shared some basic setup guide for using typescript in your project.
+I have also written about typescript in React and added a few examples for it.
+
+<Image alt={`TS`} src={`/Typescript.jpeg`} width={2248} height={1300} />
+
+<br />
+
+Now a days Javascript is used everywhere, be it web apps, mobile apps or desktop apps
+there is some framework out there that JS Developers can use to develop respective apps.
+Eventhough it is used a lot, there are some issues in JS and one of the reasons for it is its dynamic
+typing ability.
+
+<br />
+
+One classic example is NaN (Not a number). We get NaN when a mathematical calculation
+cannot be represented as a number. This happens in one such case,
+
+```js
+let a = "hello";
+let b = 1;
+console.log(a - b); //Nan
+```
+
+The above code may look absurd, why would anyone subtract a string with a number, but imagine these
+two variables are coming from different files, where, you are not sure of their types. During such
+cases having typescript is really useful. This can be avoided by the following typescript code,
+
+```ts
+let a: string = "hello";
+let b: number = 1;
+console.log(a - b); //'Argument of type 'string' is not assignable to parameter of type 'number''
+```
+
+As you can see that variable `a` has a type annotation of string and `b` has a type annotation of number.
+This annotation provides the data type for our variables
+The following are some type annotation of typescript - Boolean, Number, String, Array, Tuple, etc
+
+## When you should use Typescript ?
+
+Typescript is a better choice when it comes to collabartion or when your working with large repositories. Companies
+facing hardships in enforcing TDD (Test Driven Development) because of the bugs they have or encounter with, can start
+off with typescript and slowly reduce minor bugs & issues in their repo. A [study](http://earlbarr.com/publications/typestudy.pdf)
+shows that 15% of bugs are detected by typescript. But I feel that small projects or projects maintained
+by a single person doesn't need to have typescript, because single person maintaining the repo need not worry about
+the types and similair is the case for small respositories.
+
+<br />
+
+Repositories following TDD or other testing flows can also incorporate typescripts. These kinds of repositories can
+do property-based testing by using typescript.
+
+<br />
+
+But migrating a large repository entirely to typescript is a painstaking process. So it is a better choice to introduce
+typescript for growing repositories. Typescript is better when it is paired with the right IDE. Since Typescript is introduced by Microsoft only VS Code was showing
+type annotation mismatch, but now a days a lot of IDE's support typescript.
+
+<br />
+
+Now that you know what typescript does lets see a quick guide
+on how to setup typescript.
+
+## Typescript setup quick guide
+
+### Typescript compiler
+
+For typescript to work in your project you need a typescript compile `tsc`.
+This typescript compiler compiles typescript code and produces a equivalent JS code.
+To play around typescript and to learn typescript visit the [typescript playground](https://www.typescriptlang.org/play).
+To add this compiler we can use npm, run the following command in your terminal
+
+```shell
+npm i -g typescript
+```
+
+### Migrating to Typescript
+
+Since typescript being a superset to JS, all javascript code are valid typescript code.
+So intially you could change the extensions of js files from `.js` to `.ts` and start making necessary changes
+to your repo.
+
+## Typescript setup in React
+
+To create a new repository with typescript support run the following in your CLI,
+
+```shell
+npx create-react-app my-app --template typescript
+
+# or if you have create-react-app installed globally
+
+create-react-app my-app --template typescript
+
+```
+
+If you want to add typescript to existing react projects you can add the following npm packages
+and start using typescript in your project. CRA already has typescript support so by running the following
+command we can use typescript in our project.
+
+```shell
+npm i --save typescript @types/node @types/react @types/react-dom @types/jest
+```
+
+### React Typescript
+
+`Person.tsx` file
+
+```tsx
+import React from "react";
+
+interface PersonDetailsProps {
+  firstName: string;
+  lastName: string | undefined;
+  id: number;
+}
+
+const Person: React.FC<PersonDetailsProps> = ({
+  firstName,
+  lastName,
+  id,
+}): JSX.Element => {
+  return (
+    <div>
+      <span>{id}</span>
+      <span>{firstname + " " + lastName}</span>
+    </div>
+  );
+};
+
+export default Person;
+```
+
+As you can see that the person seeing this file knows that the prop `id` is a `number` and `lastName` & `firstName`
+is of `string` annotation. Also `lastName` has two annotations `string` and `undefined`. So even if `lastName`
+is not mentioned typescript compiler won't throw an error but it throws an error if `id` or `firstName` is not
+mentioned or if there is a type mismatch.
+There is a type `React.FC` for Person which denotes that is a React functional component.
+Also there is another annotation `JSX.Element` in the function this is used to
+mention what is the return type of a function. For example the below code has a return type of `number` and the arguments for
+function `sub` also has types of `number` each.
+
+```tsx
+const sub = (a: number, b: number): number => {
+  return a - b;
+};
+
+sub(2, 1); // 1
+sub("helo", 1); // Argument of type 'string' is not assignable to parameter of type 'number'
+```
+
+Therefore while reusing the component Person the programmer knows what props he should
+give and their types either by looking into the file or from the suggestion provided by the IDE.

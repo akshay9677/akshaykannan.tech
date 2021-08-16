@@ -1,0 +1,85 @@
+---
+title: "5 Most Important ES2020 features JS"
+sysCreatedTime: "Dec 25, 2020"
+tags: ["Javascript", "ES2020"]
+body: "Top 5 most important ES2020 features with codes and explanation"
+---
+
+## Optional Chaining
+
+This is a new javascript feature where we can check whether a property is present in an object. Before when we try to access a nested property which is not defined then we get an error, this is fixed by a new syntax in JS
+
+For Example:
+
+```js
+let obj = {
+  name: {
+    firstName: "Akshay",
+    lastName: "Kannan",
+  },
+};
+```
+
+So now to access a property say name in property middleName which is not present in the object obj we can something like this,
+
+```js
+console.log(obj.middleName?.name);
+
+// undefined
+```
+
+## Global This
+
+In ES2020 there is a new keyword called `globalthis` which is similair to `this` but the only difference is that `globalthis` always refers to the global object, no matter where we are executing the code
+For Example:
+
+```js
+function canMakeHTTPRequest() {
+  return typeof globalThis.XMLHttpRequest === "function";
+}
+
+console.log(canMakeHTTPRequest());
+
+// expected output (in a browser): true
+```
+
+## Promise All Settled
+
+Promise object has a new method called `Promise.allSettled()` which is similair to `Promise.all()` , both accepts a promise array, the only difference is that allSettled will always get resolved with an array which gives us the result of whether the promises we passed are resolved or rejected
+
+```js
+function canMakeHTTPRequest() {
+  return typeof globalThis.XMLHttpRequest === "function";
+}
+
+console.log(canMakeHTTPRequest());
+
+// expected output (in a browser): true
+```
+
+## Nullish Coalescing
+
+Before ES2020 null values are checked using falsey checks but there were no other way to check if a value is exactly null. In ES2020 we have a way to check them,
+
+```js
+null ?? "Null value";
+// Null value
+
+undefined ?? "Null value";
+// Null value
+
+false ?? "Null value";
+// Null value
+```
+
+## Dynamic Imports
+
+Dynamic import in javascript helps us to import files dynamically wherever we want.
+
+```js
+if (condition) {
+  const calculator = import("./calculator.js");
+
+  calculator.add(1, 2);
+}
+```

@@ -1,0 +1,197 @@
+---
+title: "Writing a custom eslint plugin"
+sysCreatedTime: "Feb 07, 2021"
+tags: ["ESLint", "Javascript", "AST", "Espree"]
+body: "A brief overview on, writing your own eslint plugins using Yeomon and generator-eslint plugin."
+---
+
+Developers have different code writing styles, so when it comes to collabrations
+people face a lot of problems in understanding other developers code. So we have
+to ensure a common coding style and start enforcing people to write in that style.
+
+This can be achieved by eslint which is linter on which various rules can be added
+that people can follow to have a common style throught their code base. But as your
+project grows certain pre-defined rules might not be sufficient for your project
+so you might want to add your own rules or plugins into eslint. In this blog I am
+going to explain how to write your own eslint plugin.
+
+<Image alt={`Eslint`} src={`/Eslintn.png`} width={2000} height={950} />
+
+## Required Packages
+
+- yo (Yeomon)
+- generator-eslint
+
+```shell
+npm i -g yo generator-eslint
+```
+
+## Plugin Creation
+
+To Create a plugin run the following command
+
+```shell
+mkdir eslint-plugin-ak
+cd eslint-plugin-ak
+
+yo eslint:plugin
+
+? What is your name? ...
+? What is the plugin ID? tutorial
+? Type a short description of this plugin: ...
+? Does this plugin contain custom ESLint rules? Yes
+? Does this plugin contain one or more processors? No
+
+npm install
+```
+
+## Rule Creation
+
+We are going to write a rule to avoid importing a package, which has a better replacement.
+
+Let say you have been using underscore js but want to enforce people on using loadash. So lets create a rule 'no-underscore'
+
+```shell
+yo eslint:rule
+
+? What is your name? ...
+? Where will this rule be published? ESLint Plugin
+? What is the rule ID? no-underscore
+? Type a short description of this rule: ...
+? Type a short example of the code that will fail:import _ from 'underscore'
+```
+
+Run `npm i` to install all the remaining packages that comes with generator-eslint
+
+## Abstract Syntax Tree
+
+The next thing that we are going to see is AST which is a tree structure of the javascript code that we wrote.We get an AST by parsing the code we wrote into a parsers such as babylon,espree etc,. Eslint uses espree parser, Thus using this AST we can get info about the source code that we wrote.
+
+<br />
+Below is an AST for the following code, `import _ from 'underscore' `
+
+```json
+{
+  "type": "Program",
+  "start": 0,
+  "end": 26,
+  "range": [0, 26],
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 26,
+      "range": [0, 26],
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 7,
+          "end": 8,
+          "range": [7, 8],
+          "local": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 8,
+            "range": [7, 8],
+            "name": "_"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 14,
+        "end": 26,
+        "range": [14, 26],
+        "value": "underscore",
+        "raw": "'underscore'"
+      }
+    }
+  ],
+  "sourceType": "module"
+}
+```
+
+As you can see we get the complete info about a code in a json format which we can tap into to write our rule.
+As you can see from the ast, we want to check whether the literals value is 'underscore' provided its parent object is an 'ImportDeclaration'
+
+So write the following a code in your no-underscore.js file in lib/rules
+
+```js
+module.exports = {
+  meta: {
+    docs: {
+      description: "Avoiding the use of underscore package in repo",
+      category: "Fill me in",
+      recommended: false,
+    },
+    fixable: null,
+  },
+
+  create: function (context) {
+    return {
+      Literal: function (node) {
+        const isUnderscore =
+          node.value === "underscore" &&
+          node.parent.type === "ImportDeclaration";
+        if (isUnderscore) {
+          context.report({
+            node,
+            message: "Underscore package use is prohibited use Loadash instead",
+          });
+        }
+      },
+    };
+  },
+};
+```
+
+Now run `npm run test` in your terminal which runs our valid and invalid test cases
+
+## Wrapping Up
+
+As ESLint does not enable any rules by default, we will probably want to export a config that enables our new rule. Sp replace with the following code in our index.js file in lib folder
+
+```js
+module.exports = {
+  rules: {
+    "no-underscore": require("./rules/no-underscore"),
+  },
+  configs: {
+    base: {
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: "module",
+      },
+      env: {
+        browser: true,
+        es6: true,
+      },
+      plugins: ["ak"],
+      rules: {
+        "ak/no-underscore": 2,
+      },
+    },
+  },
+};
+```
+
+As you can see we have a plugin called ak with a rule no-underscore.
+Do `npm publish` to publish your package
+To use this rule in your repo provided you added eslint to your project, run `npm i eslint-plugin-ak`
+Now add your plugin as an extension in your .eslintrc.js file (if you are using js config)
+
+```js
+extend: ["plugin:ak/base"];
+```
+
+and add the following rule,
+
+```js
+rules:{
+
+'no-underscore':2
+
+}
+```
+
+By doing so you might starting seeing warnings for using underscore package in your repo. Check out the plugin's source code [here](https://github.com/akshay9677/eslint-plugin-ak)
