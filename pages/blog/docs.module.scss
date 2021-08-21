@@ -3,6 +3,14 @@
   padding: 10px 50px 10px 20px;
   overflow: hidden;
 
+  ul {
+    padding: 0px 20px;
+  }
+
+  li::marker {
+    color: #ccc;
+  }
+
   h1,
   h2,
   h3,

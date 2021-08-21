@@ -2,7 +2,7 @@ import Axios from "axios";
 import React, { useState } from "react";
 import { baseUrl } from "../utils/baseUrl";
 
-import { Button, Text } from "ak-palette";
+import { Button, Text, Input } from "ak-palette";
 import { toast } from "ak-palette";
 
 function Contact(props) {
@@ -20,11 +20,13 @@ function Contact(props) {
       };
       setLoading(true);
       Axios.post(`${baseUrl}/api/v1/users`, params);
-      setLoading(false);
-      setName("");
-      setEmail("");
-      setDescription("");
-      toast.success("Signed up!!");
+      setTimeout(() => {
+        setLoading(false);
+        setName("");
+        setEmail("");
+        setDescription("");
+        toast.success("Signed up!!");
+      }, 3000);
     }
   }
 
@@ -33,7 +35,7 @@ function Contact(props) {
       <Text size="xxxlarge" className="dark:text-white">
         Newsletter Signup
       </Text>
-      <div className="rounded-xl overflow-hidden md:max-w-sm pt-2 pb-8">
+      <div className="rounded-xl overflow-hidden md:max-w-sm pt-4 pb-8">
         <div className="md:flex justify-center flex items-center p-1">
           <input
             type="email"

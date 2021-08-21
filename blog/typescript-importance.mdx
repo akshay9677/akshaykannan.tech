@@ -2,7 +2,8 @@
 title: "When you should opt for typescript ?"
 sysCreatedTime: "Feb 21, 2021"
 tags: ["Typescript", "Javascript", "Static Programming", "TSC"]
-body: "Typescript overview and breif explanation on when to use it. Also explained about setting up typescript in react"
+body: "Learn more about typescript and when you should use it. Also learn how to setup typescript in your project."
+id: 3
 ---
 
 When I started web development typescript was one of the "buzz words" I came accross a lot and so I decided
@@ -15,14 +16,10 @@ I have also written about typescript in React and added a few examples for it.
 
 <Image alt={`TS`} src={`/Typescript.jpeg`} width={2248} height={1300} />
 
-<br />
-
 Now a days Javascript is used everywhere, be it web apps, mobile apps or desktop apps
 there is some framework out there that JS Developers can use to develop respective apps.
 Eventhough it is used a lot, there are some issues in JS and one of the reasons for it is its dynamic
 typing ability.
-
-<br />
 
 One classic example is NaN (Not a number). We get NaN when a mathematical calculation
 cannot be represented as a number. This happens in one such case,
@@ -53,21 +50,15 @@ Typescript is a better choice when it comes to collabartion or when your working
 facing hardships in enforcing TDD (Test Driven Development) because of the bugs they have or encounter with, can start
 off with typescript and slowly reduce minor bugs & issues in their repo. A [study](http://earlbarr.com/publications/typestudy.pdf)
 shows that 15% of bugs are detected by typescript. But I feel that small projects or projects maintained
-by a single person doesn't need to have typescript, because single person maintaining the repo need not worry about
+by a single person doesn't need to have typescript, because a single person maintaining the repo need not worry about
 the types and similair is the case for small respositories.
-
-<br />
 
 Repositories following TDD or other testing flows can also incorporate typescripts. These kinds of repositories can
 do property-based testing by using typescript.
 
-<br />
-
 But migrating a large repository entirely to typescript is a painstaking process. So it is a better choice to introduce
 typescript for growing repositories. Typescript is better when it is paired with the right IDE. Since Typescript is introduced by Microsoft only VS Code was showing
 type annotation mismatch, but now a days a lot of IDE's support typescript.
-
-<br />
 
 Now that you know what typescript does lets see a quick guide
 on how to setup typescript.
@@ -87,7 +78,7 @@ npm i -g typescript
 
 ### Migrating to Typescript
 
-Since typescript being a superset to JS, all javascript code are valid typescript code.
+Typescript being a superset to JS, all javascript code are valid typescript code.
 So intially you could change the extensions of js files from `.js` to `.ts` and start making necessary changes
 to your repo.
 

@@ -6,7 +6,7 @@ import "./_app.scss";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className="App overflow-hidden min-h-screen font-sans bg-gray-100	dark:bg-black text-gray-900	dark:text-white ">
+    <div className="theme-transition overflow-hidden min-h-screen font-sans bg-gray-100	dark:bg-black text-gray-900	dark:text-white ">
       <Head>
         <title>Akshay Kannan</title>
         <link rel="icon" href="/Akshay.png" />

@@ -1,0 +1,142 @@
+---
+title: "How I chose this tech stack for my website"
+sysCreatedTime: "Aug 21, 2021"
+tags: ["Next Js", "Blog", "Netlify", "Tailwind"]
+body: "Learn more about the tech stack I use in my website, why I have been transitioning from one technology to another."
+id: 5
+---
+
+I published this website back in May 2020. Over the course of a year,
+my website has gone through a lot of changes. Initially I was using Heroku for deployments, later I found out
+about Netlify and migrated my deployments to it. Since I was using my website for testing out new stuffs,
+I have used a lot of react frameworks, css frameworks, and component libraries here.
+This website has went through a lot of iteration and right now I am happy with my current tech stack. I am currently using,
+
+- React
+- Next JS
+- Tailwind
+- <a
+    href="https://ak-palette.netlify.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Ak Palette
+  </a> (My Component library)
+- Netlify
+
+<Image
+  alt={`old-website`}
+  src={`/old-website.png`}
+  width={2248}
+  height={1000}
+/>
+
+## React
+
+React has been the longest contender for my website. Initially I had a basic css, html and javascript code base with node js
+for development. Later when I was learning new stuffs in web-dev, react was the huge buzz word back then, so eventually I decided to learn
+it by using it in this website.
+
+I did not use [create-react-app](https://github.com/facebook/create-react-app) back then, I went
+through the painstaking process, of setting up react by myself, later I found out about create-react-app and set up react using it.
+Because of create-react-app I had a better development environment for react. I was mind-blown by react, it facilitates the overall
+process of writing components and also I was able to develop stuff faster with hot reloads.
+
+## Next js
+
+Next js was one of the latest addition to my website, I published my first blog last year December. I built it by coding a blog posting, rich text editor
+, to post new blogs. Later I switched to MDX and I was setting it up using craco and using appropriate mdx plugins. I used craco to override the
+default webpack configuration of create-react-app to add custom loaders and plugins. Later I learned about [Next Js](https://nextjs.org/)
+from [Leerob's blog](https://github.com/leerob/leerob.io) and started incorporating it to my website.
+
+Next js has a lot of advantages like static & server rendering, route pre-fetching, image optimization and much more. I really like
+the file system based routing feature in next js, but I am not sure of how it would scale for larger apps, but for apps like mine, which does not
+have any complex routing, file system based routing is good. One other thing I really loved was image optimization, images were optimized
+and resized based on the device viewport. All I had to do was to use `next/image` component,
+
+```js
+import Image from "next/image";
+
+<Image alt={`WASM`} src={`/WasmLogo.png`} width={2248} height={1000} />;
+```
+
+## Ak Palette
+
+Before using my design system, I was using bootstrap library through a cdn and later installed it using node. The package was quite heavy
+and there were a lot of unwanted code that was getting bundled, so I decided to build a design system which was light in weight and
+easy to use.
+
+After publishing my component library, I was looking for a project to test it. So i used it in my website. The buttons, input boxes and
+toast message when you signup for my newsletter are all components of my design system. I built my design system using react and typescript.
+Since there weren't much components I was using from bootstrap, migrating it to my component library was quite easy. Check out
+[ak-palette documentation](https://ak-palette.netlify.app/) to learn more about it.
+
+## Tailwind css
+
+I was manually writing all my css, before I found out about tailwind. Tailwind has a lot of reusable css classes, which you can
+use to incorporate any css styles.
+
+For example the following code below can easliy be written using tailwind,
+
+```css
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+#### Tailwind
+
+```html
+<div className="flex flex-row items-center justify-center">...</div>
+```
+
+### Responsive Design
+
+Previous versions of my websites were not responsive, I had a lot of issues viewing my website in mobile phones. I was
+using media query back then and it was not scaling well, and I had to write css twice to target different screen sizes. Later
+when I switched to tailwind writing responsive css was a breeze. The following is an example of changing widths of a div based
+on screen size.
+
+```html
+<!-- Width of 16 by default, 32 on medium screens, and 48 on large screens -->
+<div className="w-16 md:w-32 lg:w-48">...</div>
+```
+
+### Dark Mode
+
+Dark mode is quite easy using tailwind where you can write classes targetting dark and light theme using the dark utility.
+For example you can write an html as such,
+
+```html
+<div className="bg-gray-100	dark:bg-black text-gray-900	dark:text-white">...</div>
+```
+
+And then in js when a button is clicked or if dark mode is toggled you can write a method to change the classes for your
+entire body tag.
+
+```js
+const changeTheme = () => {
+  const body = document.querySelector("body");
+  if (body.classList.contains("dark")) body.classList.remove("dark");
+  else body.classList.add("dark");
+};
+```
+
+## Netlify
+
+I initially deployed my website using [Heroku](https://www.heroku.com) through its free tier. Deploying using heroku was easy and straight-forward, but I had some issues
+with heroku. It puts my website to sleep after **30 hours of inactivity** , which increased the inital load time for my website.
+They do it to preserve dyno hours from burning out or wasting, but I didn't have enough traffic for my website to keep it active always.
+
+So I was looking for a change and later I learned about [Netlify](https://www.netlify.com/), I found out how easy it was to set up a continuous deployment pipeline for my website, so I decided
+to switch to netlify. Switching to netlify was easy, all I had to do was to configure my github repo in netlify, enter my build script and select my
+build directory.
+
+## Conclusion
+
+Even right now the tech stack I shared above won't last longer. When a new technology comes, I am sure that I will try to use it
+in my website. I felt like sharing this because I believe for a website for posting blogs and maintaining a portfolio, this stack
+is more than sufficient. For peeps who are looking for chosing your stack for your blog, can actually use this tech stack.
