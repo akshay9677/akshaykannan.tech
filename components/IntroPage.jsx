@@ -10,22 +10,22 @@ function IntroPage() {
             size="xxxlarge"
             className="font-semibold text-gray-600 dark:text-white"
           >
-            Hey, I'm <span style={{ color: "#F15957" }}>Akshay</span>
+            Hey 👋, I'm <span style={{ color: "#F15957" }}>Akshay</span>
           </Text>
           <Text
             size="large"
             className="leading-7 text-gray-500 dark:text-gray-400 pt-3"
           >
-            I am a self taught programmer and software engineer. I'm a Front-end
-            developer & Javascript enthusiast and can create responsive and
-            scalable web apps using the latest technologies available.
+            I am a self taught programmer and software engineer. I'm a
+            javascript enthusiast and can create responsive and scalable web
+            apps using the latest technologies available.
           </Text>
           <Text className="pt-3 flex items-center justify-center lg:justify-start xl:justify-start dark:text-white mb-2">
             <a
               href="https://www.linkedin.com/in/akshay-kannan-49964617a"
               target="_blank"
               rel="noopener noreferrer"
-              className="pr-5 f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social dark:text-gray-400"
             >
               <i className="fab fa-linkedin"></i>
             </a>
@@ -33,7 +33,7 @@ function IntroPage() {
               href="https://www.instagram.com/_akshay_kannan_/"
               target="_blank"
               rel="noopener noreferrer"
-              className="pr-5 f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social dark:text-gray-400"
             >
               <i className="fab fa-instagram"></i>
             </a>
@@ -41,7 +41,7 @@ function IntroPage() {
               href="http://twitter.com/_akshay_kannan_"
               target="_blank"
               rel="noopener noreferrer"
-              className="pr-5 f30 pointer icon-social"
+              className="pr-5 f30 pointer icon-social dark:text-gray-400"
             >
               <i className="fab fa-twitter"></i>
             </a>
@@ -49,7 +49,7 @@ function IntroPage() {
               href="https://github.com/akshay9677"
               target="_blank"
               rel="noopener noreferrer"
-              className="pb-1 f30 pointer icon-social"
+              className="pb-1 f30 pointer icon-social dark:text-gray-400"
             >
               <i className="fab fa-github"></i>
             </a>

@@ -42,13 +42,19 @@ const BlogBody = ({ posts }) => {
                     </div>
                   )}
                   <div className="flex flex-row items-center">
-                    <div className="text-gray-500" style={{ fontSize: "12px" }}>
+                    <div className="text-gray-500" style={{ fontSize: "14px" }}>
+                      {blog.readingTime.text}
+                    </div>
+                    <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
+                      <i className="fas fa-circle"></i>
+                    </div>
+                    <div className="text-gray-500" style={{ fontSize: "14px" }}>
                       {blog.sysCreatedTime}
                     </div>
                     <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
                       <i className="fas fa-circle"></i>
                     </div>
-                    <div className="text-gray-500" style={{ fontSize: "12px" }}>
+                    <div className="text-gray-500" style={{ fontSize: "14px" }}>
                       Akshay Kannan
                     </div>
                   </div>

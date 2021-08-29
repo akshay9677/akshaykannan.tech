@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^11.1.0",
     "@mdx-js/react": "1.6.22",
+    "@next/mdx": "^11.1.0",
     "ak-palette": "^2.0.0",
     "gray-matter": "^4.0.3",
     "mdx-prism": "^0.3.4",
@@ -25,6 +25,7 @@
     "next-mdx-remote": "^3.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "reading-time": "^1.4.0",
     "remark-autolink-headings": "^7.0.1",
     "remark-code-titles": "^0.1.2",
     "remark-slug": "^7.0.0",

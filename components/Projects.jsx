@@ -10,7 +10,7 @@ const Projects = () => {
   return (
     <div className="pb-8">
       <Text size="xxxlarge" className="text-left dark:text-white">
-        Side Projects
+        Projects
       </Text>
       <div className="flex flex-col">
         <AkCard

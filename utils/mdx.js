@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import readingTime from "reading-time";
 
 const root = process.cwd();
 const getAllFilesFrontMatter = () => {
@@ -13,6 +14,7 @@ const getAllFilesFrontMatter = () => {
     return [
       {
         ...data,
+        readingTime: readingTime(source),
         slug: postSlug.replace(".mdx", ""),
       },
       ...allPosts,

@@ -10,6 +10,7 @@ import style from "./docs.module.scss";
 import BlogLayout from "../../layouts/BlogLayout";
 import matter from "gray-matter";
 import Image from "next/image";
+import readingTime from "reading-time";
 
 export default function Docs({ mdxSource, frontMatter }) {
   return (
@@ -69,6 +70,7 @@ const getFile = async (slug) => {
     mdxSource,
     frontMatter: {
       wordCount: content.split(/\s+/gu).length,
+      readingTime: readingTime(source),
       slug: slug || null,
       ...data,
     },

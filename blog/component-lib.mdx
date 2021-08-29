@@ -1,0 +1,117 @@
+---
+title: "Building a component library using react and typescript 🚀"
+sysCreatedTime: "Aug 29, 2021"
+tags: ["Design System", "Component Library", "React", "Typescript"]
+body: "A deep dive on how to develop a component library from scratch and also a brief overview about the tools I used for my component library"
+id: 6
+---
+
+<Image
+  alt={`Component Library`}
+  src={`/ComponentLibrary.png`}
+  width={2248}
+  height={1000}
+/>
+
+Component libraries are one of the things that I love in front-end development. The very idea of maintaining a library
+of reusable components that other people can use, has always kept me excited and also, it has been a great learning experience so far.
+The main reason I started this was to learn how each basic front-end component works by building a light-weight one.
+
+I am using the term light-weight here because all the components in [ak-palette](https://ak-palette.netlify.app/) are simple & straight-forward and the properties exposed for each one of them are quite limited but sufficient
+for a basic application.
+
+# Planning
+
+Setting goals and road maps helps you a lot when working on a project as big as a component library. The following are the few goals that
+I set for this design system.
+
+### Design
+
+Before starting to build a component library the first thing you need is a proper design. I learned this the hard way, after
+building a few components I felt that those were inconsistent and I had to re-write a lot of stuff.
+
+Figma is a great tool for designing and it is free. One small tip, no need to design all your components, re-use few designs like, if you design a input field,
+the same can be applied for text area and similarly a design for a select field can be applied to a time picker component.
+
+### Tech stack
+
+#### React
+
+[React](https://github.com/facebook/react) was not the first framework I chose for this component library. I was planning to build this component library
+using [Vue](https://github.com/vuejs/vue), but since I was working in Vue in my company and eventually we might be building one there, I chose
+react for this component library.
+
+#### Typescript
+
+At the same time I was planning to use [Typescript](https://www.typescriptlang.org/) in some of my projects and what better place could it
+be than a component library. Typescript is one of the best decisions I made. Since I
+am the only person maintaining this library (at the time of writing this blog), I see typescript as the extra set of eyes for
+better development.
+
+#### Docusaurus
+
+For documentation purposes, I chose [Docusaurus](https://docusaurus.io/). Documentation can be the key reason for engaging people in any open source project
+and it is as important as the library you are builidng. One of the reasons that makes me hate any library is improper documentation. So
+documentation is the key for open source projects. When it comes to documentation there are a lot of resources, you can also write markdown files and
+publish it though github pages.
+
+<Image
+  alt={"Docusaurus"}
+  src="/gif/Docusaurus.gif"
+  width={2200}
+  height={1350}
+/>
+
+#### Story Book
+
+I use [Story Book](https://storybook.js.org/) for developing components faster. Story book gives you an insight on all of you component and
+also on the properties you expose for each component. Story book can also be used for documentation,
+but I prefer docusaurus because of a better ui and customization.
+
+# Execution
+
+After selecting the proper tools and finalizing designs, I started building the components. I used to establish the things I need to achieve for a
+component and then started writing the code for it. Of course this was not my initial approach, right from my school days, I used to
+write code as soon as a problem statement was given to me. But later when I started working, I realised a lot of issues because
+of this approach and adopted the above flow. This gave me a lot of perspective and a better understanding for things that I develop
+especially while working on this component library. It actually helped me in building stuff faster.
+
+I wrote the documentation for each component as and when I complete the code for a component. So on an average it took me around
+two days to finish a component along with documentation.
+
+# Publishing
+
+I used [babel](https://babeljs.io/) and [rollup](https://github.com/rollup/rollup) to generate a dist, which I use to publish it in NPM.
+I prefered rollup over [webpack](https://github.com/webpack/webpack) because webpack reqiures a lot of bolier plate setup. The following is the current config
+file for rollup,
+
+```js
+const packageJson = require("./package.json");
+
+export default {
+  input: "src/index.js",
+  output: [
+    {
+      file: packageJson.main,
+      format: "cjs",
+      sourcemap: true,
+    },
+    {
+      file: packageJson.module,
+      format: "esm",
+      sourcemap: true,
+    },
+  ],
+  plugins: [
+    peerDepsExternal(),
+    resolve(),
+    commonjs(),
+    typescript({ useTsconfigDeclarationDir: true }),
+    postcss({ output: true }),
+    svg({ base64: true }),
+  ],
+};
+```
+
+Since setting up was easier, I chose rollup for bundling, but for development I still use webpack with the configuration that
+comes inside of create-react-app. I also use [np](https://github.com/sindresorhus/np) for publishing my library.
