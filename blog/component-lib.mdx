@@ -2,7 +2,7 @@
 title: "Building a component library using react and typescript 🚀"
 sysCreatedTime: "Aug 29, 2021"
 tags: ["Design System", "Component Library", "React", "Typescript"]
-body: "A deep dive on how to develop a component library from scratch and also a brief overview about the tools I used for my component library"
+body: "A deep dive on how to develop a component library and also a brief overview about the tools I used for my component library"
 id: 6
 ---
 
@@ -11,27 +11,29 @@ id: 6
   src={`/ComponentLibrary.png`}
   width={2248}
   height={1000}
+  priority={true}
 />
 
-Component libraries are one of the things that I love in front-end development. The very idea of maintaining a library
+Component libraries is one of the things that I love in front-end development. The very idea of maintaining a library
 of reusable components that other people can use, has always kept me excited and also, it has been a great learning experience so far.
-The main reason I started this was to learn how each basic front-end component works by building a light-weight one.
+The main reason I started this was to learn how each basic front-end component works, by building a
+light-weight one.
 
+**NOTE:**
 I am using the term light-weight here because all the components in [ak-palette](https://ak-palette.netlify.app/) are simple & straight-forward and the properties exposed for each one of them are quite limited but sufficient
 for a basic application.
 
 # Planning
 
-Setting goals and road maps helps you a lot when working on a project as big as a component library. The following are the few goals that
-I set for this design system.
+The following are the few goals that I set for this design system.
 
 ### Design
 
-Before starting to build a component library the first thing you need is a proper design. I learned this the hard way, after
-building a few components I felt that those were inconsistent and I had to re-write a lot of stuff.
+Before starting to build a component library the first thing you need is a proper design, I learned this the hard way. After
+building a few components I felt that they were all inconsistent and had to re-write a lot of stuff.
 
-Figma is a great tool for designing and it is free. One small tip, no need to design all your components, re-use few designs like, if you design a input field,
-the same can be applied for text area and similarly a design for a select field can be applied to a time picker component.
+[Figma](https://www.figma.com) is a great tool for designing and it is free. One small tip, no need to design all your components, re-use few designs like, if you design a input field,
+the same can be applied for text area and similarly a design for a select field can be applied to a time picker component etc.
 
 ### Tech stack
 
@@ -43,7 +45,7 @@ react for this component library.
 
 #### Typescript
 
-At the same time I was planning to use [Typescript](https://www.typescriptlang.org/) in some of my projects and what better place could it
+I also was planning to use [Typescript](https://www.typescriptlang.org/) in some of my projects and what better place could it
 be than a component library. Typescript is one of the best decisions I made. Since I
 am the only person maintaining this library (at the time of writing this blog), I see typescript as the extra set of eyes for
 better development.
@@ -55,31 +57,41 @@ and it is as important as the library you are builidng. One of the reasons that 
 documentation is the key for open source projects. When it comes to documentation there are a lot of resources, you can also write markdown files and
 publish it though github pages.
 
+If you have a vuejs component library, then try using [vuepress](https://github.com/vuejs/vuepress). VuePress has many similarities with Docusaurus - both
+focus heavily on content-centric website and provides tailored documentation features out of the box. However, VuePress is powered by Vue, while Docusaurus
+is powered by React. If you want a Vue-based solution, VuePress would be a decent choice.
+
 <Image
   alt={"Docusaurus"}
   src="/gif/Docusaurus.gif"
   width={2200}
   height={1350}
+  priority={true}
 />
 
 #### Story Book
 
-I use [Story Book](https://storybook.js.org/) for developing components faster. Story book gives you an insight on all of you component and
-also on the properties you expose for each component. Story book can also be used for documentation,
-but I prefer docusaurus because of a better ui and customization.
+I use [Story Book](https://storybook.js.org/) for developing isolated components faster. Storybook is an open source tool for building UI components.
+You get a better insight about your components. Story book can also be used for documentation,
+but I prefer docusaurus because of a better ui and you get more options for customizing your docs in docusaurus.
+
+Check out [Anny Caroline's](https://medium.com/@annycarolinegnr/storybook-with-react-typescript-1c15a1cbc26a) blog on how to setup storybook for a react
+typescript project.
+
+#### Icons
+
+Even if you not intend to have an icon library for you design system, you need few icons for certain components. For example, the
+cross button for modals and sidesheets or the calendar icon in date-picker field. You can either
+install a third-party icon library or if you want to maintain some consistency, you can design it in figma or sketch and then use them
+in your project. I designed some of my icons in figma and used it in this library.
 
 # Execution
 
 After selecting the proper tools and finalizing designs, I started building the components. I used to establish the things I need to achieve for a
-component and then started writing the code for it. Of course this was not my initial approach, right from my school days, I used to
-write code as soon as a problem statement was given to me. But later when I started working, I realised a lot of issues because
-of this approach and adopted the above flow. This gave me a lot of perspective and a better understanding for things that I develop
-especially while working on this component library. It actually helped me in building stuff faster.
-
-I wrote the documentation for each component as and when I complete the code for a component. So on an average it took me around
+component and then started writing the code for it. I wrote the documentation for each component as and when I complete the code for it. So on an average it took me around
 two days to finish a component along with documentation.
 
-# Publishing
+# Publishing / Distributing
 
 I used [babel](https://babeljs.io/) and [rollup](https://github.com/rollup/rollup) to generate a dist, which I use to publish it in NPM.
 I prefered rollup over [webpack](https://github.com/webpack/webpack) because webpack reqiures a lot of bolier plate setup. The following is the current config
@@ -115,3 +127,9 @@ export default {
 
 Since setting up was easier, I chose rollup for bundling, but for development I still use webpack with the configuration that
 comes inside of create-react-app. I also use [np](https://github.com/sindresorhus/np) for publishing my library.
+And for the doumentation, bundling was handled by docusaurus itself and I am hosting it through netlify's free tier.
+
+## Further Reading
+
+- [How to create a React component library with TypeScript, rollup.js and Storybook](https://medium.com/@dennisschneider/how-to-create-a-react-component-library-with-typescript-rollup-js-and-storybook-cc3fe95c9c44)
+- [Build Beautiful Documentation Websites with Docusaurus](https://lo-victoria.com/build-beautiful-documentation-websites-with-docusaurus)

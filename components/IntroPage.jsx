@@ -56,7 +56,13 @@ function IntroPage() {
           </Text>
         </div>
         <div className="opacity-90 flex justify-center">
-          <Image src="/coding.svg" alt="Social" width="370px" height="300px" />
+          <Image
+            src="/coding.svg"
+            alt="Social"
+            width="370px"
+            height="300px"
+            priority={true}
+          />
         </div>
       </div>
     </div>
