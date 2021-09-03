@@ -1,7 +1,6 @@
 import React from "react";
 
 import AkCard from "./common/AkCard";
-import { Text } from "ak-palette";
 
 const Projects = () => {
   const openGit = (link) => {
@@ -9,9 +8,7 @@ const Projects = () => {
   };
   return (
     <div className="pb-8">
-      <Text size="xxxlarge" className="text-left dark:text-white">
-        Projects
-      </Text>
+      <div className="font-semibold w-full text-4xl">Projects</div>
       <div className="flex flex-col">
         <AkCard
           content="Palette is light-weight design system and minimal component library for react."

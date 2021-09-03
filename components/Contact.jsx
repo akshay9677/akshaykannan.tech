@@ -32,9 +32,7 @@ function Contact(props) {
 
   return (
     <div id="contact">
-      <Text size="xxxlarge" className="dark:text-white">
-        Newsletter Signup
-      </Text>
+      <div className="font-semibold w-full text-4xl">Newsletter Signup</div>
       <div className="rounded-xl overflow-hidden md:max-w-sm pt-4 pb-8">
         <div className="md:flex justify-center flex items-center p-1">
           <input

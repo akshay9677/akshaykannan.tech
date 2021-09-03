@@ -40,7 +40,7 @@ export default function BlogLayout({ children, frontMatter }) {
             <div className="text-3xl xl:text-4xl font-bold dark:text-white">
               {frontMatter.title}
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex xl:flex-row flex-col justify-between py-3">
               <div className="flex items-center text-sm">
                 Akshay Kannan
                 <div

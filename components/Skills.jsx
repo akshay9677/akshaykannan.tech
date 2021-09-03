@@ -1,5 +1,6 @@
 import React from "react";
 import { Text } from "ak-palette";
+import Image from "next/image";
 
 function Projects() {
   const SkillRating = (props) => {
@@ -14,9 +15,7 @@ function Projects() {
   };
   return (
     <div className="pb-8" id="skill">
-      <Text size="xxxlarge" className="dark:text-white">
-        Skills
-      </Text>
+      <div className="font-semibold w-full text-4xl">Skills</div>
       <div className="flex flex-wrap">
         <SkillRating
           skillName={"JS"}

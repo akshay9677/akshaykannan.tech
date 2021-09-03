@@ -13,6 +13,16 @@ body {
   -o-transition-duration: 0.5s;
 }
 
+.text-gradient {
+  background-color: #f3ec78;
+  background-image: linear-gradient(-50deg, #863fdf, #f3453f);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
 .loader {
   border: 5px solid transparent; /* Light grey */
   border-top: 5px solid #2a52cc; /* Blue */
