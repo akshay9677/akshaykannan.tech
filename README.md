@@ -1,7 +1,6 @@
-I published this website back in May 2020, My website has gone through a lot of changes. Initially I was using Heroku for deployments, later I found out
-about Netlify and migrated my deployments to it. Since I was using this repo for testing out new stuffs,
-I have used a lot of react frameworks, css frameworks, and component libraries here.
-This website has went through a lot of iteration and right now I am happy with my current tech stack. I am currently using,
+# Personal Portfolio
+
+The following is the tech stack of my personal portfolio,
 
 - React
 - Next JS
