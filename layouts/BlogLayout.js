@@ -37,10 +37,10 @@ export default function BlogLayout({ children, frontMatter }) {
       ) : (
         <Fragment>
           <div className="px-0 lg:px-3 xl:px-3">
-            <div className="text-3xl xl:text-4xl font-bold dark:text-white">
+            <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-2">
               {frontMatter.title}
-            </div>
-            <div className="flex xl:flex-row flex-col justify-between py-3">
+            </h1>
+            <div className="flex xl:flex-row flex-col justify-between pb-3">
               <div className="flex items-center text-sm">
                 Akshay Kannan
                 <div
