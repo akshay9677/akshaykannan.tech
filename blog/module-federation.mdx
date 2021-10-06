@@ -1,0 +1,161 @@
+---
+title: "Micro-frontend using module federation ✨"
+sysCreatedTime: "Oct 6, 2021"
+tags: ["Micro-frontend", "Module Federation", "Webpack", "Vue"]
+body: "Learn about webpack's module federation and how it is changing the micro-frontend space."
+id: 8
+---
+
+<Image
+  alt={`Micro-frontends`}
+  src={`/microfrontends.png`}
+  width={2000}
+  height={950}
+  priority={true}
+/>
+
+In this blog we'll look into different ways to achieve micro-frontend pattern and where does module federation stand in this space
+and we'll also see how to expose a component from one react app and make it available in another react app using webpack's
+module federation. If you direcly want to see the implementation <a href="#example">click here</a>.
+
+Micro frontends, are similar to how [micro services](https://microservices.io/) are for backend development. Micro services are isolations of
+different functionalities in backend, so that each service can have their own build and deployment process. So micro-frontend
+is essetially that but for front end development. But micro front ends are not exactly similar to micro services.
+In micro services, we split up the functionality and they run seperately but in micro-frontends, eventhough we seperate the
+functionality, it is required to run on a common base and served as a single unit.
+
+## Integration approaches
+
+Before module federation there are various existing patterns that can be used to achieve micro frontend architecture. All
+these patterns have their own sets of merits and demerits. Based on its integration type (i.e how they are used in the
+target frontend code), they come under two main classification,
+
+- Build-time intergration
+- Run-time integration
+
+#### Build-time integration
+
+The micro frontends are added to the target on a build time basis. They are configured in the build tool of the target repo.
+One common example is publishing micro-frontends through package managers like [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/).
+
+In build-time integration, you have to maintain a build and deployment process for each micro frontend , but the overall
+app performance is better in build-time integrations since there is no seperate wait times, as they are loaded during
+the targets build time itself.
+
+#### Runtime Integration
+
+In this type of integration, the micro frontends are injected and loaded during the run-time of
+the target code base. [Iframes](https://www.w3schools.com/tags/tag_iframe.ASP) and modules from cdn through script tags are
+example of build time integration.
+
+In run-time integration you don't have to publish and maintain versions for your micro front-ends. Therefore, you don't have
+to build, publish and install the micro frontends in the target code, even if there is a small change. The main problem with
+run time intergation is that they are added only during the run time, therefore we should write code considering its load time
+and if its not properly handled it will severly affect the app's performance.
+
+## Module federation
+
+[Module federation](https://webpack.js.org/concepts/module-federation/) was introduced to overcome the above disadvantages in the micro-frontend
+space. It can be itegrated during build time but you don't have to maintain versions for your changes and the performance is also better compared to
+run-time intergations. Therefore using module federation we can get the best of both worlds. It was introduced by [Webpack](https://webpack.js.org) and was in beta for quite a while and
+now few months back they included it in [webpack 5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/).
+
+<Image
+  alt={`Module-Federation`}
+  src={`/module-federation.jpeg`}
+  width={2000}
+  height={950}
+  priority={true}
+/>
+
+## Example
+
+### TL;DR
+
+You can find examples for the framework you need at [https://github.com/module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)
+
+### Module federation in react
+
+We'll look into a short example on how two apps can share a component from one to another using module federation. Lets assume that there are two apps,
+`app-one` and `app-two` with basic working react and webpack configuration. We are trying to `federate` a `component` Button.jsx from
+`app-one` to `app-two`. Module federation plugin is exported by container property in webpack package (i.e `const { ModuleFederationPlugin } = require("webpack").container;`)
+
+So for app-one which has the Button.jsx component the plugins array in webpack config will look something like this,
+
+```js
+const path = require('path');
+const { ModuleFederationPlugin } = require("webpack").container;
+
+module.exports = {
+  entry: path.join(__dirname, "src", "index.js"), // root file of your react app
+  output: {
+    publicPath: "http://localhost:3000/", // port where your app will be loaded
+    clean: true,
+  },
+  module: {
+    rules: [...]
+  },
+  plugins: [
+    ...,
+    new ModuleFederationPlugin({
+      name: "app-one",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Button": "./src/Button.jsx",
+      },
+    }),
+  ],
+}
+```
+
+This means that our component will be bundled to `http://localhost:3000/remoteEntry.js` and is ready to be used in
+our app-two. Now the plugins array in the webpack config of app-two should be like this,
+
+```js
+const path = require('path');
+const { ModuleFederationPlugin } = require("webpack").container;
+
+module.exports = {
+  entry: path.join(__dirname, "src", "index.js"), // root file of your react app
+  output: {
+    publicPath: "http://localhost:3001/", // port where your app will be loaded
+    clean: true,
+  },
+  module: {
+    rules: [...]
+  },
+  plugins: [
+    ...,
+    new ModuleFederationPlugin({
+      name: "app-two",
+      remotes: {
+        "app-one": "app-one@http://localhost:3000/remoteEntry.js",
+      },
+    }),
+  ],
+}
+```
+
+Thus the button component is available at `app-one/Button`, therefore your can do something like this to use that
+button component
+
+```jsx
+import Button from "app-one/Button";
+
+const Component = () => {
+  return <Button>Click Me</Button>;
+};
+
+export default Component;
+```
+
+Hence we were able to federate a component from one app and make it available in another app. Eventhough there are a few advantages
+in module federation, they too have certain pitfalls, like it works well when two apps have to share resources. Modules can
+be shared only between apps, but to expose components from a repo which is not an app you need to maintain a bundling tool for
+it and make it available in a url or cdn. But if your use case is to share frontend modules between apps then module federation
+is the best option available right now.
+
+## Further Reading
+
+- [Martin Fowler's article about micro-frontend](https://martinfowler.com/articles/micro-frontends.html)
+- [Screencast about module federation](https://www.youtube.com/playlist?list=PLWSiF9YHHK-DqsFHGYbeAMwbd9xcZbEWJ)

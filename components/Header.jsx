@@ -33,10 +33,10 @@ function Header(props) {
     <div
       className="navbar-header"
       style={{
-        backdropFilter: " saturate(50%) blur(60px)",
+        backdropFilter: " saturate(50%) blur(10px)",
       }}
     >
-      <div className="flex justify-between max-w-4xl mx-auto py-5 px-8 lg:pl-0">
+      <div className="flex justify-between max-w-3xl mx-auto py-5 px-8 lg:pl-0">
         <div
           className="cursor-pointer flex items-center hover:opacity-60"
           onClick={() => router.push("/")}

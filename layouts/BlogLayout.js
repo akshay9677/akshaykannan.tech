@@ -26,13 +26,13 @@ export default function BlogLayout({ children, frontMatter }) {
   };
 
   return (
-    <div className="pt-24 max-w-3xl px-8 mx-auto pb-5 dark:text-gray-400">
+    <div className="pt-24 max-w-3xl px-8 mx-auto pb-5 dark:text-gray-300">
       {loading ? (
         <div
           className="flex justify-center items-center"
           style={{ height: "70vh" }}
         >
-          <div class="loader"></div>
+          <div className="loader"></div>
         </div>
       ) : (
         <Fragment>

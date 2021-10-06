@@ -1,3 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
+:target:before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin: -100px 0 0;
+}
 body {
   margin: 0px;
 }
@@ -106,7 +116,7 @@ body {
 }
 
 .token.keyword {
-  color: #8be9fd;
+  color: #3b82f6;
 }
 
 .token.regex,
@@ -125,6 +135,31 @@ body {
 
 .token.entity {
   cursor: help;
+}
+
+.anchor {
+  position: absolute;
+  visibility: hidden;
+  margin-left: -0.7em;
+  padding-right: 0.2em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+  visibility: visible;
+}
+
+.anchor:after {
+  content: "#";
+  color: #2a52cc;
+}
+
+*:hover > .anchor {
+  text-decoration: none;
+  visibility: visible;
 }
 
 blockquote {

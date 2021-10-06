@@ -3,20 +3,15 @@ import Image from "next/image";
 
 function IntroPage() {
   return (
-    <div className="flex justify-around rounded-xl overflow-hidden pt-8 pb-8">
-      <div className="flex flex-col mt-20 text-center lg:text-left xl:text-left">
-        <div className="flex flex-col justify-center  intro-text-container">
-          <div className="font-semibold w-full text-5xl">
+    <div className="flex justify-around rounded-xl overflow-hidden pt-3 pb-8">
+      <div className="flex flex-col xl:flex-row lg:flex-row mt-20 text-center lg:text-left xl:text-left">
+        <div className="flex w-full xl:w-1/2 lg:w-1/2 flex-col justify-center  intro-text-container">
+          <div className="font-semibold w-full text-4xl">
             Hey 👋 , I'm <span className="text-gradient">Akshay</span>
           </div>
-          <Text
-            size="medium"
-            className="leading-7 text-gray-500 dark:text-gray-400 pt-5"
-          >
-            I am a self taught programmer and software engineer. I'm a
-            javascript enthusiast and can create responsive and scalable web
-            apps using the latest technologies available. I'm currently working
-            as a Software Engineer at{" "}
+          <div className="leading-7 text-md text-gray-500 dark:text-gray-400 pt-5">
+            I am a self taught front-end developer & a Javascript enthusiast.
+            I'm currently working as a Software Engineer at{" "}
             <a
               href="https://www.facilio.com"
               target="_blank"
@@ -26,7 +21,7 @@ function IntroPage() {
               Facilio
             </a>
             .
-          </Text>
+          </div>
           <Text className="pt-3 flex items-center justify-center lg:justify-start xl:justify-start dark:text-white mb-2">
             <a
               href="https://www.linkedin.com/in/akshay-kannan-49964617a"

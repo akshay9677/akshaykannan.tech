@@ -52,6 +52,8 @@ const getFile = async (slug) => {
     scope: data,
     mdxOptions: {
       remarkPlugins: [
+        remarkSlug,
+        remarkCodetitles,
         [
           remarkAutoHighlights,
           {
@@ -60,8 +62,6 @@ const getFile = async (slug) => {
             },
           },
         ],
-        remarkSlug,
-        remarkCodetitles,
       ],
       rehypePlugins: [mdxPrism],
     },
