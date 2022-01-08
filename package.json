@@ -28,6 +28,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "reading-time": "^1.4.0",
+    "remark-admonitions": "^1.2.1",
     "remark-autolink-headings": "^7.0.1",
     "remark-code-titles": "^0.1.2",
     "remark-slug": "^7.0.0",

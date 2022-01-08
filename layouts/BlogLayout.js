@@ -7,6 +7,7 @@ export default function BlogLayout({ children, frontMatter }) {
   const [views, setViews] = useState(0);
   useEffect(() => {
     fetchViews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchViews = async () => {
@@ -27,54 +28,50 @@ export default function BlogLayout({ children, frontMatter }) {
 
   return (
     <div className="pt-24 max-w-3xl px-8 mx-auto pb-5 dark:text-gray-300">
-      {loading ? (
-        <div
-          className="flex justify-center items-center"
-          style={{ height: "70vh" }}
-        >
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <Fragment>
-          <div className="px-0 lg:px-3 xl:px-3">
-            <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-2">
-              {frontMatter.title}
-            </h1>
-            <div className="flex xl:flex-row flex-col justify-between pb-3">
-              <div className="flex items-center text-sm">
-                Akshay Kannan
-                <div
-                  className="dark:text-white"
-                  style={{ fontSize: "4px", padding: "7.2px 6px" }}
-                >
-                  <i className="fas fa-circle" />
-                </div>
-                {frontMatter.readingTime.text}
+      <Fragment>
+        <div className="px-0 lg:px-3 xl:px-3">
+          <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-2">
+            {frontMatter.title}
+          </h1>
+          <div className="flex xl:flex-row flex-col justify-between pb-3">
+            <div className="flex items-center text-sm">
+              Akshay Kannan
+              <div
+                className="dark:text-white"
+                style={{ fontSize: "4px", padding: "7.2px 6px" }}
+              >
+                <i className="fas fa-circle" />
               </div>
-              <div className="flex items-center text-sm">
-                {frontMatter.sysCreatedTime}
-                <div
-                  className="dark:text-white"
-                  style={{ fontSize: "4px", padding: "7.2px 6px" }}
-                >
-                  <i className="fas fa-circle" />
-                </div>
-                {views} views
-              </div>
+              {frontMatter.readingTime.text}
             </div>
-            <div className="flex flex-wrap">
-              {frontMatter.tags ? (
-                frontMatter.tags.map((tag, index) => (
-                  <AkTags key={index} name={tag} />
-                ))
+            <div className="flex items-center text-sm">
+              {frontMatter.sysCreatedTime}
+              <div
+                className="dark:text-white"
+                style={{ fontSize: "4px", padding: "7.2px 6px" }}
+              >
+                <i className="fas fa-circle" />
+              </div>
+
+              {loading ? (
+                <div className="small-loader"></div>
               ) : (
-                <span></span>
+                <span>{views} views</span>
               )}
             </div>
           </div>
-          {children}
-        </Fragment>
-      )}
+          <div className="flex flex-wrap">
+            {frontMatter.tags ? (
+              frontMatter.tags.map((tag, index) => (
+                <AkTags key={index} name={tag} />
+              ))
+            ) : (
+              <span></span>
+            )}
+          </div>
+        </div>
+        {children}
+      </Fragment>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, Button } from "ak-palette";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -7,11 +7,25 @@ function Header(props) {
   const router = useRouter();
   const [isDark, setDark] = useState(false);
 
+  useEffect(() => {
+    const body = document.querySelector("body");
+    let theme = localStorage.getItem("dark-theme");
+    if (theme) {
+      body.classList.add("dark");
+      setDark(true);
+    }
+  }, []);
+
   const changeTheme = () => {
     setDark(!isDark);
     const body = document.querySelector("body");
-    if (body.classList.contains("dark")) body.classList.remove("dark");
-    else body.classList.add("dark");
+    if (body.classList.contains("dark")) {
+      body.classList.remove("dark");
+      localStorage.removeItem("dark-theme");
+    } else {
+      body.classList.add("dark");
+      localStorage.setItem("dark-theme", true);
+    }
   };
 
   function DarkModeicon() {

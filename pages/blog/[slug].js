@@ -6,11 +6,13 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkAutoHighlights from "remark-autolink-headings";
 import remarkSlug from "remark-slug";
 import remarkCodetitles from "remark-code-titles";
+import remarkAdmonitions from "remark-admonitions";
 import style from "./docs.module.scss";
 import BlogLayout from "../../layouts/BlogLayout";
 import matter from "gray-matter";
 import Image from "next/image";
 import readingTime from "reading-time";
+import "remark-admonitions/styles/classic.css";
 
 export default function Docs({ mdxSource, frontMatter }) {
   return (
@@ -54,6 +56,7 @@ const getFile = async (slug) => {
       remarkPlugins: [
         remarkSlug,
         remarkCodetitles,
+        remarkAdmonitions,
         [
           remarkAutoHighlights,
           {

@@ -1,0 +1,141 @@
+---
+title: "Is Svelte ⚡ really worth your attention ?"
+sysCreatedTime: "Jan 8, 2022"
+tags: ["Svelte", "Framework", "Javascript"]
+body: "Is Svelte really worth your attention ? Learn more about it in this blog. Also learn on how to setup a basic Svelte
+application."
+id: 9
+---
+
+JavaScript being one of the most popular languages, it’s a favorite for web development both on the front and back-end.
+And as such, there are a lot of js frameworks out there, and a new js framework is being released every month. Even though
+there are a lot of js framework, [React](https://reactjs.org/), [Vue](https://vuejs.org/), [Ember](https://emberjs.com/) &
+[Angular](https://angular.io/) have been the top contenders. Svelte a new framework has been gaining a lot of attention in
+the recent days. There are a lot of interesting things in Svelte. Learn more on why svelte stands out from the existing list
+of frameworks.
+
+<Image
+  alt={`svelte`}
+  src={`/svelte.png`}
+  width={1400}
+  height={800}
+  priority={true}
+/>
+
+## What is Svelte ?
+
+Svelte is a **Javascript framework** which is used to construct user interfaces, similar to React, Vue, etc. However unlike react and
+vue it does not use the [Virtual dom](https://reactjs.org/docs/faq-internals.html). This is what actually caught my eye, it rises a lot of questions like how does reactivity
+work with svelte. To learn about no virtual dom in svelte, lets see what is a virtual dom.
+
+### Virtual DOM
+
+Virtual DOM is nothing but a shallow object / copy of the actual DOM, which has information of how our web page might look like. So
+frameworks like react and vue uses this virtual dom to update the state of the web page, they compare the dom with the virtual
+dom, whenever there is a change they update the virtual dom.
+
+As you can see react and vue rely on an API which compares virtual DOM and actual DOM to apply reactivity. So this api should
+be there in our bundled code for reactivity to work. Without the api there is no way of knowing when to update the virtual dom.
+Because of this API a lot of framework code might be injected into the browser, which might slow your apps performance compared
+to a framework without this api.
+
+:::tip note
+Virtual DOM is **fast** but with few limitations. As it helps developers to concentrate on more creative tasks rather than
+focussing on reactivity and performance, it is used in lot of frameworks despite the limitations.
+:::
+
+### Svelte - No Virtual DOM
+
+Svelte is such a framework that does not use Virtual DOM. Svelte,rather than maintaining a virtual DOM, compiles the code to tiny
+frame less vanilla JavaScript bundle, which updates DOM whenever state changes. This means the reactivity runs on the compiler,
+instead of relying on an API to do so. Therefore no overhead framework code is injected into our browser, this also means Svelte
+will not be present in our production build, thus it is called as a "disappearing framework". This increases app's performance
+to a great extent.
+
+## Simple Syntax
+
+Most framework, provide complex syntax and a lot boiler plate codes. Svelte provides a simple syntax, with less code compared to other
+frameworks out there. Most frameworks use hooks and other ways to declare reactive properties. In svelte you can simple declare
+them as javascript variables and updating them updates all the places where the variable is used. A short comparision of same
+functionality (button with counter) in different frameworks.
+
+### React
+
+```jsx
+import { useState } from "react";
+
+export const Counter = () => {
+  const [count, setCount] = useState(0);
+  const handleClick = () => count++;
+
+  return <button onClick={handleClick}>You have clicked {count} times</button>;
+};
+```
+
+### Vue
+
+```jsx
+<template>
+  <button @click="handleClick">
+    You have clicked {{ count }} times
+  </button>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  methods: {
+    handleClick() {
+      this.count = this.count + 1;
+    },
+  },
+};
+</script>
+```
+
+### Svelte
+
+```jsx
+<script>
+let count = 0
+const handleClick = () => count++
+</script>
+
+<button on:click={handleClick}>You have clicked {count} times</button>
+```
+
+## Getting Started
+
+Since svelte is more of like a compiler, we won't be importing the framework's api code in our root file. We can create a sample
+project with minimal development setup by running the following command.
+
+```shell
+npx degit sveltejs/template svelte-app
+cd svelte-app
+```
+
+This will clone a basic template with all the necessary dependencies required to get started on Svelte. After cloning you can install
+the dependencies and run the dev command to start the server.
+
+One interesting thing that you might notice in package.json is that the svelte core dependency is in the dev dependencies 🤯. This
+is because, as mentioned earlier svelte won't be in the production code because of its no virtual DOM and relying on the compiler
+for reactivity.
+
+```shell
+npm install
+npm run dev
+```
+
+This svelte clone uses [rollup](https://rollupjs.org/guide/en/) to compile/rebuild the svelte code using the configuration mentioned in `rollup.config.js`
+file. You can add new plugins or edit plugins in the config file. We can also use webpack to compile svelte using the appropriate
+plugins. Thus we were able to setup a simple svelte project, learn more about svelte's basics in their [documentation](https://svelte.dev/).
+
+## Further Reading
+
+- [Svelte documentation](https://svelte.dev/)
+- [No Virtual DOM](https://svelte.dev/blog/virtual-dom-is-pure-overhead)
+- [Svelte's reactivity](https://svelte.dev/blog/svelte-3-rethinking-reactivity)
