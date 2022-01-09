@@ -10,9 +10,9 @@ id: 9
 JavaScript being one of the most popular languages, it’s a favorite for web development both on the front and back-end.
 And as such, there are a lot of js frameworks out there, and a new js framework is being released every month. Even though
 there are a lot of js framework, [React](https://reactjs.org/), [Vue](https://vuejs.org/), [Ember](https://emberjs.com/) &
-[Angular](https://angular.io/) have been the top contenders. Svelte a new framework has been gaining a lot of attention in
-the recent days. There are a lot of interesting things in Svelte. Learn more on why svelte stands out from the existing list
-of frameworks.
+[Angular](https://angular.io/) have been the top contenders. Svelte an even new framework has been gaining a lot of attention
+in the recent days. There are a lot of interesting things in Svelte. Learn more on why svelte stands out from the existing list
+of frameworks in this blog.
 
 <Image
   alt={`svelte`}
@@ -26,7 +26,7 @@ of frameworks.
 
 Svelte is a **Javascript framework** which is used to construct user interfaces, similar to React, Vue, etc. However unlike react and
 vue it does not use the [Virtual dom](https://reactjs.org/docs/faq-internals.html). This is what actually caught my eye, it rises a lot of questions like how does reactivity
-work with svelte. To learn about no virtual dom in svelte, lets see what is a virtual dom.
+works with svelte. To learn about no virtual dom in svelte, let's see what is a virtual dom.
 
 ### Virtual DOM
 
@@ -34,23 +34,22 @@ Virtual DOM is nothing but a shallow object / copy of the actual DOM, which has 
 frameworks like react and vue uses this virtual dom to update the state of the web page, they compare the dom with the virtual
 dom, whenever there is a change they update the virtual dom.
 
-As you can see react and vue rely on an API which compares virtual DOM and actual DOM to apply reactivity. So this api should
-be there in our bundled code for reactivity to work. Without the api there is no way of knowing when to update the virtual dom.
-Because of this API a lot of framework code might be injected into the browser, which might slow your apps performance compared
-to a framework without this api.
+As you can see react and vue rely on an API which compares virtual DOM and actual DOM to make changes to our page. So this api
+should be there in our bundled code for reactivity to work. Without this api, there is no way for the framework to know when to
+update the virtual dom. Thus, a lot of framework code might be injected into the browser, which might slow your
+apps performance compared to a framework without this api.
 
 :::tip note
-Virtual DOM is **fast** but with few limitations. As it helps developers to concentrate on more creative tasks rather than
-focussing on reactivity and performance, it is used in lot of frameworks despite the limitations.
+Frameworks using **Virtual DOM** are **fast** but it comes with a few limitations. As it helps developers to concentrate on more
+creative tasks rather than focussing on reactivity and performance, it is used in lot of frameworks despite the limitations.
 :::
 
 ### Svelte - No Virtual DOM
 
-Svelte is such a framework that does not use Virtual DOM. Svelte,rather than maintaining a virtual DOM, compiles the code to tiny
-frame less vanilla JavaScript bundle, which updates DOM whenever state changes. This means the reactivity runs on the compiler,
-instead of relying on an API to do so. Therefore no overhead framework code is injected into our browser, this also means Svelte
-will not be present in our production build, thus it is called as a "disappearing framework". This increases app's performance
-to a great extent.
+Svelte is such a framework that does not use Virtual DOM. Svelte, compiles the code to tiny frame less vanilla JavaScript bundle,
+which updates DOM whenever state changes. This means the reactivity runs on the compiler, instead of relying on an API to do so.
+Therefore no overhead framework code is injected into our browser, this also means Svelte will not be present in our production
+build, thus it is called as a "**disappearing framework**". This increases app's performance to a great extent.
 
 ## Simple Syntax
 
