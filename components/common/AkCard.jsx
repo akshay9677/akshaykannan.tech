@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const AkCard = ({ title, content, click }) => {
   return (
     <div>
@@ -7,10 +9,12 @@ const AkCard = ({ title, content, click }) => {
         </h1>
         <p className="text-sm mt-2">{content}</p>
         <div>
-          <div onClick={click} className="cursor-pointer hover:opacity-70">
-            <span className="text-sm">
-              <i className="fab fa-github"></i> Learn More
-            </span>
+          <div
+            onClick={click}
+            className="cursor-pointer hover:opacity-50 flex self-center"
+          >
+            <Image src="/icons/github.svg" width="18px" height="18px" />
+            <span className="ml-1 text-sm"> Learn More</span>
           </div>
         </div>
       </div>

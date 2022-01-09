@@ -1,4 +1,5 @@
 import { Text } from "ak-palette";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -11,33 +12,33 @@ const Footer = () => {
           href="https://www.linkedin.com/in/akshay-kannan-49964617a"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-5 text-2xl pointer icon-social dark:text-gray-400"
+          className="pr-5 pointer icon-social "
         >
-          <i className="fab fa-linkedin"></i>
+          <Image src="/icons/linkedin.svg" width="25px" height="25px" />
         </a>
         <a
           href="https://www.instagram.com/_akshay_kannan_/"
           target="_blank"
           rel="noopener noreferrer"
-          className="pr-5 text-2xl pointer icon-social dark:text-gray-400"
+          className="pr-5 pointer icon-social "
         >
-          <i className="fab fa-instagram"></i>
+          <Image src="/icons/insta.svg" width="25px" height="25px" />
         </a>
         <a
           href="http://twitter.com/_akshay_kannan_"
           target="_blank"
           rel="noopener noreferrer"
-          className="pr-5 text-2xl pointer icon-social dark:text-gray-400"
+          className="pr-5 pointer icon-social "
         >
-          <i className="fab fa-twitter"></i>
+          <Image src="/icons/twitter.svg" width="25px" height="25px" />
         </a>
         <a
           href="https://github.com/akshay9677"
           target="_blank"
           rel="noopener noreferrer"
-          className="pr-5 text-2xl pointer icon-social dark:text-gray-400"
+          className="pb-1 pointer icon-social "
         >
-          <i className="fab fa-github"></i>
+          <Image src="/icons/github.svg" width="25px" height="25px" />
         </a>
       </Text>
     </footer>

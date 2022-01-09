@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Akshay Kannan</title>
         <link rel="icon" href="/Akshay.png" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
         <link
           href="https://fonts.googleapis.com/css?family=Oxygen"
           rel="stylesheet"

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, Button } from "ak-palette";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 function Header(props) {
   const router = useRouter();
@@ -27,22 +28,6 @@ function Header(props) {
       localStorage.setItem("dark-theme", true);
     }
   };
-
-  function DarkModeicon() {
-    return (
-      <div style={{ color: "#fff", width: "20px" }}>
-        <i className="fas fa-moon"></i>
-      </div>
-    );
-  }
-
-  function LightModeIcon() {
-    return (
-      <div style={{ color: "#fff", width: "20px" }}>
-        <i className="fas fa-lightbulb"></i>
-      </div>
-    );
-  }
   return (
     <div
       className="navbar-header"
@@ -50,7 +35,7 @@ function Header(props) {
         backdropFilter: " saturate(50%) blur(10px)",
       }}
     >
-      <div className="flex justify-between max-w-3xl mx-auto py-5 px-8 lg:pl-0">
+      <div className="flex justify-between max-w-3xl mx-auto py-5 px-8 lg:pl-0 lg:pr-0">
         <div
           className="cursor-pointer flex items-center hover:opacity-60"
           onClick={() => router.push("/")}
@@ -76,9 +61,13 @@ function Header(props) {
               Blog
             </Text>
           </div>
-          <Button type={isDark ? "info" : "default"} onClick={changeTheme}>
-            {isDark ? <LightModeIcon /> : <DarkModeicon />}
-          </Button>
+          <DarkModeSwitch
+            onChange={changeTheme}
+            checked={isDark}
+            size={25}
+            moonColor="#fff"
+            sunColor="#244361"
+          />
         </div>
       </div>
     </div>

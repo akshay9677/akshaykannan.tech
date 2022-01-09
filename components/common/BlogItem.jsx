@@ -1,4 +1,5 @@
 import AkTags from "../../components/common/AkTags";
+import Image from "next/image";
 
 const BlogItem = ({ blog, onItemClick }) => {
   return (
@@ -20,19 +21,15 @@ const BlogItem = ({ blog, onItemClick }) => {
             </div>
           )}
           <div className="flex flex-row items-center">
-            <div className="text-gray-500" style={{ fontSize: "14px" }}>
+            <div className="text-gray-500 mr-1.5" style={{ fontSize: "14px" }}>
               {blog.readingTime.text}
             </div>
-            <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
-              <i className="fas fa-circle"></i>
-            </div>
-            <div className="text-gray-500" style={{ fontSize: "14px" }}>
+            <Image src="/icons/dot.svg" width="5px" height="5px" />
+            <div className="text-gray-500 mx-1.5" style={{ fontSize: "14px" }}>
               {blog.sysCreatedTime}
             </div>
-            <div style={{ fontSize: "4px", padding: "7.2px 6px" }}>
-              <i className="fas fa-circle"></i>
-            </div>
-            <div className="text-gray-500" style={{ fontSize: "14px" }}>
+            <Image src="/icons/dot.svg" width="5px" height="5px" />
+            <div className="text-gray-500 ml-1.5" style={{ fontSize: "14px" }}>
               Akshay Kannan
             </div>
           </div>

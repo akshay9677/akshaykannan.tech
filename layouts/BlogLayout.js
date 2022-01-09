@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { useEffect, useState } from "react";
 import AkTags from "../components/common/AkTags";
+import Image from "next/image";
 
 export default function BlogLayout({ children, frontMatter }) {
   const [loading, setLoading] = useState(false);
@@ -30,28 +31,22 @@ export default function BlogLayout({ children, frontMatter }) {
     <div className="pt-24 max-w-3xl px-8 mx-auto pb-5 dark:text-gray-300">
       <Fragment>
         <div className="px-0 lg:px-3 xl:px-3">
-          <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-2">
+          <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-0">
             {frontMatter.title}
           </h1>
-          <div className="flex xl:flex-row flex-col justify-between pb-3">
+          <div className="flex xl:flex-row flex-col justify-between py-4">
             <div className="flex items-center text-sm">
               Akshay Kannan
-              <div
-                className="dark:text-white"
-                style={{ fontSize: "4px", padding: "7.2px 6px" }}
-              >
-                <i className="fas fa-circle" />
-              </div>
+              <span className="mx-1.5 flex self-center">
+                <Image src="/icons/dot.svg" width="5px" height="5px" />
+              </span>
               {frontMatter.readingTime.text}
             </div>
             <div className="flex items-center text-sm">
               {frontMatter.sysCreatedTime}
-              <div
-                className="dark:text-white"
-                style={{ fontSize: "4px", padding: "7.2px 6px" }}
-              >
-                <i className="fas fa-circle" />
-              </div>
+              <span className="mx-1.5 flex self-center">
+                <Image src="/icons/dot.svg" width="5px" height="5px" />
+              </span>
 
               {loading ? (
                 <div className="small-loader"></div>

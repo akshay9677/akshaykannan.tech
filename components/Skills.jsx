@@ -6,8 +6,12 @@ function Projects() {
   const SkillRating = (props) => {
     return (
       <div className="flex flex items-center px-2 py-1 mr-4 mt-4">
-        <Text className="mr-2">{props.skillIcon}</Text>
-        <Text size="large" className="dark:text-white">
+        <Image
+          src={`/icons/skills/${props.skillIcon}.svg`}
+          width="18px"
+          height="18px"
+        />
+        <Text size="large" className="ml-2 dark:text-white">
           {props.skillName}
         </Text>
       </div>
@@ -17,38 +21,14 @@ function Projects() {
     <div className="pb-8" id="skill">
       <div className="font-semibold w-full text-4xl">Skills</div>
       <div className="flex flex-wrap">
-        <SkillRating
-          skillName={"JS"}
-          skillIcon={<i className="fab fa-js text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"Node"}
-          skillIcon={<i className="fab fa-node-js text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"React"}
-          skillIcon={<i className="fab fa-react text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"Vue"}
-          skillIcon={<i className="fab fa-vuejs text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"CSS"}
-          skillIcon={<i className="fab fa-css3-alt text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"HTML"}
-          skillIcon={<i className="fab fa-html5 text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"MongoDB"}
-          skillIcon={<i className="fas fa-database text-xl "></i>}
-        />
-        <SkillRating
-          skillName={"Java"}
-          skillIcon={<i className="fab fa-java text-xl "></i>}
-        />
+        <SkillRating skillName={"JS"} skillIcon="js" />
+        <SkillRating skillName={"Node"} skillIcon="node" />
+        <SkillRating skillName={"React"} skillIcon="react" />
+        <SkillRating skillName={"Vue"} skillIcon="vue" />
+        <SkillRating skillName={"CSS"} skillIcon="css" />
+        <SkillRating skillName={"HTML"} skillIcon="html" />
+        <SkillRating skillName={"MongoDB"} skillIcon="mongo" />
+        <SkillRating skillName={"Java"} skillIcon="java" />
       </div>
     </div>
   );
