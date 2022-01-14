@@ -40,7 +40,7 @@ const BlogBody = ({ posts }) => {
               );
             }
           }}
-          className="w-full	px-3 py-2 mr-3 text-gray-900 border border-transparent rounded shadow focus:outline-none dark:bg-gray-900 dark:text-gray-200 focus:ring-2  focus:ring-blue-300 focus:border-transparent"
+          className="w-full	px-3 py-2 mr-3 text-gray-900 border border-transparent rounded shadow focus:outline-none dark:bg-gray-800 dark:text-gray-200 focus:ring-2  focus:ring-blue-300 focus:border-transparent"
         />
       </div>
       <div className="px-2">

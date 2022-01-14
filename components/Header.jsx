@@ -46,7 +46,8 @@ function Header(props) {
           <div
             className="mr-10 pointer font-medium hover:opacity-60 cursor-pointer"
             onClick={() =>
-              window.open("https://www.polywork.com/_akshay_kannan_")
+              (window.location.href =
+                "https://www.polywork.com/_akshay_kannan_")
             }
           >
             <Text size="large" className="dark:text-white">

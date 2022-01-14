@@ -14,7 +14,7 @@ const AkCard = ({ title, content, click }) => {
             className="cursor-pointer hover:opacity-50 flex self-center"
           >
             <Image src="/icons/github.svg" width="18px" height="18px" />
-            <span className="ml-1 text-sm"> Learn More</span>
+            <span className="ml-2 text-sm"> Learn More</span>
           </div>
         </div>
       </div>

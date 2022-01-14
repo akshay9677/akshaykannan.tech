@@ -4,7 +4,7 @@ import Image from "next/image";
 function IntroPage() {
   return (
     <div className="flex justify-around rounded-xl overflow-hidden pt-3 pb-8">
-      <div className="flex flex-col xl:flex-row lg:flex-row mt-20 text-center lg:text-left xl:text-left">
+      <div className="flex flex-col xl:flex-row lg:flex-row mt-20 text-center lg:text-left xl:text-left justify-between">
         <div className="flex w-full xl:w-1/2 lg:w-1/2 flex-col justify-center  intro-text-container">
           <div className="font-semibold w-full text-4xl">
             Hey 👋 , I'm <span className="text-gradient">Akshay</span>
@@ -58,13 +58,7 @@ function IntroPage() {
           </Text>
         </div>
         <div className="opacity-90 flex justify-center">
-          <Image
-            src="/coding.svg"
-            alt="Social"
-            width="370px"
-            height="300px"
-            priority={true}
-          />
+          <Image src="/coding.svg" alt="Social" width="370px" height="300px" />
         </div>
       </div>
     </div>
