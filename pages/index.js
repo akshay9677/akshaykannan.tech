@@ -2,7 +2,6 @@ import React from "react";
 
 import IntroPage from "../components/IntroPage.jsx";
 import Contact from "../components/Contact.jsx";
-import Skills from "../components/Skills.jsx";
 import Project from "../components/Projects";
 import RecentBlogs from "../components/RecentBlogs";
 import { getAllFilesFrontMatter } from "../utils/mdx.js";
@@ -13,7 +12,6 @@ function Main({ posts }) {
       <IntroPage />
       <RecentBlogs posts={posts} />
       <Project />
-      <Skills />
       <Contact />
     </div>
   );

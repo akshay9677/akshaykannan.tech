@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, Button } from "ak-palette";
-import Image from "next/image";
+import { Text } from "ak-palette";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
@@ -35,16 +34,18 @@ function Header(props) {
         backdropFilter: " saturate(50%) blur(10px)",
       }}
     >
-      <div className="flex justify-between max-w-3xl mx-auto py-5 px-8 lg:pl-0 lg:pr-0">
-        <div
-          className="cursor-pointer flex items-center hover:opacity-60"
-          onClick={() => router.push("/")}
-        >
-          <Image src="/logo.svg" alt="errorSvg" width="30px" height="30px" />
-        </div>
+      <div className="flex justify-between items-center max-w-3xl mx-auto py-5 px-8 lg:pl-0 lg:pr-0">
         <div className="flex items-center">
           <div
-            className="mr-10 pointer font-medium hover:opacity-60 cursor-pointer"
+            className="cursor-pointer flex items-center hover:opacity-60"
+            onClick={() => router.push("/")}
+          >
+            <Text size="large" className="dark:text-white">
+              Home
+            </Text>
+          </div>
+          <div
+            className="ml-8 pointer font-medium hover:opacity-60 cursor-pointer"
             onClick={() =>
               (window.location.href =
                 "https://www.polywork.com/_akshay_kannan_")
@@ -55,17 +56,22 @@ function Header(props) {
             </Text>
           </div>
           <div
-            className="mr-10 pointer font-medium hover:opacity-60 cursor-pointer"
+            className="ml-8 pointer font-medium hover:opacity-60 cursor-pointer"
             onClick={() => router.push("/blog")}
           >
             <Text size="large" className="dark:text-white">
               Blog
             </Text>
           </div>
+        </div>
+        <div
+          className="w-10 h-10 bg-gray-200 rounded-lg dark:bg-gray-800 hover:ring-2 ring-gray-300 cursor-pointer flex items-center justify-center"
+          onClick={changeTheme}
+        >
           <DarkModeSwitch
-            onChange={changeTheme}
+            onChange={() => {}}
             checked={isDark}
-            size={25}
+            size={20}
             moonColor="#fff"
             sunColor="#244361"
           />

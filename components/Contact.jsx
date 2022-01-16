@@ -2,10 +2,10 @@ import Axios from "axios";
 import React, { useState } from "react";
 import { baseUrl } from "../utils/baseUrl";
 
-import { Button, Text, Input } from "ak-palette";
+import { Button } from "ak-palette";
 import { toast } from "ak-palette";
 
-function Contact(props) {
+function Contact() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
