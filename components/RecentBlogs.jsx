@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import BlogItem from "../components/common/BlogItem";
+import { Text } from "@nextui-org/react";
 
 const RecentBlogs = ({ posts }) => {
   const router = useRouter();
@@ -9,7 +10,7 @@ const RecentBlogs = ({ posts }) => {
   };
   return (
     <div className="pb-8">
-      <div className="font-semibold w-full text-4xl">Recent Blogs</div>
+      <Text h2>Recent Blogs</Text>
       {posts &&
         posts.map((blog, index) => {
           return (

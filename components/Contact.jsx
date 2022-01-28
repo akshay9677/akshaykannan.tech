@@ -1,9 +1,9 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import { baseUrl } from "../utils/baseUrl";
-
-import { Button } from "ak-palette";
 import { toast } from "ak-palette";
+
+import { Input, Button, Card, Text } from "@nextui-org/react";
 
 function Contact() {
   const [email, setEmail] = useState("");
@@ -32,22 +32,35 @@ function Contact() {
 
   return (
     <div id="contact">
-      <div className="font-semibold w-full text-4xl">Newsletter Signup</div>
-      <div className="rounded-xl overflow-hidden md:max-w-sm pt-4 pb-8">
-        <div className="md:flex justify-center flex items-center p-1">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            autoComplete="off"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            className="w-full	px-3 py-2 mr-3 text-gray-900 border border-transparent rounded shadow focus:outline-none dark:bg-gray-800 dark:text-gray-200 focus:ring-2  focus:ring-blue-300 focus:border-transparent"
-          />
-          <Button type="info" onClick={handleContactSave} disabled={loading}>
-            <span>Signup</span>{" "}
-          </Button>
+      <Card hoverable bordered shadow={false}>
+        <Text h4>Subscribe to the newsletter</Text>
+        <Text color="#6B7380" size="14px">
+          Get emails from me about web development, tech, and early access to
+          new articles.
+        </Text>
+        <div className="rounded-xl overflow-hidden md:max-w-md py-4">
+          <div className="md:flex justify-center flex items-center p-0.5">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              autoComplete="off"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              width="100%"
+              bordered
+              shadow
+            />
+            <Button
+              className="ml-2"
+              auto
+              onClick={handleContactSave}
+              disabled={loading}
+            >
+              Signup
+            </Button>
+          </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

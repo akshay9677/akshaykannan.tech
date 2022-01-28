@@ -1,4 +1,4 @@
-import { Text } from "ak-palette";
+import { Text } from "@nextui-org/react";
 import Image from "next/image";
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
       <Text className="text-sm dark:text-gray-400">
         {new Date().getFullYear()} © Akshay Kannan
       </Text>
-      <Text className="pt-3 text-sm flex items-center justify-center lg:justify-start xl:justify-start dark:text-white mb-2">
+      <div className="flex justify-center xl:justify-start lg:justify-start mt-2">
         <a
           href="https://www.linkedin.com/in/akshay-kannan-49964617a"
           target="_blank"
@@ -40,7 +40,7 @@ const Footer = () => {
         >
           <Image src="/icons/github.svg" width="25px" height="25px" />
         </a>
-      </Text>
+      </div>
     </footer>
   );
 };

@@ -18,6 +18,7 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "1.6.22",
     "@next/mdx": "^11.1.0",
+    "@nextui-org/react": "^1.0.2-beta.2",
     "ak-palette": "^2.0.0",
     "dotenv": "^10.0.0",
     "firebase-admin": "^9.11.1",

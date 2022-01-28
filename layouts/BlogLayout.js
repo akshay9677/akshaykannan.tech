@@ -28,7 +28,7 @@ export default function BlogLayout({ children, frontMatter }) {
   };
 
   return (
-    <div className="pt-24 max-w-3xl px-8 mx-auto pb-5 dark:text-gray-300">
+    <div className="pt-24 max-w-3xl px-2 mx-auto pb-5 dark:text-gray-300 relative z-50">
       <Fragment>
         <div className="px-0 lg:px-3 xl:px-3">
           <h1 className="text-3xl xl:text-4xl font-bold dark:text-white mb-0">

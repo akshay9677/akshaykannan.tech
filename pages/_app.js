@@ -2,11 +2,23 @@ import "tailwindcss/tailwind.css";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BackgroundGradient from "../components/BackgroundGradient";
 import "./_app.scss";
+import { createTheme, NextUIProvider } from "@nextui-org/react";
+import { useState } from "react";
+
+const darkTheme = createTheme({
+  type: "dark",
+});
+
+const lighTheme = createTheme({
+  type: "light",
+});
 
 function MyApp({ Component, pageProps }) {
+  const [isDark, setDark] = useState(false);
   return (
-    <div className="theme-transition overflow-hidden min-h-screen font-sans bg-gray-100	dark:bg-[#0D1117] text-gray-900	dark:text-white">
+    <div className="theme-transition overflow-hidden min-h-screen font-sans bg-white	dark:bg-[#010001] text-gray-900	dark:text-white relative">
       <Head>
         <title>Akshay Kannan</title>
         <link rel="icon" href="/Akshay.png" />
@@ -24,9 +36,12 @@ function MyApp({ Component, pageProps }) {
           width: "100%",
         }}
       >
-        <Header blog={true} />
+        <Header blog={true} onDarkChange={(val) => setDark(val)} />
       </div>
-      <Component {...pageProps} />
+      <NextUIProvider theme={isDark ? darkTheme : lighTheme}>
+        <Component {...pageProps} />
+        <BackgroundGradient />
+      </NextUIProvider>
       <Footer />
     </div>
   );

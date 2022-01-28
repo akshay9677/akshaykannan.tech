@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Text } from "ak-palette";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { Avatar, Text } from "@nextui-org/react";
 
-function Header(props) {
+function Header({ onDarkChange }) {
   const router = useRouter();
-  const [isDark, setDark] = useState(false);
+  const [isDark, setDark] = useState(true);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -13,11 +13,14 @@ function Header(props) {
     if (theme) {
       body.classList.add("dark");
       setDark(true);
+      onDarkChange(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeTheme = () => {
     setDark(!isDark);
+    onDarkChange(!isDark);
     const body = document.querySelector("body");
     if (body.classList.contains("dark")) {
       body.classList.remove("dark");
@@ -31,10 +34,10 @@ function Header(props) {
     <div
       className="navbar-header"
       style={{
-        backdropFilter: " saturate(50%) blur(10px)",
+        backdropFilter: "saturate(180%) blur(5px)",
       }}
     >
-      <div className="flex justify-between items-center max-w-3xl mx-auto py-5 px-8 lg:pl-0 lg:pr-0">
+      <div className="flex justify-between items-center max-w-3xl mx-auto pt-4 pb-3 px-5 xl:px-3 lg:px-3">
         <div className="flex items-center">
           <div
             className="cursor-pointer flex items-center hover:opacity-60"
@@ -45,7 +48,7 @@ function Header(props) {
             </Text>
           </div>
           <div
-            className="ml-8 pointer font-medium hover:opacity-60 cursor-pointer"
+            className="ml-4 pointer font-medium hover:opacity-60 cursor-pointer"
             onClick={() =>
               (window.location.href =
                 "https://www.polywork.com/_akshay_kannan_")
@@ -56,7 +59,7 @@ function Header(props) {
             </Text>
           </div>
           <div
-            className="ml-8 pointer font-medium hover:opacity-60 cursor-pointer"
+            className="ml-4 pointer font-medium hover:opacity-60 cursor-pointer"
             onClick={() => router.push("/blog")}
           >
             <Text size="large" className="dark:text-white">
@@ -64,18 +67,21 @@ function Header(props) {
             </Text>
           </div>
         </div>
-        <div
-          className="w-10 h-10 bg-gray-200 rounded-lg dark:bg-gray-800 hover:ring-2 ring-gray-300 cursor-pointer flex items-center justify-center"
+        <Avatar
+          squared
           onClick={changeTheme}
-        >
-          <DarkModeSwitch
-            onChange={() => {}}
-            checked={isDark}
-            size={20}
-            moonColor="#fff"
-            sunColor="#244361"
-          />
-        </div>
+          style={{ cursor: "pointer" }}
+          bordered
+          icon={
+            <DarkModeSwitch
+              onChange={() => {}}
+              checked={isDark}
+              size={20}
+              moonColor="#fff"
+              sunColor="#244361"
+            />
+          }
+        />
       </div>
     </div>
   );

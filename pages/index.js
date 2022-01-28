@@ -8,7 +8,7 @@ import { getAllFilesFrontMatter } from "../utils/mdx.js";
 
 function Main({ posts }) {
   return (
-    <div className="max-w-3xl px-8 lg:px-3 mx-auto pb-5">
+    <div className="max-w-3xl px-8 lg:px-3 mx-auto pb-5 z-50 relative">
       <IntroPage />
       <RecentBlogs posts={posts} />
       <Project />
