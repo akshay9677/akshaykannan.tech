@@ -5,7 +5,7 @@ import { Avatar, Text } from "@nextui-org/react";
 
 function Header({ onDarkChange }) {
   const router = useRouter();
-  const [isDark, setDark] = useState(true);
+  const [isDark, setDark] = useState(false);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -19,8 +19,8 @@ function Header({ onDarkChange }) {
   }, []);
 
   const changeTheme = () => {
-    setDark(!isDark);
     onDarkChange(!isDark);
+    setDark(!isDark);
     const body = document.querySelector("body");
     if (body.classList.contains("dark")) {
       body.classList.remove("dark");
