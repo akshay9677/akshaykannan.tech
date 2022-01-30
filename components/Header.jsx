@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { Avatar, Text } from "@nextui-org/react";
+import { Avatar, Text, Button } from "@nextui-org/react";
 
 function Header({ onDarkChange }) {
   const router = useRouter();
@@ -37,35 +37,41 @@ function Header({ onDarkChange }) {
         backdropFilter: "saturate(180%) blur(5px)",
       }}
     >
-      <div className="flex justify-between items-center max-w-3xl mx-auto pt-4 pb-3 px-5 xl:px-3 lg:px-3">
+      <div
+        className="flex justify-between items-center mx-auto pt-4 pb-3 px-5 xl:pl-0 xl:pr-3 lg:pl-0 lg:pr-3"
+        style={{ maxWidth: "48.5rem" }}
+      >
         <div className="flex items-center">
-          <div
-            className="cursor-pointer flex items-center hover:opacity-60"
+          <Button
+            size="sm"
+            light
+            color="inherit"
+            auto
             onClick={() => router.push("/")}
           >
-            <Text size="large" className="dark:text-white">
-              Home
-            </Text>
-          </div>
-          <div
-            className="ml-4 pointer font-medium hover:opacity-60 cursor-pointer"
+            Home
+          </Button>
+          <Button
+            size="sm"
+            light
+            color="inherit"
+            auto
             onClick={() =>
               (window.location.href =
                 "https://www.polywork.com/_akshay_kannan_")
             }
           >
-            <Text size="large" className="dark:text-white">
-              Timeline
-            </Text>
-          </div>
-          <div
-            className="ml-4 pointer font-medium hover:opacity-60 cursor-pointer"
+            Timeline
+          </Button>
+          <Button
+            size="sm"
+            light
+            color="inherit"
+            auto
             onClick={() => router.push("/blog")}
           >
-            <Text size="large" className="dark:text-white">
-              Blog
-            </Text>
-          </div>
+            Blog
+          </Button>
         </div>
         <Avatar
           squared

@@ -1,4 +1,4 @@
-import { Card, Link, Text } from "@nextui-org/react";
+import { Card, Text } from "@nextui-org/react";
 
 const AkCard = ({ title, content, click }) => {
   return (

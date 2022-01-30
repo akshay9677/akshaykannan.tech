@@ -1,18 +1,17 @@
 .docsContent {
   width: 100%;
-  padding: 10px 50px 10px 20px;
+  padding: 0px 9px 9px;
   overflow: hidden;
   .admon img {
     border-radius: 10px;
   }
 
   ul {
-    padding: 0px 20px;
+    padding: 0px 0px;
   }
 
-  li::marker {
-    color: #ccc;
-    font-size: 18px;
+  li::before {
+    content: "~ ";
   }
 
   h1,
@@ -36,7 +35,8 @@
   }
 
   li {
-    padding: 12px 0px;
+    padding: 0px 0px;
+    margin-bottom: 0px;
   }
 
   code {

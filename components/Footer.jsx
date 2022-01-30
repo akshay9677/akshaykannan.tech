@@ -4,9 +4,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="flex flex-col items-center py-3">
-      <Text className="text-sm dark:text-gray-400">
-        {new Date().getFullYear()} © Akshay Kannan
-      </Text>
+      <Text h6>{new Date().getFullYear()} © Akshay Kannan</Text>
       <div className="flex justify-center xl:justify-start lg:justify-start mt-2">
         <a
           href="https://www.linkedin.com/in/akshay-kannan-49964617a"

@@ -67,7 +67,7 @@ const BlogBody = ({ posts }) => {
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter("blog");
 
-  return { props: { posts } };
+  return { props: { posts: posts.filter((blog) => !blog.hidden) } };
 }
 
 export default BlogBody;

@@ -6,6 +6,7 @@ const RecentBlogs = ({ posts }) => {
   const router = useRouter();
 
   const handleBlogClick = (blog) => {
+    console.log(blog);
     router.push(`/blog/${blog.slug}`);
   };
   return (

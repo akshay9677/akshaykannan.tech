@@ -27,7 +27,7 @@ const Projects = () => {
 
         <AkCard
           content="Eslint Plugin ak is a custom eslint plugin where users can add new rules"
-          title="ESLint Plugin Ak"
+          title="Custom ESLint Plugin"
           click={openGit.bind(
             this,
             "https://github.com/akshay9677/eslint-plugin-ak"
