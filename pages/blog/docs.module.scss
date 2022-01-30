@@ -6,14 +6,6 @@
     border-radius: 10px;
   }
 
-  ul {
-    padding: 0px 0px;
-  }
-
-  li::before {
-    content: "~ ";
-  }
-
   h1,
   h2,
   h3,
@@ -31,17 +23,22 @@
 
   a {
     color: #3b82f6 !important;
-    text-decoration: none !important;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
+  ul {
+    padding: 0px 0px;
+    list-style-type: disc;
+  }
   li {
     padding: 0px 0px;
     margin-bottom: 0px;
+    display: list-item;
   }
 
-  code {
-    color: #6366f1;
-  }
   code[class*="language-"],
   pre[class*="language-"] {
     color: #f8f8f2;

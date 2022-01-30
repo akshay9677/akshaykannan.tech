@@ -1,17 +1,12 @@
-import { Button } from "@nextui-org/react";
+import { Text } from "@nextui-org/react";
 
 const Tags = ({ name }) => {
   return (
-    <Button
-      size="xs"
-      flat
-      className="mr-2"
-      color="primary"
-      auto
-      clickable={false}
-    >
-      #{name}
-    </Button>
+    <div className="text-[#006FF3] px-2.5 py-0.5 flex justify-center items-center bg-[#006ff32e] rounded-md">
+      <Text size={12} color="inherit" weight="bold">
+        #{name}
+      </Text>
+    </div>
   );
 };
 

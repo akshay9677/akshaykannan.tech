@@ -58,7 +58,10 @@ export default function BlogLayout({ children, frontMatter }) {
           <div className="flex flex-wrap">
             {frontMatter.tags ? (
               frontMatter.tags.map((tag, index) => (
-                <AkTags key={index} name={tag} />
+                <Fragment>
+                  <AkTags key={index} name={tag} />
+                  <span className="px-1.5"></span>
+                </Fragment>
               ))
             ) : (
               <span></span>

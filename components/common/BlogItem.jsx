@@ -1,6 +1,7 @@
 import AkTags from "../../components/common/AkTags";
 import Image from "next/image";
 import { Text } from "@nextui-org/react";
+import { Fragment } from "react";
 
 const BlogItem = ({ blog, onItemClick }) => {
   return (
@@ -13,7 +14,10 @@ const BlogItem = ({ blog, onItemClick }) => {
       {blog.tags && (
         <div className="flex flex-wrap mt-2">
           {blog.tags.map((tag, index) => (
-            <AkTags key={index} name={tag} />
+            <Fragment>
+              <AkTags key={index} name={tag} />
+              <span className="px-1.5"></span>
+            </Fragment>
           ))}
         </div>
       )}
