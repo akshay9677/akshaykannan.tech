@@ -38,12 +38,12 @@ export default function BlogLayout({ children, frontMatter }) {
             <div className="flex items-center text-sm">
               Akshay Kannan
               <span className="mx-1.5 flex self-center">
-                <Image src="/icons/dot.svg" width="5px" height="5px" />
+                {/* <Image src="/icons/dot.svg" width="5px" height="5px" /> */}|
               </span>
-              {frontMatter.readingTime.text}
+              {frontMatter.sysCreatedTime}
             </div>
             <div className="flex items-center text-sm">
-              {frontMatter.sysCreatedTime}
+              {frontMatter.readingTime.text}
               <span className="mx-1.5 flex self-center">
                 <Image src="/icons/dot.svg" width="5px" height="5px" />
               </span>
