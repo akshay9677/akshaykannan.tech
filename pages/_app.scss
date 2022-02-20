@@ -164,6 +164,10 @@ body {
 .anchor:before {
   content: "#";
   color: #2a52cc;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 *:hover > .anchor {

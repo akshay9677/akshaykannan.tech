@@ -1,0 +1,153 @@
+---
+title: "SPAs vs. SSR vs. SSG 🌐"
+sysCreatedTime: "Feb 22, 2022"
+tags:
+  ["Single page application", "Server side rendering", "Static side generation"]
+body: "Learn the difference between SPAs, SSRs and SSGs, which really helps in choosing the right framework for your next application"
+id: 11
+---
+
+There are a lot of techniques / approaches that are followed by Javascript frameworks for rendering the
+files that we write. Certain JS frameworks do **Client Side Rendering** where when a request is hit by the browser,
+only a html will be served which has a lot of javascript code which will handle the page rendering, there are **Single Page Applications (SPA)**,
+in which the routes are handled by JS, where changing the route does not necessarily reload
+the page only the content will be changed, there is **Server Side Rendering**, where the contents are loaded dynamically
+or statically generated on demand from the server and finally there is **Static Site Generation**, where the pages are pre-rendered and serves a
+fully rendered page on request to avoid load time.
+
+Each have their own pros and cons, and since there are a lot of approaches and each framework follow either one
+or a combination of more than one technique, it is hard to chose one to suit your needs. In this post, we will
+tackle the above patterns for front-end web development, to see what they bring to the table and how you can implement
+them today with the proper tools.
+
+<Image
+  alt={`svelte`}
+  src={`/page-rendering.jpeg`}
+  width={1400}
+  height={800}
+  priority={true}
+/>
+
+## Client Side Rendering
+
+Client Side rendering is one of the traditional approaches used by a lot of javascript frameworks. In this architecture,
+only a single html is rendered and the frameworks api code or javascript code is used to render other stuffs which has the
+page's actual contents. In other words the **server will only return an plain html, which has references to the necessary javascript
+bundles and this will actually render the web page**, based on the framework's api.
+
+Thus the page is rendered on client side. React, Vue and Angular are the frameworks who follow this approach. This approaches is mainly
+used when you're app's data is changing a lot and you don't care about SEO. So doing SSR or SSG in that case won't be ideal. In most
+companies the product itself is built as SPAs and the product websites are built by using SSG and SSR.
+
+#### Basic Flow
+
+On a request from the client, the server will render the html file which will have all the code for rendering the pages on user interaction
+or request. Since the server will serve only the initial html and the bundled code does all the rendering they are called client side rendering.
+
+### Single Page Applications
+
+Single page applications are a subset of CSR, where all SPAs are CSR and not all CSRs are SPAs. In SPAs the route change does not
+reload the entire page, only the contents of the page or a part of the page are changed and this is done by javascript. All the
+frameworks mentioned above also fall under this category
+
+<ProsCons
+  isPro={true}
+  header={"Pros on using SPA"}
+  list={[
+    "SPAs can be done in case of client side rendering, cannot be done in any other approach.",
+    "Really useful when you have data that changes a lot.",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons on using SPA"}
+  list={[
+    "The bundles which will render the web page if are large can be costly and can slow the app because of network problems.",
+    "SPAs are not SEO friendly since there will be only one HTMl file and all the main content are served by javascript and the framework api.",
+  ]}
+/>
+
+## Server Side Rendering
+
+In server side rendering the page is **pre-rendered** or executed in the server itself and **served on demand**. Here the term on demand is
+important because javascript is served and rendered on server only on user request. Thus the pre-rendered page are served on run
+time. Next js, Svelte Kit all do SSR. These are used when your data keeps on changing and you need a really good SEO.
+
+#### Basic Flow
+
+On each request from client, the page is rendered on the server which is defined by the api (React, Vue, Angular, etc) and then they
+are quickly served, rather than using a js bundle to render or directly rendering on client. As mentioned above rendering happens on
+server not on the client side by javascript.
+
+<ProsCons
+  isPro={true}
+  header={"Pros on using SSR"}
+  list={[
+    "Can be used when you have data that changes a lot and is recommended if a proper SEO rating is required",
+    "Lot faster than SPA because they processed in server rather than downloading the javascript and then rendering the pages",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons on using SSR"}
+  list={[
+    "Less flexibility, can be hard to change stacks",
+    "Requires frequent calls to server for rendering content",
+  ]}
+/>
+
+## Static Site Generation
+
+In SSG, the **rendering happens during the build time itself**, so on each request, the users need not wait for the page to
+load, the page will directly be rendered. The rendered html files are stored in a another file and then served faster on user request.
+Here the rendering happens in build rather than on a server, which makes them even faster than SSR.
+Next js and Svelte kit also support SSG along with SSR, so you can use these to get the best of both worlds.
+
+#### Basic Flow
+
+On each request from client, the already rendered pages are served from the server. Here the page is rendered and stored during the build
+time itself, making it faster than SSR
+
+<ProsCons
+  isPro={true}
+  header={"Pros on using SSG"}
+  list={[
+    "Fastest approach for rendering static contents.",
+    "Overall has the best performance compared to other approaches.",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons on using SSG"}
+  list={[
+    "Requires a build process when content is changed and are not recommended for sites that have contents that change frequently.",
+    "If used for frequently changing content then requires a complex CI/CD process to build your code everytime a change has to reach the end user.",
+  ]}
+/>
+
+## Frameworks that provide SPA, SSR & SSG
+
+- React/Preact - SPA
+- Next.js: SPA/SSR/SSG
+- Create React App: SPA
+- Gatsby: SSG
+- Vue CLI: SPA
+- Nuxt: SSR/SSG
+- Vuepress/Vitepress: SSG
+- Svelte Template: SPA
+- SvelteKit: SSR/SSG
+
+## Conclusion
+
+Each technique has it's own merits and demerits, appart from the above parameters, there are various other variables like
+ease of use, development friendly which should also be considered when selecting a architecture. For beginners trying to learn
+the different architectures, I would recommend using Next js, which has all the approaches that are mentioned and can be
+really useful to get an idea about each one.
+
+## Further Reading
+
+- [SSG vs SSR comparision](https://martinfowler.com/articles/micro-frontends.htmlhttps://blog.logrocket.com/ssg-vs-ssr-in-next-js/)
+- [Reddit thread comparing all three approaches](https://www.reddit.com/r/nextjs/comments/mot54n/difference_between_ssr_ssg_csr_and_spa/)

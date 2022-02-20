@@ -11,7 +11,7 @@ const RecentBlogs = ({ posts }) => {
   };
   return (
     <div className="pb-8">
-      <Text h2>Recent Blogs</Text>
+      <Text h2>Recent Posts</Text>
       {posts &&
         posts.map((blog, index) => {
           return (

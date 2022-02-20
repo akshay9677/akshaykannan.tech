@@ -11,6 +11,7 @@ import style from "./docs.module.scss";
 import BlogLayout from "../../layouts/BlogLayout";
 import matter from "gray-matter";
 import Image from "next/image";
+import ProsCons from "../../components/common/ProsCons";
 import readingTime from "reading-time";
 import "remark-admonitions/styles/classic.css";
 
@@ -18,7 +19,7 @@ export default function Docs({ mdxSource, frontMatter }) {
   return (
     <BlogLayout frontMatter={frontMatter}>
       <div className={style.docsContent}>
-        <MDXRemote {...mdxSource} components={{ Image }} />
+        <MDXRemote {...mdxSource} components={{ Image, ProsCons }} />
       </div>
     </BlogLayout>
   );
