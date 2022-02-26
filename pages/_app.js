@@ -6,6 +6,8 @@ import BackgroundGradient from "../components/BackgroundGradient";
 import "./_app.scss";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { useState } from "react";
+import { DefaultSeo } from "next-seo";
+import seoConfig from "../next-seo.config";
 
 const darkTheme = createTheme({
   type: "dark",
@@ -27,22 +29,13 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <div
-        style={{
-          position: "fixed",
-          top: "0px",
-          right: "1px",
-          zIndex: 99,
-          width: "100%",
-        }}
-      >
-        <Header blog={true} onDarkChange={(val) => setDark(val)} />
-      </div>
+      <DefaultSeo {...seoConfig}></DefaultSeo>
       <NextUIProvider theme={isDark ? darkTheme : lighTheme}>
+        <Header blog={true} onDarkChange={(val) => setDark(val)} />
         <Component {...pageProps} />
         <BackgroundGradient />
+        <Footer />
       </NextUIProvider>
-      <Footer />
     </div>
   );
 }

@@ -35,6 +35,11 @@ function Header({ onDarkChange }) {
       className="navbar-header"
       style={{
         backdropFilter: "saturate(180%) blur(5px)",
+        position: "fixed",
+        top: "0px",
+        right: "1px",
+        zIndex: 99,
+        width: "100%",
       }}
     >
       <div

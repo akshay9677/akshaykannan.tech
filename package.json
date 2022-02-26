@@ -26,6 +26,7 @@
     "mdx-prism": "^0.3.4",
     "next": "latest",
     "next-mdx-remote": "^3.0.4",
+    "next-seo": "4.28.1",
     "react": "^16.13.1",
     "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "^16.13.1",
