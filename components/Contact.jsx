@@ -1,34 +1,38 @@
-import Axios from "axios";
 import React, { useState } from "react";
-import { baseUrl } from "../utils/baseUrl";
-import { toast } from "ak-palette";
-
+import Image from "next/image";
 import { Input, Button, Card, Text } from "@nextui-org/react";
 
 function Contact() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState({ isDanger: false, message: "" });
 
-  async function handleContactSave() {
+  const handleContactSave = async () => {
     if (email !== "") {
-      let params = {
-        name: name,
-        email: email,
-        description: description,
-      };
       setLoading(true);
-      Axios.post(`${baseUrl}/api/v1/users`, params);
-      setTimeout(() => {
-        setLoading(false);
-        setName("");
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+        let { error } = data || {};
+        if (error) throw new Error(error);
         setEmail("");
-        setDescription("");
-        toast.success("Signed up!!");
-      }, 3000);
+        setResponse({
+          isDanger: false,
+          message: "Successfully subscribed to my newsletter!",
+        });
+      } catch (error) {
+        setResponse({
+          isDanger: true,
+          message:
+            error.message || "Unexpected error occured while scubscribing",
+        });
+      }
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div id="contact">
@@ -59,6 +63,18 @@ function Contact() {
               Signup
             </Button>
           </div>
+          {response.message !== "" && (
+            <div className="flex items-center mt-3">
+              <Image
+                src={
+                  !response.isDanger ? "/icons/tick.svg" : "/icons/cross.svg"
+                }
+                width="26px"
+                height="26px"
+              />
+              <span className="ml-2">{response.message}</span>
+            </div>
+          )}
         </div>
       </Card>
     </div>
