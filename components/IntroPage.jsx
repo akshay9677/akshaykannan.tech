@@ -12,7 +12,7 @@ function IntroPage() {
           <div className="leading-7 text-md text-gray-500 dark:text-gray-400 pb-5">
             <Text>
               I am a passionate <code>front-end developer</code> & a javascript
-              enthusiast. Working as a core front-end engineer{" "}
+              enthusiast, working as a core front-end engineer{" "}
               <a
                 href="https://www.facilio.com"
                 target="_blank"
