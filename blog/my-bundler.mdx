@@ -1,0 +1,372 @@
+---
+title: "Writing your own module bundler 📦"
+sysCreatedTime: "Apr 10, 2022"
+tags: ["Javascript", "ModuleBundlers", "Webpack", "Rollup"]
+body: "Build your own module bundler and learn more on how traditional module bundlers bundle javascript code"
+id: 12
+---
+
+<Image
+  alt={`Module-bundler`}
+  src={`/module-bundlers.webp`}
+  width={1400}
+  height={550}
+  priority={true}
+/>
+
+I find build tools endlessly interesting and we seem to have a lot of 'em today. Now a days, it is easier to select a framework,
+than to choose an optimal build tool. If you are a front-end developer, you must've heard about or tried to wrap your
+head around module bundlers or build tools. Have you ever wondered how each build tool works ? Let's learn how a build tool
+works internally, by building a basic one.
+
+## What are module bundlers ?
+
+Bundlers help in bundling different pieces of javascript code that we write, into a single complex / larger javascript file.
+We can also provide loaders to support files that are not javascript, so that image assets, css assets, etc, can also
+be bundled inside our js file, which makes it easier to serve it to the browser. We do this, because for a long time
+browsers did not support module system,
+[but it is not completely true now a days.](https://philipwalton.com/articles/using-native-javascript-modules-in-production-today/)
+So if we give an entry point to the build tools, all the dependencies and the sub dependencies of it's dependencies will
+be bundled together.
+
+For building a basic javascript module bundler we should figure out the following things,
+
+- Resolve the dependencies of the files that are imported or required.
+- Remove any unused dependency from the bundle.
+- Maintain the order of the files that are included.
+- Resolve import statements, by differentiating node_modules and relatively imported modules.
+
+So there are two ways our code will be bundled, to understand it let us compare how rollup and webpack will bundle the
+following files, if `app.js` is provided as an entry file
+
+```js
+// add.js
+const add = (a, b) => {
+  return a + b;
+};
+export default add;
+```
+
+```js
+// diff.js
+const diff = (a, b) => {
+  return a - b;
+};
+export default diff;
+```
+
+```js
+// app.js
+import add from "./add.js";
+import diff from "./diff.js";
+
+console.log(add(1, 2));
+console.log(diff(2, 1));
+```
+
+## Webpack
+
+```js
+const modulemap = {
+  "add.js": function (exports, require) {
+    exports.default = function add(a, b) {
+      return a + b;
+    };
+  },
+  "diff.js": function (exports, require) {
+    exports.default = function diff(a, b) {
+      return a - b;
+    };
+  },
+  "app.js": function (exports, require) {
+    const add = require("add.js").default;
+    const diff = require("diff.js").default;
+
+    console.log(add(1, 2));
+    console.log(diff(2, 1));
+  },
+};
+```
+
+The above is a cleaned up code [click here](https://gist.github.com/akshay9677/de14f580127be319ae340c3452a33b78), to check
+out the actual bundled code by webpack,
+
+We have three files, add.js, diff.js, and app.js, app.js imported the first two modules and also has a console statement.
+As you can see from the above example,
+
+- Webpack creates a module map for each module we have. The map was created with file name as property names and content
+  inside the properties are methods with code from each module.
+- Also each method has exports and require arguments to import and export the contents within each module.
+- Thus when our dev server is started webpack uses the entry path and by creating the above module
+  map it starts serving the bundled code.
+
+## Rollup
+
+```js
+const add = (a, b) => {
+  return a + b;
+};
+
+const diff = (a, b) => {
+  return a - b;
+};
+
+console.log(add(1, 2));
+console.log(diff(2, 1));
+```
+
+On first glance the rollup way of bundling seems light and straight forward, it bundles each code in the order of
+dependencies to avoid [temporal dead zone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz)
+and finally the entry point is present in the last portion of the bundled code. Thus we can try to mimic the rollup way
+of bundling in this blog.
+
+## Building a module bundler
+
+The following are the steps for building your own module bundler,
+
+- Create a module graph with it's dependencies.
+- Bundle the modules with respect to the module graph.
+- Write the bundled code in the target location.
+
+```js
+function builder({ input, ouput }) {
+  // create module graph
+  const moduleGraph = createModuleGraph(input);
+  // bundle the modules
+  const bundledCode = bundle(moduleGraph);
+  // write the bundled code in the output location
+  fs.writeFileSync(output, bundledCode, "utf-8");
+}
+```
+
+### 1. Creating a module graph
+
+We need to write a ModuleGraph class, which will hold the info about each modules' path,
+it's dependencies, content, AST, etc. We will be using ASTs (Abstract Syntax Tree) for manipulating the contents of each
+file and knowing it's dependencies, to learn more about ASTs
+[check out this blog](http://localhost:3000/blog/custom-eslint-plugin#abstract-syntax-tree). For constructing the AST of
+a javascript file we will be using `@babel/core` package here.
+
+```js
+const babel = require("@babel/core");
+
+class ModuleGraph {
+  constructor(input) {
+    this.path = input;
+    // get content of the current module
+    this.content = fs.readFileSync(input, "utf-8");
+    // will return an ast of the module
+    this.ast = babel.parseSync(this.content);
+  }
+}
+```
+
+We can use babel's parseSync method to get an ast of a module. Thus the above class can be used to create module objects
+with all the required info. Now let's see how to create a module dependency graph.
+
+```js
+function createModuleGraph(input) {
+  return new ModuleGraph(input);
+}
+```
+
+This method will be called to create a dependency graph. But from the ModuleGraph class above we won't have any
+dependencies related info so let us change the ModuleGraph class a bit,
+
+```js
+class ModuleGraph {
+  constructor(input) {
+    this.path = input;
+    this.content = fs.readFileSync(input, "utf-8");
+    this.ast = babel.parseSync(this.content);
+    // store the dependencies of the current module
+    this.dependencies = this.getDependencies();
+  }
+
+  getDependencies() {
+    return (
+      this.ast.program.body
+        // get import statements
+        .filter((node) => node.type === "ImportDeclaration")
+        .map((node) => node.source.value)
+        // resolve the path of the imports
+        .map((currentPath) => resolveRequest(this.path, currentPath))
+        // create module graph class for the resolved dependencies
+        .map((absolutePath) => createModuleGraph(absolutePath))
+    );
+  }
+}
+```
+
+From the above code we can see that, we need to
+
+- Get imports from ast.
+- Resolve the dependencies' path and create module graph for each dependencies.
+
+Here resolving dependencies is quite tricky, webpack follows a different algorithm (which includes aliases and stuffs)
+to resolve dependencies. For the sake of simplicity, we can follow the node js module import resolving alogrithm by using
+`path.join` and joining the dirname of it's parent module and the current module.
+
+```js
+function resolveRequest(requester, requestedPath) {
+  return path.join(path.dirname(requester), requestedPath);
+}
+```
+
+If app.js is passed as an input, then the following module graph will be created.
+
+```js
+ModuleGraph {
+  path: './test/app.js',
+  content: 'import add from "./add.js";\n' +
+    'import diff from "./diff.js";\n' +
+    '\n' +
+    'console.log(add(1, 2));\n' +
+    'console.log(diff(2, 1));\n',
+  ast: Node {
+    type: 'File',
+    start: 0,
+    end: 108,
+    loc: SourceLocation {
+      start: [Position],
+      end: [Position],
+      filename: undefined,
+      identifierName: undefined
+    },
+    errors: [],
+    program: Node {
+      type: 'Program',
+      start: 0,
+      end: 108,
+      loc: [SourceLocation],
+      sourceType: 'module',
+      interpreter: null,
+      body: [Array],
+      directives: []
+    },
+    comments: []
+  },
+  dependencies: [
+    ModuleGraph {
+      path: 'test/add.js',
+      content: 'const add = (a, b) => {\n  return a + b;\n};\n\nexport default add;\n',
+      ast: [Node],
+      dependencies: []
+    },
+    ModuleGraph {
+      path: 'test/diff.js',
+      content: 'const diff = (a, b) => {\n  return a - b;\n};\n\nexport default diff;\n',
+      ast: [Node],
+      dependencies: []
+    }
+  ]
+}
+```
+
+### 2. Bundling
+
+After creating the module graph, the next step is to create a bundled js code. Since it is a graph, I have written a small
+snippet to traverse the graph and store modules' content in the order it should be bundled (i.e dependencies of a module should
+come before the actual module - Depth First Search - Rollup way of bundling)
+
+```js
+function build(graph) {
+  let modules = dfs(graph);
+}
+
+function dfs(graph) {
+  const modules = [];
+  collect(graph, modules);
+  return modules;
+
+  function collect(module, modules) {
+    modules.push(module);
+    module.dependencies.forEach((dependency) => collect(dependency, modules));
+  }
+}
+```
+
+Now since we have collected the modules in the order it should be bundled we can concatenate the contents, but we would
+still have the import statements. So we can use babel's transformFromAstSync method and try to remove the import-export
+statement.
+
+```js
+function bundle(graph) {
+  let modules = collectModules(graph);
+  let code = "";
+  for (var i = modules.length - 1; i >= 0; i--) {
+    let module = modules[i];
+    const t = babel.transformFromAstSync(module.ast, module.content, {
+      ast: true,
+      plugins: [
+        function () {
+          return {
+            visitor: {
+              ImportDeclaration(path) {
+                path.remove();
+              },
+              ExportDefaultDeclaration(path) {
+                path.remove();
+              },
+            },
+          };
+        },
+      ],
+    });
+    code += `${t.code}\n`;
+  }
+  return code;
+}
+```
+
+:::tip
+Here we are removing the export statement of the input module as well which is not ideal, so we can mark the input module
+and not remove export declaration for that module alone.
+:::
+
+### 3. Writing in the target location
+
+Finally we can write the bundled code in the target location, using `fs.writeFileSync`, but `writeFileSync` will only
+write if the directory of the output is also present (i.e if output location is 'dist/index.js', it will write only if
+dist folder is present). So I have a copied a small snippet from stack overflow to write a file by creating a directory,
+if not present,
+
+```js
+function writeFileSyncRecursive(filename, content, charset) {
+  const folders = filename.split(path.sep).slice(0, -1);
+  if (folders.length) {
+    // create folder path if it doesn't exist
+    folders.reduce((last, folder) => {
+      const folderPath = last ? last + path.sep + folder : folder;
+      if (!fs.existsSync(folderPath)) {
+        fs.mkdirSync(folderPath);
+      }
+      return folderPath;
+    });
+  }
+  fs.writeFileSync(filename, content, charset);
+}
+```
+
+Now passing the input as `app.js` and output as `dist/index.js` to builder function, you will get the following bundled
+code,
+
+```js
+const diff = (a, b) => {
+  return a - b;
+};
+
+const add = (a, b) => {
+  return a + b;
+};
+
+console.log(add(1, 2));
+console.log(diff(2, 1));
+```
+
+Thus we have written our own module bundler by following the rollup way. We can also support a few extra options
+like code minification and mangling by using [terser](https://github.com/terser/terser), we can also support `iife`
+format by wrapping the bundle with an iife expression. Since this is a basic example on how a bundler works, I have
+skimmed through a few stuffs, but in practice module bundlers are quite complex and interesting to learn about.
+
+Check out the entire code in [github](https://github.com/akshay9677/my-bundler)

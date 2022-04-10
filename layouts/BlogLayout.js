@@ -2,10 +2,13 @@ import { Fragment } from "react";
 import { useEffect, useState } from "react";
 import AkTags from "../components/common/AkTags";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { Link } from "@nextui-org/react";
 
 export default function BlogLayout({ children, frontMatter }) {
   const [loading, setLoading] = useState(false);
   const [views, setViews] = useState(0);
+  const router = useRouter();
   useEffect(() => {
     fetchViews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +58,7 @@ export default function BlogLayout({ children, frontMatter }) {
               )}
             </div>
           </div>
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap pb-5">
             {frontMatter.tags ? (
               frontMatter.tags.map((tag, index) => (
                 <Fragment>
@@ -69,6 +72,9 @@ export default function BlogLayout({ children, frontMatter }) {
           </div>
         </div>
         {children}
+        <Link block onClick={() => router.back()}>
+          cd..
+        </Link>
       </Fragment>
     </div>
   );
