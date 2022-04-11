@@ -10,14 +10,6 @@ const SeoConfig = {
     locale: "en_IE",
     url,
     title,
-    images: [
-      {
-        url: "https://akshaykannan.tech/ogimg.png",
-        alt: title,
-        width: 1024,
-        height: 1024,
-      },
-    ],
   },
   twitter: {
     handle: "@_akshay_kannan_",
