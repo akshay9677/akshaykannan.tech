@@ -1,0 +1,92 @@
+---
+title: "What the heck is an Abstract Syntax Tree 🌲 ?"
+sysCreatedTime: "Apr 20, 2022"
+tags: ["Javascript", "Webdev", "Parser", "Bundlers"]
+body: "Learn more about abstract syntax tree and where it is being used. Also learn how to leverage it to supercharge your javascript codebase."
+id: 13
+---
+
+If you are a front-end engineer who has some experience around front-end tools like prettier, eslint, webpack, rollup, vite, etc.,
+learning ASTs can be quite handy. There are a lot of things you can do using AST, for instance you can write
+[codemods](https://github.com/facebook/jscodeshift), which modifies our original source code using the transformer we write using
+ASTs, can be used to remove unwanted stuffs from our code base. Another interesting use case is
+[writing a custom eslint plugin](https://eslint.org/docs/developer-guide/working-with-plugins), check out
+[this blog](https://akshaykannan.tech/blog/custom-eslint-plugin) to write your own eslint plugin, can be used to introduce new eslint
+rules, which are outside of existing eslint configurations.
+
+## Why do we need AST ?
+
+Have you ever wondered how eslint or prettier or even webpack work, they just collect the code we write and give a result, which can
+be a modified version of our code or give back other stuffs like warnings / errors on the code we wrote (linters). They are written
+on javascript, which can be confusing because they manipulate or do stuff on the javascript code we write but they themselves are
+written in js. This concept is called `meta-programming` where programs treat other programs as thier input / data. Let's break down
+the problem and see where AST comes in here.
+
+- In order to change our js code we need to have the code in a format that can be understood using js.
+- This format should have all the information right from imports to variable creation to exports from our js file.
+- The better way can be to represent it in a tree format which branches out right from the starting line having info about each token of our code.
+- If the format is a tree it can be represented as an javascript object as well (deep nesting the nodes as properties of the parent).
+
+So we should have a parser, which should go through the code we give and return a tree / object representation of the code, so that we
+can tap into different properties which might be different tokens of our code. That tree is an AST and this why we need it.
+
+## Parsers
+
+As discussed above we need a parser to get an AST of our code. There are a lot of parser right now, the following are a few of those,
+
+- [babel](https://github.com/babel/babel)
+- [acorn](https://github.com/acornjs/acorn)
+- [esprima](https://github.com/jquery/esprima)
+- [shift](https://github.com/shapesecurity/shift-parser-js)
+
+Each parser have their own AST implementation, let's consider babel parser, the following is a tree generated from the below javascript code,
+
+#### Code
+
+```js
+let number = 10;
+```
+
+As you can see from the code we have a variable declaration with variable name number with value name. This following is the ast for that line,
+
+#### AST for code
+
+```js
+{
+  type: "File",
+  errors: [],
+  program: {
+    type: "Program",
+    sourceType: "module",
+    interpreter: null,
+    body: [
+      {
+        type: "VariableDeclaration", // variable declaration
+        declarations: [
+          {
+            type: "VariableDeclarator",
+            id: {
+              type: "Identifier",
+              name: "number", // name of the variable
+            },
+            init: {
+              type: "NumericLiteral",
+              extra: {
+                rawValue: 10,
+                raw: "10", // value of that variable
+              },
+              value: 10,
+            },
+          },
+        ],
+        kind: "let", // declaration type
+      },
+    ],
+    directives: [],
+  },
+  comments: [],
+};
+```
+
+You can check out [Ast explorer](https://astexplorer.net/) site for playing around with different parser and write transformers for each
+parser. You can check out [this](https://tomassetti.me/parsing-in-javascript/) post on how a parser works to generate an AST.
