@@ -19,7 +19,7 @@ id: 14
 
 We have been using javascript based transpilers and bundlers for a long time now and we have achieved a lot
 using this single threaded language. But as we keep building more and more complex stuff, relying a lot on
-this language will not be ideal because of various reason.
+this language will not be ideal because of various reasons.
 
 One such reason is the javascript's slowness, javascript itself is not slow but, when it comes to CPU intensive tasks
 it slows down a lot. Another reason is the [garbage collection](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management#garbage_collection)
@@ -32,11 +32,11 @@ gives self-evident error messages, which languages like javascript fails to do.
 [Rust](https://www.rust-lang.org/) is a low level, memory efficient programming language. It is mainly used in systems,
 where performance is important like game engines, operating systems, and databases, etc. So it makes a great choice for
 building transpilers and bundlers for javascript. Rust is being used by big companies like Discord, Nextjs, AWS, Cloudfare,
-etc. This doesn't mean web developers have to start learning rust or go, but you can start using tools which are built on
+etc. This doesn't mean web developers have to start learning rust right-away, but you can start using tools which are built on
 rust and slowly start adopting rust into your flow. The following are the few interesting tools built on top of rust for
 javascript,
 
-### SWC (Speedy Web Compiler)
+#### SWC (Speedy Web Compiler)
 
 [SWC](https://swc.rs/) is used for bundling and transpiling javascript / typescript and produce a output which is accepted by most browsers.
 SWC is said to be 20X faster than [Babel](https://babeljs.io/), where the former is built on rust and the latter is built using javascript. SWC
@@ -76,7 +76,7 @@ var test = function () {
 
 Check out this [swc playground](https://swc.rs/playground) to know more about the functionalities that swc supports.
 
-### Deno
+#### Deno
 
 [Deno](https://deno.land/) is a runtime environment for javascript like [Node.js](https://nodejs.org/en/), but unlike
 node it can also be used as a runtime environment for typescript and webAssembly. Deno is built on rust and it also
