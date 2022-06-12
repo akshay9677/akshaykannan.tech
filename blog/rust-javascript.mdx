@@ -1,0 +1,109 @@
+---
+title: "Rust in Javascript ⚒️"
+sysCreatedTime: "Apr 20, 2022"
+tags: ["Javascript", "Rust", "Compilers", "Bundlers"]
+body: "Is Rust the future of javascript ? Learn more about it and also learn about the tools (like swc and deno) that are using rust,
+in this blog."
+id: 14
+---
+
+<Image
+  alt={`Rust`}
+  src={`/rust.jpeg`}
+  width={2000}
+  height={950}
+  priority={true}
+/>
+
+## Why do we need rust in javascript ?
+
+We have been using javascript based transpilers and bundlers for a long time now and we have achieved a lot
+using this single threaded language. But as we keep building more and more complex stuff, relying a lot on
+this language will not be ideal because of various reason.
+
+One such reason is the javascript's slowness, javascript itself is not slow but, when it comes to CPU intensive tasks
+it slows down a lot. Another reason is the [garbage collection](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management#garbage_collection)
+in javascript, where memory management is done by the language itself, unlike C++ & Rust. So to speed up the build process
+we need a solution in another language, this is where Rust comes in. The thing I love about rust is it's compiler, which
+gives self-evident error messages, which languages like javascript fails to do.
+
+## Rust
+
+[Rust](https://www.rust-lang.org/) is a low level, memory efficient programming language. It is mainly used in systems,
+where performance is important like game engines, operating systems, and databases, etc. So it makes a great choice for
+building transpilers and bundlers for javascript. Rust is being used by big companies like Discord, Nextjs, AWS, Cloudfare,
+etc. This doesn't mean web developers have to start learning rust or go, but you can start using tools which are built on
+rust and slowly start adopting rust into your flow. The following are the few interesting tools built on top of rust for
+javascript,
+
+### SWC (Speedy Web Compiler)
+
+[SWC](https://swc.rs/) is used for bundling and transpiling javascript / typescript and produce a output which is accepted by most browsers.
+SWC is said to be 20X faster than [Babel](https://babeljs.io/), where the former is built on rust and the latter is built using javascript. SWC
+is maintained by [Vercel](https://vercel.com/) and Nextjs is actively using it for their ecosystem. The following are the features they support
+right now,
+
+- Compilation
+- Bundling (swcpack)
+- Minification
+- Transforming with WebAssembly
+- Usage inside webpack (swc-loader)
+- Improving Jest performance (@swc/jest)
+- Custom Plugins
+
+To start using swc you can install @swc/cli and @swc/core, let's say you have javascript file called index.js, then you can
+run the following command to produce a transpiled js file in output.js,
+
+```shell
+npx swc ./index.js -o output.js
+```
+
+```javascript
+// index.js
+const test = () => {
+  console.log("hello world");
+};
+```
+
+```javascript
+// output.js
+var test = function () {
+  console.log("hello world");
+};
+
+//# sourceMappingURL=output.js.map
+```
+
+Check out this [swc playground](https://swc.rs/playground) to know more about the functionalities that swc supports.
+
+### Deno
+
+[Deno](https://deno.land/) is a runtime environment for javascript like [Node.js](https://nodejs.org/en/), but unlike
+node it can also be used as a runtime environment for typescript and webAssembly. Deno is built on rust and it also
+uses SWC for linting and code formatting. It is considered to be the improved version of node in terms of speed and secureness.
+It was mainly built to avoid the use of a centralized repository system (npm), and “heavy-handed tooling.”
+
+## Rust & WebAssembly
+
+[Webassembly](https://webassembly.org/) is a machine language which is accepted by the browsers and they run in near native
+speed. It was first introduced in 2017 and now a lot of apps are using it. There are various tools out there to compile
+a language's code to Webassembly, so that other programming language developers can contribute to the web. In order to
+generate a wasm code you need a compiler to convert it.
+
+There are various libraries / compilers out there to convert different languages to web assembly, for example to convert
+C++ to wasm there is [Emscripten](https://emscripten.org/), also there is Asterius, a Haskell to wasm compiler, and
+another library to convert typescript to wasm is [Assembly script](https://www.assemblyscript.org/). Rust actually compiles
+to wasm so that we can run it in browsers, The Rust team is [committed](https://www.rust-lang.org/what/wasm) to a
+high-quality and cutting-edge WASM implementation.
+
+## Conclusion
+
+Like Rust, we also have another programming language called [Go Lang](https://go.dev/) which is slowly finding it's place in javascript tooling
+ecosystem. We have esbuild which is said to be the fastest js module bundler and vite is using esbuild to bundle the js
+code we write. ESBuild is built using Go. Rust has a steeper learning curve
+compared to Go, but Go was not built for building systems or tooling, Go lang is more commonly used for building web apis'
+and can be considered as a good alternative for Nodejs.
+
+I love a lot of things about rust starting from it's memory management, direct & self-evident erorr messages, etc, and I
+am planning on learning it by building a small js module bundler, about which I might write a blog in the
+future 😉.
