@@ -11,9 +11,6 @@
   },
   "author": "Akshay K",
   "license": "ISC",
-  "engines": {
-    "node": "16.15.1"
-  },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "1.6.22",
