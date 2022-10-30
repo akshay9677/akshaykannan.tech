@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { Avatar, Text, Button } from "@nextui-org/react";
+import { Avatar, Button } from "@nextui-org/react";
 
 function Header({ onDarkChange }) {
   const router = useRouter();

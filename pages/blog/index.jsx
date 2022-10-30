@@ -13,7 +13,7 @@ const BlogBody = ({ posts }) => {
     router.push(`/blog/${blog.slug}`);
   };
   return (
-    <div className="pt-20 max-w-3xl px-8 lg:px-3 mx-auto pb-5 relative z-50">
+    <div className="mt-20 max-w-3xl px-8 lg:px-3 mx-auto pb-5 relative z-50">
       <Text h2>Blog Posts</Text>
       {/* <p className="text-sm text-gray-800	dark:text-gray-400 my-2 px-2">
         I have posted around {posts.length} posts and most of them are about

@@ -1,8 +1,8 @@
-import "tailwindcss/tailwind.css";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackgroundGradient from "../components/BackgroundGradient";
+import "uno.css";
 import "./_app.scss";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import { useState } from "react";

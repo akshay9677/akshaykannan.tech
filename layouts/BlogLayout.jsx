@@ -4,6 +4,7 @@ import AkTags from "../components/common/AkTags";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Link } from "@nextui-org/react";
+import Contact from "../components/Contact";
 
 export default function BlogLayout({ children, frontMatter }) {
   const [loading, setLoading] = useState(false);
@@ -72,6 +73,7 @@ export default function BlogLayout({ children, frontMatter }) {
           </div>
         </div>
         {children}
+        <Contact />
         <Link block onClick={() => router.back()}>
           cd..
         </Link>

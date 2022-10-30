@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "start": "next start"
   },
   "author": "Akshay K",
   "license": "ISC",
+  "sideEffects": false,
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "1.6.22",
@@ -37,11 +37,14 @@
     "sharp": "^0.29.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
+    "@unocss/preset-attributify": "^0.46.1",
+    "@unocss/preset-uno": "^0.46.1",
+    "@unocss/preset-web-fonts": "^0.46.1",
+    "@unocss/webpack": "^0.46.1",
     "rehype-autolink-headings": "^6.1.0",
     "rehype-code-titles": "^1.0.3",
-    "tailwindcss": "^2.2.4"
+    "unocss": "^0.46.1",
+    "webpack": "^5.73.0"
   },
   "browserslist": {
     "production": [
