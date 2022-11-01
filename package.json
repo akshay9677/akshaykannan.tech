@@ -15,7 +15,7 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "1.6.22",
     "@next/mdx": "^11.1.0",
-    "@nextui-org/react": "^1.0.2-beta.2",
+    "@nextui-org/react": "latest",
     "ak-palette": "^2.0.0",
     "dotenv": "^10.0.0",
     "firebase-admin": "^9.11.1",
@@ -24,9 +24,9 @@
     "next": "latest",
     "next-mdx-remote": "^3.0.4",
     "next-seo": "4.28.1",
-    "react": "^16.13.1",
+    "react": "^18.2.0",
     "react-dark-mode-toggle": "^0.2.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^18.2.0",
     "react-toggle-dark-mode": "^1.0.4",
     "reading-time": "^1.4.0",
     "remark-admonitions": "^1.2.1",
@@ -39,12 +39,10 @@
   "devDependencies": {
     "@unocss/preset-attributify": "^0.46.1",
     "@unocss/preset-uno": "^0.46.1",
-    "@unocss/preset-web-fonts": "^0.46.1",
     "@unocss/webpack": "^0.46.1",
     "rehype-autolink-headings": "^6.1.0",
     "rehype-code-titles": "^1.0.3",
-    "unocss": "^0.46.1",
-    "webpack": "^5.73.0"
+    "unocss": "^0.46.1"
   },
   "browserslist": {
     "production": [

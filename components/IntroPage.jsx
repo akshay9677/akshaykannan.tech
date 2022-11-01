@@ -32,7 +32,7 @@ function IntroPage() {
               rel="noopener noreferrer"
               className="pr-5 pointer icon-social "
             >
-              <Image src="/icons/linkedin.svg" width="26px" height="26px" />
+              <Image src="/icons/linkedin.svg" width={26} height={26} />
             </a>
             <a
               href="https://www.instagram.com/_akshay_kannan_/"
@@ -40,7 +40,7 @@ function IntroPage() {
               rel="noopener noreferrer"
               className="pr-5 pointer icon-social "
             >
-              <Image src="/icons/insta.svg" width="26px" height="26px" />
+              <Image src="/icons/insta.svg" width={26} height={26} />
             </a>
             <a
               href="http://twitter.com/_akshay_kannan_"
@@ -48,7 +48,7 @@ function IntroPage() {
               rel="noopener noreferrer"
               className="pr-5 pointer icon-social "
             >
-              <Image src="/icons/twitter.svg" width="26px" height="26px" />
+              <Image src="/icons/twitter.svg" width={26} height={26} />
             </a>
             <a
               href="https://github.com/akshay9677"
@@ -56,7 +56,7 @@ function IntroPage() {
               rel="noopener noreferrer"
               className="pb-1 pointer icon-social "
             >
-              <Image src="/icons/github.svg" width="26px" height="26px" />
+              <Image src="/icons/github.svg" width={26} height={26} />
             </a>
           </div>
         </div>

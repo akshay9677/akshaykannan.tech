@@ -20,7 +20,7 @@ const lighTheme = createTheme({
 function MyApp({ Component, pageProps }) {
   const [isDark, setDark] = useState(false);
   return (
-    <div className="theme-transition overflow-hidden min-h-screen font-sans bg-white	dark:bg-[#010001] text-gray-900	dark:text-white relative">
+    <div className="theme-transition overflow-hidden min-h-screen font-sans bg-white	dark:bg-[#010001] text-gray-900	dark:text-[#bbb] relative">
       <Head>
         <title>Akshay Kannan</title>
         <link rel="icon" href="/Akshay.png" />

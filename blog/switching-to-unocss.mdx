@@ -1,0 +1,177 @@
+---
+title: "Switching to UnoCSS 🌈"
+sysCreatedTime: "Oct 30, 2022"
+tags: ["Css", "Framework", "Css Engine", "Atomic Css"]
+body: "Learn why I switched my blog from Tailwind to UnoCSS and how it impacted performance. Also learn on how to configure unocss with nextjs."
+id: 16
+---
+
+My website has always been the breading ground for new tech. I've been using this website for testing out new tools and
+I write about them if they are worth writing about, one such thing is Unocss. This post will be a deep dive on why I am
+moving to unocss.
+
+### CSS Utilities
+
+First let's understand what is a css utility. Css Utilties or also known as atomic css is a way of defining small reusable classes,
+that has a very little functionality. For example,
+
+```css
+.p-1 {
+  padding: 1px;
+}
+.p-5 {
+  padding: 5px;
+}
+.p-10 {
+  padding: 10px;
+}
+```
+
+As you can see from the above code, we have separate css for each value of padding. So instead of defining css manually
+everytime, you can simply define these helper css or use an existing css utility framework. I've been
+working with a lot of such utitlity frameworks, and people have their own utilty css'. Some of the famous css utility
+frameworks are [Tailwind Css](https://tailwindcss.com/), [Windi Css](https://windicss.org/) and [Tachyons](https://tachyons.io/)
+etc. So basically these utility frameworks will have a list of helper classes which provide basic css functionalities.
+
+### Old-school way
+
+The traditional way of using a css utility or helper is to build one yourself, that is what we ([@Facilio](https://facilio.com/))
+were doing, when I joined. Like we would have our own helper css files which will have hundreds of utility css. Based on the
+requirement we might add new classes. As you guessed, this is a lot of work and our production bundle had all
+those css files even if certain classes weren't used. This is when I came across tailwind.
+
+### The Problem
+
+I've been using tailwind css a lot, both in my personal projects as well as in work related ones. This seemed to
+solve the initial problem we had of defining and maintaining all the inbuilt helper css'. Tailwind was good, but
+I started facing problems when I had to use css properties that are not part of tailwind's utility css. Like for example,
+let's say you want to give a padding exactly of 210px (to match certain design constraints), you can't do it in tailwind,
+you can either use `p-52 (208px)` or use `p-56 (224px)`. You can fix this by providing this special css property in
+tailwind config, but this method won't scale as we can't keep adding custom css properties, this defeats the purpose of
+using a utility css framework.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    padding: {
+      DEFAULT: '1px',
+      '0': '0',
+      '2': '2px',
+      '3': '3px',
+      ....
+      '54': '210px' // <-- here
+    }
+  }
+}
+```
+
+Another issue I faced with tailwind was that, tailwind was shiping it's entire utility classes
+in our production build which affected the app's performance. Also I was working on multiple microfrontends at that
+time and each one had a lot of these unwanted css utilities which made the issue even worse. After searching through
+their docs I came across a concept they had called `Purging` which can be enabled by adding `purge:true` in their config,
+but this seems to only work in production and I still have to work with all those utility css during development.
+
+<br />
+
+This is where frameworks like Windi comes into play, they are similar to tailwind css, but they have a lot of utility
+css classes compared to tailwind and they are on demand. I really like Windi's on-demand way of doing things. Traditional css
+frameworks would generate the css' and then they would use the required ones in the production build. This might affect
+your app's performance because of unecessary computations (we are generating the css and are not using them). But
+the on-demand way would first scan for the css classes you are using and then generate only those in our builds.
+
+<br />
+
+Thus I was able to solve the problem of removing unwanted css in my builds, but I still couldn't use custom css classes
+(even in Windi CSS). To do so I had to override their config with a butt load of information, which was a lot to do for simple functionalities.
+
+### The Solution
+
+[UnoCSS](https://github.com/unocss/unocss) unlike other css frameworks is a css engine without any utility css of it's own, rather it uses different css framework's
+presets. They generally work with build tools and after mentioning the preset you like you can use that framework's classes
+in your projects right away. Guess what, you can give any number of presets or write your own preset and use it with UnoCSS.
+And like Windi CSS they use the on demand way of generating css. I am using next js in this website so the build tool used
+in next is webpack, also I was using tailwind with postcss previously, so the migration looks something like this,
+
+### Configuring UnoCSS with Next Js
+
+First you can remove all the tailwind and postcss config files from your project, then remove the following packages,
+
+```json
+{
+  "autoprefixer": "^10.2.6", // remove
+  "postcss": "^8.3.5", // remove
+  "tailwind": "^2.2.4" // remove
+}
+```
+
+Then add the following dependencies,
+
+```shell
+npm i @unocss/preset-uno @unocss/preset-web-fonts @unocss/webpack unocss -D
+```
+
+Now add a unocss config file and a next js config file (If you never had one like me before),
+
+```js
+// unocss.config.js
+import presetAttributify from "@unocss/preset-attributify";
+import presetUno from "@unocss/preset-uno";
+import { defineConfig } from "unocss";
+
+export default defineConfig({
+  presets: [presetUno(), presetAttributify()],
+});
+```
+
+```js
+// next.config.js
+const UnoCSS = require("@unocss/webpack").default;
+
+const nextConfig = {
+  reactStrictMode: true,
+  webpack: (config) => {
+    config.plugins.push(UnoCSS());
+    config.cache = false; // have to be false for hmr
+    return config;
+  },
+};
+
+module.exports = nextConfig;
+```
+
+Now import the `uno.css` file in `/_app.js` file and use tailwind / windi css class names to see the magic.
+You can add other frameworks presets or add a custom one also, check out their [docs](https://github.com/unocss/unocss)
+to see on how to add your own custom presets. Apart from presets UnoCSS has a few other advantages,
+
+- You can write your own custom rules / classes, like you can add the following for a custom border css,
+
+```js
+rules: [["my-custom-border", { border: "solid 1px pink" }]];
+```
+
+#### Dynamic Rules
+
+You can also add dynamic rules by using regex,
+
+```js
+rules: [
+  [/^m-(\d+)$/, ([, d]) => ({ margin: `${d / 4}rem` })],
+  [/^p-(\d+)$/, (match) => ({ padding: `${match[1] / 4}rem` })],
+];
+```
+
+- You can also change the order of precedence in which the styles should be applied, like in the following configuration
+  `border-1` is applied or has higher precedence than `border-2` if used together,
+
+```js
+shortcuts: {
+  "border-1",
+    { border: "solid 1px pink" },
+    "border-2",
+    { border: "solid 1px green" };
+}
+```
+
+- Also you can add custom css resets by installing `@unocss/reset`. If you use UnoCSS along with other CSS frameworks,
+  they probably already do the resetting for you. If you use UnoCSS alone, you can use resetting libraries like Normalize.css.

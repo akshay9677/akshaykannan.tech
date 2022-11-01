@@ -14,7 +14,7 @@ const Projects = () => {
         <AkCard
           content="Palette is light-weight design system and minimal component library for react."
           title="Palette Design System"
-          click={openGit.bind(this, "https://github.com/akshay9677/ak-palette")}
+          click={openGit.bind(this, "https://ak-palette.netlify.app")}
         />
         <AkCard
           content="Reactor-gen is a cli tool which helps in adding the required templates for redux and react-router-dom while initialising a react project"

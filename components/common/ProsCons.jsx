@@ -7,8 +7,8 @@ const ProsCons = ({ isPro, header, list }) => {
       <Card.Header css={{ paddingBottom: "0px" }}>
         <Image
           src={isPro ? "/icons/tick.svg" : "/icons/cross.svg"}
-          width="26px"
-          height="26px"
+          width={26}
+          height={26}
         />
         <Text h5 css={{ padding: "0px 0px 0px 8px" }}>
           {header}

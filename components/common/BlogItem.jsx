@@ -9,8 +9,10 @@ const BlogItem = ({ blog, onItemClick }) => {
       className="rounded-lg py-2 w-full pL10 break-words cursor-pointer"
       onClick={onItemClick}
     >
-      <Text h3>{blog.title}</Text>
-      <Text className="my-2">{blog.body}</Text>
+      <Text h3 className="m-0">
+        {blog.title}
+      </Text>
+      <Text>{blog.body}</Text>
       {blog.tags && (
         <div className="flex flex-wrap mt-2">
           {blog.tags.map((tag, index) => (
@@ -21,20 +23,12 @@ const BlogItem = ({ blog, onItemClick }) => {
           ))}
         </div>
       )}
-      <div className="flex flex-row items-center pt-3">
-        <Text
-          className="text-gray-500"
-          margin="0 6px 0 0"
-          style={{ fontSize: "14px" }}
-        >
+      <div className="flex flex-row items-center pt-2">
+        <Text className="text-gray-500 mr-1" style={{ fontSize: "14px" }}>
           {blog.readingTime.text}
         </Text>
-        <Image src="/icons/dot.svg" width="5px" height="5px" />
-        <Text
-          className="text-gray-500"
-          margin="0 6px 0 6px"
-          style={{ fontSize: "14px" }}
-        >
+        <Image src="/icons/dot.svg" width={5} height={5} />
+        <Text className="text-gray-500 ml-1" style={{ fontSize: "14px" }}>
           {blog.sysCreatedTime}
         </Text>
       </div>

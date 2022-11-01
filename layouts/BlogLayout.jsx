@@ -42,14 +42,14 @@ export default function BlogLayout({ children, frontMatter }) {
             <div className="flex items-center text-sm">
               Akshay Kannan
               <span className="mx-1.5 flex self-center">
-                {/* <Image src="/icons/dot.svg" width="5px" height="5px" /> */}|
+                {/* <Image src="/icons/dot.svg" width={5} height="5px" /> */}|
               </span>
               {frontMatter.sysCreatedTime}
             </div>
             <div className="flex items-center text-sm">
               {frontMatter.readingTime.text}
               <span className="mx-1.5 flex self-center">
-                <Image src="/icons/dot.svg" width="5px" height="5px" />
+                <Image src="/icons/dot.svg" width={5} height={5} />
               </span>
 
               {loading ? (
@@ -73,7 +73,9 @@ export default function BlogLayout({ children, frontMatter }) {
           </div>
         </div>
         {children}
-        <Contact />
+        <div className="my-2">
+          <Contact />
+        </div>
         <Link block onClick={() => router.back()}>
           cd..
         </Link>

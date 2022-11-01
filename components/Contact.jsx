@@ -37,44 +37,46 @@ function Contact() {
   return (
     <div id="contact">
       <Card hoverable bordered shadow={false}>
-        <Text h4>Subscribe to the newsletter</Text>
-        <Text color="#6B7380" size="14px">
-          Get emails from me about web development, tech, and early access to
-          new articles.
-        </Text>
-        <div className="rounded-xl overflow-hidden md:max-w-md py-4">
-          <div className="md:flex justify-center flex items-center p-0.5">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              autoComplete="off"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              width="100%"
-              bordered
-              shadow
-            />
-            <Button
-              className="ml-2"
-              auto
-              onClick={handleContactSave}
-              disabled={loading}
-            >
-              Signup
-            </Button>
-          </div>
-          {response.message !== "" && (
-            <div className="flex items-center mt-3">
-              <Image
-                src={
-                  !response.isDanger ? "/icons/tick.svg" : "/icons/cross.svg"
-                }
-                width="26px"
-                height="26px"
+        <div className="p-5">
+          <Text h4>Subscribe to the newsletter</Text>
+          <Text color="#6B7380" size="14px">
+            Get emails from me about web development, tech, and early access to
+            new articles.
+          </Text>
+          <div className="rounded-xl overflow-hidden md:max-w-md py-4">
+            <div className="md:flex justify-center flex items-center p-0.5">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                autoComplete="off"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                width="100%"
+                bordered
+                shadow
               />
-              <span className="ml-2">{response.message}</span>
+              <Button
+                className="ml-2"
+                auto
+                onClick={handleContactSave}
+                disabled={loading}
+              >
+                Signup
+              </Button>
             </div>
-          )}
+            {response.message !== "" && (
+              <div className="flex items-center mt-3">
+                <Image
+                  src={
+                    !response.isDanger ? "/icons/tick.svg" : "/icons/cross.svg"
+                  }
+                  width={26}
+                  height={26}
+                />
+                <span className="ml-2">{response.message}</span>
+              </div>
+            )}
+          </div>
         </div>
       </Card>
     </div>

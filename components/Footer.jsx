@@ -12,7 +12,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="pr-5 pointer icon-social "
         >
-          <Image src="/icons/linkedin.svg" width="25px" height="25px" />
+          <Image src="/icons/linkedin.svg" width={25} height={25} />
         </a>
         <a
           href="https://www.instagram.com/_akshay_kannan_/"
@@ -20,7 +20,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="pr-5 pointer icon-social "
         >
-          <Image src="/icons/insta.svg" width="25px" height="25px" />
+          <Image src="/icons/insta.svg" width={25} height={25} />
         </a>
         <a
           href="http://twitter.com/_akshay_kannan_"
@@ -28,7 +28,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="pr-5 pointer icon-social "
         >
-          <Image src="/icons/twitter.svg" width="25px" height="25px" />
+          <Image src="/icons/twitter.svg" width={25} height={25} />
         </a>
         <a
           href="https://github.com/akshay9677"
@@ -36,7 +36,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="pb-1 pointer icon-social "
         >
-          <Image src="/icons/github.svg" width="25px" height="25px" />
+          <Image src="/icons/github.svg" width={25} height={25} />
         </a>
       </div>
     </footer>

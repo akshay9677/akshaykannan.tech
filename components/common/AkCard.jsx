@@ -2,13 +2,13 @@ import { Card, Text } from "@nextui-org/react";
 
 const AkCard = ({ title, content, click }) => {
   return (
-    <Card clickable hoverable onClick={click}>
-      <div className="py-2">
-        <Text h4>
+    <Card clickable isHoverable isPressable onClick={click}>
+      <div className="p-3">
+        <Text h4 className="pb-2">
           {" "}
           <span className="text-gradient">{title}</span>
         </Text>
-        <p className="text-sm mt-2">{content}</p>
+        <p className="text-sm">{content}</p>
       </div>
     </Card>
   );
