@@ -7,8 +7,8 @@ id: 16
 ---
 
 My website has always been the breading ground for new tech. I've been using this website for testing out new tools and
-I write about them if they are worth writing about, one such thing is Unocss. This post will be a deep dive on why I am
-moving to unocss.
+I write about them if they are worth writing about, one such tool is Unocss. This post will be a deep dive on why I am
+migrating to unocss.
 
 ### CSS Utilities
 
@@ -69,7 +69,7 @@ module.exports = {
 Another issue I faced with tailwind was that, tailwind was shiping it's entire utility classes
 in our production build which affected the app's performance. Also I was working on multiple microfrontends at that
 time and each one had a lot of these unwanted css utilities which made the issue even worse. After searching through
-their docs I came across a concept they had called `Purging` which can be enabled by adding `purge:true` in their config,
+their docs I came across a concept they had called `Purging` which ships only the used css classes,
 but this seems to only work in production and I still have to work with all those utility css during development.
 
 <br />
@@ -77,13 +77,14 @@ but this seems to only work in production and I still have to work with all thos
 This is where frameworks like Windi comes into play, they are similar to tailwind css, but they have a lot of utility
 css classes compared to tailwind and they are on demand. I really like Windi's on-demand way of doing things. Traditional css
 frameworks would generate the css' and then they would use the required ones in the production build. This might affect
-your app's performance because of unecessary computations (we are generating the css and are not using them). But
+your app's performance because of unecessary computations (since we are generating the css and are not using them). But
 the on-demand way would first scan for the css classes you are using and then generate only those in our builds.
 
 <br />
 
 Thus I was able to solve the problem of removing unwanted css in my builds, but I still couldn't use custom css classes
-(even in Windi CSS). To do so I had to override their config with a butt load of information, which was a lot to do for simple functionalities.
+(even in Windi CSS). To do so I had to override their config with a butt load of information, which was a lot to do for
+a simple functionality.
 
 ### The Solution
 
