@@ -27,6 +27,22 @@ module.exports = {
           primary: withOpacityValue("--brand-primary"),
         },
       },
+      fontSize: {
+        heading: [
+          "0.75rem",
+          {
+            letterSpacing: "0.2rem",
+            fontWeight: "bold",
+          },
+        ],
+        "sub-heading": [
+          "0.875rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: "600",
+          },
+        ],
+      },
     },
   },
   plugins: [],

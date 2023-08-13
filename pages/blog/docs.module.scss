@@ -1,6 +1,5 @@
 .docsContent {
   width: 100%;
-  padding: 0px 9px 9px;
   .admon img {
     border-radius: 10px;
   }
@@ -13,9 +12,10 @@
     margin: 10px 0px !important;
     font-weight: bolder !important;
     filter: brightness(2);
+    color: var(--primary);
   }
   p {
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1.8;
     color: inherit;
   }
@@ -23,6 +23,7 @@
   a {
     color: #3b82f6 !important;
     text-decoration: none;
+    font-size: 14px;
     &:hover {
       text-decoration: underline;
     }
@@ -51,7 +52,7 @@
     line-height: 1.5;
     tab-size: 4;
     hyphens: none;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   /* Code blocks */
@@ -62,7 +63,7 @@
 
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
-    background: #101827;
+    background: #0c111c;
     border: solid 1px #374251;
     margin: 20px 0px;
     border-radius: 8px;

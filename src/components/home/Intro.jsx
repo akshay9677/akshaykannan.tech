@@ -6,7 +6,7 @@ import Insta from "../../../public/icons/insta.svg";
 const Intro = ({ className }) => {
   return (
     <div className={`mt-10 ${className}`}>
-      <div className="text-brand-primary text-xs font-bold">INTRODUCTION</div>
+      <div className="text-brand-primary text-heading mb-4">INTRODUCTION</div>
       <div className="mt-2 text-sm text-content-primary/80">
         Hey, I'm Akshay. I am a front-end developer & a javascript enthusiast,
         working as a core front-end engineer @Facilio. I explore and

@@ -14,7 +14,7 @@ const Card = ({ isDark }) => {
   }, []);
   return (
     <div
-      className="w-full flex justify-center items-center relative top-0 text-center w-fit mx-auto"
+      className="max-w-xl w-full flex justify-center items-center relative top-0 text-center w-fit mx-auto z-10"
       id="card-tilt"
     >
       {isDark ? <CardDark /> : <CardLight />}
