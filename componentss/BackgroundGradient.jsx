@@ -8,9 +8,6 @@ const BackgroundGradient = () => {
         src="/pattern/gradient-left-dark.svg"
         style={{
           position: "fixed",
-          bottom: " -50%",
-          left: "-10%",
-          right: "-50%",
           zIndex: "0",
           display: "block",
         }}
@@ -20,8 +17,7 @@ const BackgroundGradient = () => {
         src="/pattern/gradient-right-dark.svg"
         style={{
           position: "fixed",
-          top: " -50%",
-          right: "-50%",
+          top: "0",
           zIndex: "0",
           display: "block",
         }}
