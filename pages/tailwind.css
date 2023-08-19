@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.theme-light {
+  --primary: 255 255 255;
+  --secondary: 244 244 244;
+  --content-primary: 0 0 0;
+  --brand-primary: 0 112 243;
+}
+
+.theme-dark {
+  --primary: 0 0 0;
+  --secondary: 31 31 31;
+  --content-primary: 255 255 255;
+  --brand-primary: 0 112 243;
+}

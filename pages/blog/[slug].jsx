@@ -8,12 +8,12 @@ import remarkSlug from "remark-slug";
 import remarkCodetitles from "remark-code-titles";
 import remarkAdmonitions from "remark-admonitions";
 import style from "./docs.module.scss";
-import BlogLayout from "../../layouts/BlogLayout";
 import matter from "gray-matter";
 import Image from "next/image";
-import ProsCons from "../../components/common/ProsCons";
+import ProsCons from "../../src/components/blog/ProsCons";
 import readingTime from "reading-time";
 import "remark-admonitions/styles/classic.css";
+import BlogLayout from "../../src/layouts/BlogLayout";
 
 export default function Docs({ mdxSource, frontMatter }) {
   return (
