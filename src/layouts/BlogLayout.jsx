@@ -1,13 +1,9 @@
-import { Fragment } from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { Link } from "@nextui-org/react";
 
 export default function BlogLayout({ children, frontMatter }) {
   const [loading, setLoading] = useState(false);
   const [views, setViews] = useState(0);
-  const router = useRouter();
   useEffect(() => {
     fetchViews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,7 +27,7 @@ export default function BlogLayout({ children, frontMatter }) {
 
   return (
     <div className="max-w-xl mx-auto mt-10 z-10 relative">
-      <div className="text-xl">{frontMatter.title}</div>
+      <div className="text-3xl">{frontMatter.title}</div>
       <div className="flex xl:flex-row flex-col justify-between py-4">
         <div className="flex items-center text-xs text-content-primary/60">
           {frontMatter.sysCreatedTime}

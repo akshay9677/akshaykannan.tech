@@ -23,7 +23,7 @@ const DockBar = ({ toggleTheme, isDark }) => {
       icon: () => <Pen />,
       key: "blog",
       onClick: () => {
-        router.push("blog");
+        router.push("/blog");
       },
     },
     {
