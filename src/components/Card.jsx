@@ -20,9 +20,9 @@ const Card = ({ isDark }) => {
       {isDark ? <CardDark /> : <CardLight />}
       <div className="absolute top-12">
         <div id="container" className="bg-primary mx-auto">
-          <div class="wave-01"></div>
-          <div class="wave-02"></div>
-          <div class="wave-03"></div>
+          <div className="wave-01"></div>
+          <div className="wave-02"></div>
+          <div className="wave-03"></div>
         </div>
         <div className="text-3xl font-light mt-4">Akshay K</div>
         <div className="text-sm font-light text-content-primary/80 mt-3">
