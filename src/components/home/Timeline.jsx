@@ -1,6 +1,6 @@
 const Intro = ({ className }) => {
   return (
-    <div className={`mt-10 ${className}`}>
+    <div className={`mt-10 px-2.5 lg:px-0 ${className}`}>
       <div className="text-brand-primary text-heading mb-4">WORK</div>
       <div className="group relative flex flex-col pb-8 pl-7 last:pb-0 mt-2">
         <div className="absolute bottom-0 left-[calc(0.25rem-0.5px)] top-2 w-px bg-content-primary/10 group-first:top-3"></div>

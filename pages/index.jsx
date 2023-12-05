@@ -6,7 +6,7 @@ import Timeline from "../src/components/home/Timeline.jsx";
 
 function Main({ posts, isDark }) {
   return (
-    <div className="px-4 lg:px-0 pb-5 relative mt-10 lg:mb-24">
+    <div className="px-4 lg:px-0 pb-5 relative mt-10 mb-24">
       {/* <Card isDark={isDark} /> */}
       <Intro className="max-w-xl mx-auto z-10 relative" />
       <Timeline className="max-w-xl mx-auto z-10 relative" />

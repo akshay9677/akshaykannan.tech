@@ -43,6 +43,20 @@ module.exports = {
           },
         ],
       },
+      keyframes: {
+        overlayShow: {
+          from: { opacity: 0.5 },
+          to: { opacity: 1 },
+        },
+        contentShow: {
+          from: { transform: "scale(0.8)" },
+          to: { transform: "scale(1)" },
+        },
+      },
+      animation: {
+        overlayShow: "overlayShow 800ms cubic-bezier(0.16, 1, 0.3, 1)",
+        contentShow: "contentShow 500ms cubic-bezier(0.16, 1, 0.3, 1)",
+      },
     },
   },
   plugins: [],

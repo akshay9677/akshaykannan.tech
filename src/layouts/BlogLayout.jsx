@@ -26,8 +26,8 @@ export default function BlogLayout({ children, frontMatter }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 z-10 relative">
-      <div className="text-3xl">{frontMatter.title}</div>
+    <div className="max-w-xl mx-auto mt-4 lg:mt-10 z-10 relative mb-24 px-4 lg:px-0">
+      <div className="text-3xl font-[600]">{frontMatter.title}</div>
       <div className="flex xl:flex-row flex-col justify-between py-4">
         <div className="flex items-center text-xs text-content-primary/60">
           {frontMatter.sysCreatedTime}
@@ -45,7 +45,7 @@ export default function BlogLayout({ children, frontMatter }) {
           )}
         </div>
       </div>
-      <div className="text-sm text-content-primary/80 mt-4 lg:mb-24">
+      <div className="text-md text-content-primary/80 mt-4 lg:mb-24 leading-8">
         {children}
       </div>
     </div>
