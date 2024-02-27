@@ -4,11 +4,11 @@ import Github from "../../../public/icons/github.svg";
 import Insta from "../../../public/icons/insta.svg";
 
 const Intro = ({ className }) => {
-  const paragraphStyle = "mt-4 text-content-primary/80 leading-8";
+  const paragraphStyle = "mt-0.5 text-content-primary/80 leading-8";
   return (
-    <div className={`mt-10 lg:mt-8 px-2.5 lg:px-0 ${className}`}>
-      <div className="text-brand-primary text-heading mb-4">INTRODUCTION</div>
-      <div className="mt-4 text-content-primary/80 leading-8">
+    <div className={`mt-10 lg:mt-8 px-2.5 lg:px-0 text-sm ${className}`}>
+      <div className="text-brand-primary text-heading">INTRODUCTION</div>
+      <div className="mt-2 text-content-primary/80 leading-8">
         Hey, this is Akshay, I'm a front-end developer & a javascript enthusiast
       </div>
       <div className={`${paragraphStyle}`}>
@@ -22,7 +22,7 @@ const Intro = ({ className }) => {
         . I explore new front-end techs, and occasionally write about them in my
         blog.
       </div>
-      <div className="mt-4 text-content-primary/80 leading-8">
+      <div className="mt-0.5 text-content-primary/80 leading-8">
         Outside of programming, I enjoy designing ui and crafting user
         interfaces. Apart from coding and designing, you can find me
         occasionally rt-ing movie stuffs on Twitter.

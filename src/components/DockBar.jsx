@@ -1,4 +1,4 @@
-import Search from "../../public/dock/search.svg";
+import Mail from "../../public/dock/mail.svg";
 import Pen from "../../public/dock/pen.svg";
 import Home from "../../public/dock/home.svg";
 import Moon from "../../public/dock/moon.svg";
@@ -23,6 +23,13 @@ const DockBar = ({ toggleTheme, isDark }) => {
       key: "blog",
       onClick: () => {
         router.push("/blog");
+      },
+    },
+    {
+      icon: () => <Mail />,
+      key: "mail",
+      onClick: () => {
+        window.open("mailto:akshaykannan9677@gmail.com");
       },
     },
     {
