@@ -24,8 +24,7 @@ const Intro = ({ className }) => {
       </div>
       <div className="mt-0.5 text-content-primary/80 leading-8">
         Outside of programming, I enjoy designing ui and crafting user
-        interfaces. Apart from coding and designing, you can find me
-        occasionally rt-ing movie stuffs on Twitter.
+        interfaces. You can also find me rt-ing movie stuffs on Twitter.
       </div>
 
       <div className="mt-4 mr-4 text-content-primary/80">
