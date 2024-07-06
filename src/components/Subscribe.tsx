@@ -64,7 +64,7 @@ const Subscribe = () => {
         <SuccessSub
           isDanger={true}
           title="Error Occured"
-          description="Unexpected error occured while scubscribing"
+          description="Unexpected error occured while scubscribing!"
         />
       ));
     }
