@@ -1,0 +1,85 @@
+---
+title: "Vercel ▲ - everything you need for web development"
+sysCreatedTime: "Feb 5, 2022"
+tags: ["Vercel", "Front-end", "Javascript"]
+body: "Vercel and it's ecosystem has been growing a lot, check out the tools that I love in vercel"
+id: 10
+---
+
+Vercel, the provider of a popular development platform for frontend frameworks and static sites, has brought in few interesting
+products into their wing. After pulling in [Svelte](https://github.com/sveltejs/svelte), along with it's creator [Rich Harris](https://github.com/Rich-Harris)
+, it is more likely that all the frontend developers might be using atleast a few vercel products in their applications, in the future.
+They have a lot of interesting tools, below are the few tools that are owned by vercel, that I really look forward to.
+
+<Image
+  alt={`svelte`}
+  src={`/vercel.png`}
+  width={1400}
+  height={550}
+  priority={true}
+/>
+
+## Next js
+
+[Next js](https://github.com/vercel/next.js) is the most famous among them. It is a framework based on React. Next.js is a server-rendered
+React framework that requires little or no configuration. It has a lot of features like static site generation,
+server side rendering, route pre-fetching, image optimization and much more. It gives a really good developer
+experience with all the features you need for production. Next js can help us improve the performance, UX and SEO
+of the web page.
+
+I personally like nextjs and this website is built on it. I really love the in-built image optimization and file system
+based routing system in next. I haven't had a chance to work on it, in a large project, but won't hesitate in chosing
+next js, if a react based solution is required.
+
+## Vercel
+
+Eventhough it is the core product of the vercel ecosystem, I got a chance only recently to use it when I migrated this website's
+deployments from netlify. [Vercel](https://github.com/vercel/vercel) is made for production, it has support for automative deployments where a simple
+push to git or bitbucket will start the build and deploy it. It facilitates front-end deployment and it is does not require
+a lot of configuration, similar to next js. Combined with next js, websites can be developed, built and deployed faster.
+
+## Turborepo
+
+Monorepos are hot right now, especially among Web developers. But without the right tool it can be a nightmare to maintain them
+. There are a lot of tools out there for maintaining monorepo. One such tool is [Turborepo](https://github.com/vercel/turborepo),
+which is now acquired by Vercel. It is more of like a build system than a simple tool like [lerna](https://github.com/lerna/lerna).
+The following are the features that turborepo offers,
+
+- Build artifacts are cached, so the next time you run your build it will only run the stuff that requires it. In other words
+  turborepo remembers what you've built.
+
+- Builds are remotely cached which means you can share the build with your teammates or with the CI/CD for faster builds.
+
+- Content is king, turborepo checks the content of your files, rather than the timestamp.
+
+Check out [this](https://monorepo.tools/) link which compares different tools for maintaining monorepos which showcases all the
+features turborepo has.
+
+## Next UI
+
+Design systems and component libraries are one of the major pillars in web development. They help in acheiving desing consistency
+and uniformity throughout the app. There are a lot of desing systems, the following are few of my favourite ones,
+
+- [Evergreen by Segment](https://evergreen.segment.com/)
+- [Atlassian design](https://atlassian.design/)
+- [Github's primer](https://primer.style/).
+
+I choose a design system based on the design, how easy is it to setup and how customizabe is it. Next UI pretty much satisfies all
+these conditions. There are a very few design systems which comes with an in built dark theme, next UI is one such library. They have some really
+cool animation for their components and they are easily customizable. You can either customize the theme or override certain component's
+css with a special prop called `css`. They are still in beta but I really love their design and have used it in this website.
+
+## Svelte
+
+As mentioned earlier svelte is a recent addition to the vercel family and this is really interesting because Svelte is a standalone
+open source project, with Vercel supporting them, they can really grow. As mentioned in my previous [blog](http://localhost:3000/blog/svelte)
+I really love the way Svelte views the front-end framework space. They have almost 50k stars in github and with Vercel behind
+them they can be ambitious. Vercel bringing in Svelte is quite understandable, because both aim at making web development easier
+and with Vercel's recent [funding](https://vercel.com/blog/vercel-funding-series-d-and-valuation) they can easily maintain a big
+project like Svelte.
+
+## Conclusion
+
+Vercel may or may not shape the world of web development, but they have some interesting tools which has really great potential. With their
+recent funding it is more likely of them to acquire even more open source projects, which can make the lives of front-end
+developers a lot easier 😉.

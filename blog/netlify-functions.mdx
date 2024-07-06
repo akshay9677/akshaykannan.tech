@@ -1,0 +1,227 @@
+---
+title: "Writing a serverless function using netlify and firebase."
+sysCreatedTime: "Sep 3, 2021"
+tags: ["Serverless Functions", "Netlify", "Firebase", "Javascript", "Next js"]
+body: "Learn how to build a serverless function using netlify's functions and firebase to track real-time views for your blog."
+id: 7
+---
+
+Serverless architecture helps you write short programmatic functions which are used to carry out a small piece of functionality.
+These serverless functions can then be hosted and maintained in any cloud service provider. This helps developers to
+write small parts of codes without actually creating a dedicated service for a isolated functionality.
+All leading cloud computing platform has serverless functions, right now we are going to take look on how to
+deploy a serverless function using [Netlify](https://www.netlify.com) and [Firebase firestore](https://firebase.google.com/products/firestore).
+
+<Image
+  alt={`Functions`}
+  src={`/Functions.png`}
+  width={1800}
+  height={650}
+  priority={true}
+/>
+
+# Getting Started
+
+In this guide, we will be building a function for counting and fetching views for a blog posting website. This view counter is currently
+being used in this website. You can either follow along or view the finished repo [here](https://github.com/akshay9677/personalWebsite).
+
+# Netlify setup
+
+Install `netlify` sdk globally using npm or yarn
+
+```shell
+npm i -g netlify
+```
+
+[Netlify's js sdk](https://www.npmjs.com/package/netlify) automatically detects the type of project you have (react, vue, next js, etc.) and runs the necessory scripts to
+setup the right environment for developing locally. `netlify dev` command helps you run your site locally, along with the functions
+you will be adding. Therefore you can have the functions inside the same repo. It also injects any environment variables you
+configured in netlify's dashboard for this project. Since we are using [firebase firestore](https://firebase.google.com/products/firestore)
+as the database, we will be saving our service json inside this environment variable (firebase setup is discussed in detail
+in the next part).
+
+Before installing required packages, create a netlify.toml file to configure your serverless function. This netlify.toml
+file should contain the information about the directory name where you have your functions and also you can mention redirects
+here if you have any. Add the following configuration file,
+
+```toml
+[build]
+  functions = "functions"
+[[redirects]]
+  from = "/api/*"
+  to="/.netlify/functions/:splat"
+  status = 200
+```
+
+Mention the directory where your function resides under [build] and also mention your api redirects under [[redirects]]. By default
+all your netlify functions are triggered when /.netlify/functions/:splat endpoint is called, in order to use a custom endpoint
+you have to configure it in the toml file. Therefore if you have a function in a file called "views" in "functions" directory, fetching
+`/api/views` executes that function.
+
+# Firebase setup
+
+- Create a firebase account and create a new project.
+- Navigate to Firestore Database tab and click on "Create Database"
+- Select test mode and click next.
+
+<Image
+  alt={`firebase-test-mode`}
+  src={`/firebase-setup/firebase-test-mode.png`}
+  width={1800}
+  height={950}
+  priority={true}
+/>
+
+- Now select the location for your database and click on enable.
+- Click on project settings on the top right of the side bar and navigate to "Service Accounts" tab and
+  click "Generate new private key"
+- Download and save the json file, the contents of this file are configured as SERVICE_JSON environment variable
+  in netlify.
+
+<Image
+  alt={`firebase-test-mode`}
+  src={`/firebase-setup/service-accounts.png`}
+  width={1700}
+  height={950}
+  priority={true}
+/>
+
+- Copy the contents of the service json file and create a .env file in your root and add the contents for the
+  SERVICE_JSON env inside it. Also paste this contents in the same env name in netlify's function dashboard under environmental variables
+  tab.
+
+<Image
+  alt={`netlify-env`}
+  src={`/netlify-env.png`}
+  width={2000}
+  height={950}
+  priority={true}
+/>
+
+Install dotenv and firebase-admin
+
+```shell
+npm i dotenv firebase-admin
+```
+
+# The Function
+
+The functions you write must export a handler method with the following general syntax:
+
+```js
+exports.handler = async function (event, context, callback) {
+  // your server-side functionality
+};
+```
+
+The event argument has the information about the current request, from which we will be using the body to get
+the info about the page we want to update the view for
+
+```json
+{
+    "path": "Path parameter",
+    "httpMethod": "Incoming request’s method name",
+    "headers": {Incoming request headers},
+    "queryStringParameters": {Query string parameters},
+    "body": "A JSON string of the request payload",
+    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
+}
+```
+
+After writing you business logic you can have a callback with a return statement which has the information about the
+request's response in it.
+
+Create "functions" folder in your root and add a file called "views" inside it. Add the following code inside that
+file,
+
+```js
+require("dotenv").config();
+const admin = require("firebase-admin");
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(JSON.parse(process.env.SERVICE_JSON)),
+  });
+}
+
+const db = admin.firestore();
+
+exports.handler = async (event, context, callback) => {
+  const { slug } = JSON.parse(event.body);
+  const ref = db.collection("views").doc(slug);
+
+  let doc = await ref.get();
+  let currentViews;
+  if (doc.exists) {
+    let { views } = doc.data();
+    currentViews = views + 1;
+    ref.update({ views: currentViews });
+  } else {
+    currentViews = 1;
+    ref.set({ views: 1 });
+  }
+
+  return callback(null, {
+    statusCode: 200,
+    body: JSON.stringify({
+      views: currentViews,
+    }),
+  });
+};
+```
+
+As you can see from the above code we get the record from current posts' slug / id. Now if a record with that slug does not exists,
+we add a new record with that slug and add the value as 1 for `views` field or increament the views value for existing record with that slug.
+This function `updates / creates` and also gets the `current views` of the blog post.
+
+**Note** Slug here is a unique name for each blog in your case it can also be an id.
+
+You can either have the db intialization part here or abstract it to a seperate file under a
+'helpers' folder inside functions directory. Netlify will use only the files inside functions not the folders inside it.
+
+# Using the function
+
+Since we have the function inside "views" file and since we have added redirects for `/api/*` we can call this function
+using /api/views endpoint. The following code can be called to call that function inside your target file.
+
+```js
+const [loading, setLoading] = useState(false);
+const [views, setViews] = useState(0);
+useEffect(() => {
+  fetchViews();
+}, []);
+
+const fetchViews = async () => {
+  setLoading(true);
+  try {
+    const res = await fetch("/api/views", {
+      method: "POST",
+      body: JSON.stringify({ slug: frontMatter.slug }),
+    });
+    const data = await res.json();
+    let { views: blogViews } = data || {};
+    setViews(blogViews);
+  } catch (e) {
+    console.log(e);
+  }
+  setLoading(false);
+};
+```
+
+# Conclusion
+
+After pushing your code, your functions will be deployed ✨. You can now see your function in netlify, inside the functions tab of your project. You can also add
+multiple functions for different functionalities and maintain them in the same repository.
+
+A single function component can be used for executing different related actions like to get all the views for each post, you can add a another
+if check that checks the http method,
+
+```js
+exports.handler = async function (event, context, callback) {
+  if (event.httpMethod === "POST") {
+    // update and get view for one post
+  } else if (event.httpMethod === "GET") {
+    // get views for all the posts
+  }
+};
+```

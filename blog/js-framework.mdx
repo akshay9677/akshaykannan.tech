@@ -1,0 +1,174 @@
+---
+title: "Top 5 javascript frameworks in 2022"
+sysCreatedTime: "July 10, 2022"
+tags: ["Javascript", "Framework", "Web Performance"]
+body: "I built the same app using five different frameworks, which one is the best ? Learn more about it in this post."
+id: 15
+---
+
+<Image
+  alt={`JS-Framework`}
+  src={`/js-framework.jpeg`}
+  width={900}
+  height={550}
+  priority={true}
+  style={{ borderRadius: "5px" }}
+/>
+
+We have a lot of javascript frameworks out there and it is really difficult to choose one for your application. It is
+also pretty hard to change your stack once you've started working on a framework. Therefore selecting an appropriate
+framework is the single most important decision you might make for your project. But how do you choose the appropriate
+one ? What are the metrics should you take into consideration ? Will the framework scale based on your use cases ? Learn
+more about them in the upcoming portions of this blog.
+
+I built the same application using five different frameworks, so that it would be easier to compare them and make the selection
+process for you a lot easier. You can check out the source code [here](https://github.com/akshay9677/js-frameworks).
+
+### Why do we need a framework ?
+
+Before we jump into the comparision, let's try understanding an age old question - Why do we need a framework to start
+with ? We have been building applications for 2 decades using javascript, as we build more ambitious applications, relying
+only on vanilla javascript wouldn't have scaled. To understand it better try building any reusable components using vanilla
+js and then using a js framework. Plain js is not straightforward, and building dynamic UI components is hard since they
+were introduced as a supporting language for websites. Hence we have frameworks now, with which we can build more dynamic
+and reusable stuffs with javascript as their primary language.
+
+### The Application
+
+The application I built, is a emoji search app, in which you can search emojis' based on a key word. It also generates
+a random emoji each time you load the application. The application was written considering all the basic possiblities to
+compare the metrics such as, ease of use, build time, build size, etc, needed to select a framework.
+
+#### React
+
+[React](https://reactjs.org/) is the most popular javascript framework and has around 200k stars on github. It was
+introduced by Facebook and is widely used by a lot of the leading companies. They are so popular, we even have a
+lot of react based frameworks like [Next js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.com/). It is a
+really great framework but I am not a fan of it's [documentation](https://reactjs.org/). It is really hard for beginners
+and they are so improper. Also their build size is pretty large compared to the newer frameworks like svelte. Overall,
+it is a great framework for beginners.
+
+<ProsCons
+  isPro={true}
+  header={"Pros"}
+  list={[
+    "Easy to understand, mainly if your fluent in javascript. React uses jsx which is similar to javascript.",
+    "Better community support and endless resource of libraries to make your life easier.",
+    "Establishing reusable components is a piece of cake in react.",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons"}
+  list={[
+    "Poor documentation, hard for beginners",
+    "Slow compared to non virtual-dom frameworks like svelte and solid js",
+  ]}
+/>
+
+#### Angular
+
+[Angular](https://angular.io/) is also another popular and one of the oldest javascript frameworks, which was introduced
+by google. They use typescript, which according to me should be a configurable option in frameworks and not as a default
+syntax. Since this requires typescript, I wouldn't recommend it unless you are fluent in typescript or you're coming from
+another typed programming language 😉. I am not completely against typescript, in-fact I've written a
+[blog post](https://akshaykannan.tech/blog/typescript-importance) about it, but when it comes to frameworks typescript
+should be configurable. Their build time is also not that great, and build size is really huge, largest among the 5 frameworks.
+
+<ProsCons
+  isPro={true}
+  header={"Pros"}
+  list={[
+    "Angular allows two way binding between parent and child component.",
+    "Easier DOM manipulation.",
+    "Angular is regarded as a complete package since it has numerous built-in functionalities.",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons"}
+  list={[
+    "Typescript is not configurable",
+    "Building complex re-usable components is hard and can become complex quickly.",
+    "If you're from a react background like me, it will be hard to wrap your head around their base folder structure and how they establish props for their re-usable components.",
+  ]}
+/>
+
+#### Vue
+
+If you're selecting from the og frameworks (react, angular & vue), I would recomment going for [Vue](https://vuejs.org/).
+Vue js literally has the best of both worlds (react & angular). Vue uses virtual dom for reactivity like react whereas
+it's syntax is a lot similar to angular. They have proper ecosystem for routing, global state management, build tool etc.
+Vue has vue-cli with which you can configure the above ecosystem features and you can start developing right away. Whereas
+in react you have to manually install all the required base functionalities before you can start developing. You
+can still use [create-react-app](https://create-react-app.dev/) for react, but it is just a basic build tool with
+fixed configurations.
+
+<ProsCons
+  isPro={true}
+  header={"Pros"}
+  list={[
+    "Proper documentation, one of the best I've seen",
+    "Uses virtual dom for reactivity",
+    "Good for beginners",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons"}
+  list={[
+    "Vue is more framework-y compared to react, which does not have certain liberties you have in react.",
+  ]}
+/>
+
+#### Svelte
+
+[Svelte](https://svelte.dev/) is one of the newest framework and I am a huge fan of svelte. I've written an entire blog
+on svelte, you can check it [here](https://akshaykannan.tech/blog/svelte). The following are it's pros and cons,
+
+<ProsCons
+  isPro={true}
+  header={"Pros"}
+  list={[
+    "High-speed rendering and top-notch performance",
+    "Build sizes are small, since it is a no-production framework.",
+    "Good for beginners",
+  ]}
+/>
+
+<ProsCons
+  isPro={false}
+  header={"Cons"}
+  list={["Relatively new has a very little community support."]}
+/>
+
+#### Solid
+
+This might be a suprising choice for most people, but I believe [Solid js](https://www.solidjs.com/) has some really great
+potential. Solid is how I want react to be. I would recommend this if you want to have svelte like performance with react
+like syntax. I was introduced to no virtual dom by svelte, eventhough it's syntax is easier to understand, it's relatively
+new. But solid js uses jsx and has syntax similar to react. This is the most performant framework with build sizes as small
+as 7kb (minified + gzipped).
+
+<ProsCons
+  isPro={true}
+  header={"Pros"}
+  list={[
+    "The most performant among the others in this list.",
+    "Smaller build sizes",
+  ]}
+/>
+
+### Conclusion
+
+Depending on the project requirements, one can choose any framework. For example, a developer can use React for short
+projects that require a smaller learning curve, and another might choose svelte in order to have smaller build size.
+
+There are other js frameworks that might have helped you with your developments such as BackboneJS, Emberjs,
+Aureila, MeteorJS, etc. But here, I shortlisted the top five choices that are backed up by npm trends and popularity.
+As an aspiring frontend developer, you may be feeling a little overwhelmed by the number of different frameworks to
+choose from, but don't worry. You can start by learning one or two from the above list and gradually add more as you
+become more comfortable.
