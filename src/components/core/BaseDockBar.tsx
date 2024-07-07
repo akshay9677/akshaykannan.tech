@@ -96,7 +96,7 @@ function Dock({ className, children }: DockProps) {
         ref={dockRef} // Reference to the dock element
         // className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-end h-14 p-2 gap-3 bg-neutral-50 dark:bg-black bg-opacity-90 rounded-xl"
         className={cn(
-          "absolute bottom-10 border border-border-primary left-1/2 transform -translate-x-1/2 flex items-end h-14 p-2 gap-3 rounded-xl",
+          "absolute bottom-16 lg:bottom-10 border border-border-primary left-1/2 transform -translate-x-1/2 flex items-end h-14 p-2 gap-3 rounded-xl",
           " bg-container-primary/50 p-2 transition-colors z-50",
           className
         )}
