@@ -23,7 +23,7 @@ const BlogPosts = async ({ params }: any) => {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="max-w-xl w-full mt-6 px-6 lg:px-0">
-        <div className="text-3xl font-medium leading-[-1%] pb-2">
+        <div className="text-3xl font-medium leading-[-1%] pb-2 tracking-tight">
           {currentPost.metadata.title}
         </div>
         <div className="flex pb-6 gap-2 flex items-center">
