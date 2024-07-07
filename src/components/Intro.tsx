@@ -15,14 +15,13 @@ const Intro = () => {
           <div className="text-3xl font-medium leading-[-1%]">
             Akshay Kannan
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-1.5 lg:gap-3 flex-col lg:flex-row lg:items-center">
             <div className="flex items-center gap-1">
               <EngineerIcon />
               <div className="text-xs lg:text-sm text-content-secondary">
-                Front end Engineer
+                Software Engineer
               </div>
             </div>
-            <div className="w-[1px] h-4 rounded-full bg-content-tertiary opacity-40"></div>
             <div className="flex items-center gap-1">
               <DesignIcon />
               <div className="text-xs lg:text-sm text-content-secondary">

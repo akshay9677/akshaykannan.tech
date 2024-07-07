@@ -224,7 +224,7 @@ function DockCard({ children, id, handleClick }: DockCardProps) {
           width: width, // Responsive width based on mouse distance
         }}
         animate={controls} // Animation controls for Y position
-        whileTap={{ scale: 0.95 }} // Scale down slightly on tap for a tactile feel
+        whileTap={{ scale: 0.85 }} // Scale down slightly on tap for a tactile feel
       >
         {children}{" "}
         {/* Render the children of the DockCard inside the motion button */}

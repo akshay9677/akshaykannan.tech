@@ -51,6 +51,10 @@
   --border-secondary: var(--neutral8);
 }
 
+body {
+  overflow: hidden;
+}
+
 .stroked-text {
   -webkit-text-stroke-width: 2px;
   --un-text-stroke-opacity: 10;
