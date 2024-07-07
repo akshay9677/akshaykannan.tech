@@ -23,8 +23,17 @@ const BlogPosts = async ({ params }: any) => {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="max-w-xl w-full mt-6 px-6 lg:px-0">
-        <div className="text-3xl font-medium leading-[-1%] py-4">
+        <div className="text-3xl font-medium leading-[-1%] pb-2">
           {currentPost.metadata.title}
+        </div>
+        <div className="flex pb-6 gap-2 flex items-center">
+          <div className="text-xs text-content-secondary">
+            {currentPost.metadata.readingtime.text}
+          </div>
+          <div className="w-1 h-1 rounded-3xl bg-content-primary"></div>
+          <div className="text-xs text-content-secondary">
+            {currentPost.metadata.sysCreatedTime}
+          </div>
         </div>
         <div className="blog-content mb-6">
           <MDXRemote source={currentPost.content} components={components} />

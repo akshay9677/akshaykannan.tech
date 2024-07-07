@@ -82,25 +82,24 @@ const Subscribe = () => {
   return (
     <div className="max-w-3xl w-full flex flex-col items-center justify-center pt-6 pb-16 relative">
       <div className="max-w-xl w-full px-6 lg:px-2">
-        <div className="text-center text-2xl flex flex-wrap w-full gap-1.5 transition-colors tracking-tight">
+        <div className="text-center text-lg lg:text-2xl flex flex-wrap w-full gap-1 lg:gap-1.5 transition-colors tracking-tight">
           <div className="flex">For insights on</div>
           <div className="group flex">
-            <HoverText>front-end designs</HoverText>
+            <HoverText>front-end designs, </HoverText>
 
             {ICON_HASH["design"]}
           </div>
-          ,
           <div className="group flex">
-            <HoverText> framework</HoverText>
+            <HoverText> framework, </HoverText>
             {ICON_HASH["frameworks"]}
           </div>
-          , and,
+          and,
           <div className="group flex">
-            <HoverText> build tools</HoverText>
+            <HoverText> build tools, </HoverText>
 
             {ICON_HASH["build"]}
           </div>
-          , subscribe to my newsletter.
+          subscribe to my newsletter.
         </div>
 
         <div className="flex items-center w-full mt-4 gap-2">
