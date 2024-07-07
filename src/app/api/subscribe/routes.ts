@@ -1,0 +1,38 @@
+// export default async function handler(req: any, res: any) {
+//     const { email } = JSON.parse(req.body);
+
+//     if (!email) {
+//       return res.status(400).json({ error: "Email is required" });
+//     }
+
+//     try {
+//       const API_KEY = process.env.BUTTONDOWN_API_KEY;
+//       const response = await fetch(
+//         `https://api.buttondown.email/v1/subscribers`,
+//         {
+//           body: JSON.stringify({ email }),
+//           headers: {
+//             Authorization: `Token ${API_KEY}`,
+//             "Content-Type": "application/json",
+//           },
+//           method: "POST",
+//         }
+//       );
+
+//       if (response.status >= 400) {
+//         return res.status(400).json({
+//           error: `There was an error subscribing to the newsletter.`,
+//         });
+//       }
+
+//       return res.status(201).json({ error: "" });
+//     } catch (error: any) {
+//       return res.status(500).json({ error: error.message || error.toString() });
+//     }
+//   }
+
+export const dynamic = "force-dynamic"; // static by default, unless reading the request
+
+export function GET(request: Request) {
+  return new Response(`Hello from ${process.env.VERCEL_REGION}`);
+}

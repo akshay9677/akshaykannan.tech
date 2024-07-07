@@ -43,23 +43,31 @@ const Subscribe = () => {
   const subscribeEmail = useCallback(async () => {
     setSaving(true);
     try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        body: JSON.stringify({ email: input }),
-      });
-      const data = await res.json();
+      const response = await fetch(
+        `https://api.buttondown.email/v1/subscribers`,
+        {
+          body: JSON.stringify({ email: input }),
+          headers: {
+            Authorization: `Token 0f5cfa84-7f34-457d-b10a-5a605ce1114b`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        }
+      );
+      const data = await response.json();
       let { error } = data || {};
       if (error) throw new Error(error);
 
       toast.custom(() => (
         <SuccessSub
-          isDanger={true}
+          isDanger={false}
           title="Subscribed"
           description="Successfully subscribed to my newsletter!"
         />
       ));
       setInput("");
     } catch (e) {
+      console.log(e);
       toast.custom(() => (
         <SuccessSub
           isDanger={true}
@@ -73,7 +81,7 @@ const Subscribe = () => {
 
   return (
     <div className="max-w-3xl w-full flex flex-col items-center justify-center pt-6 pb-16 relative">
-      <div className="max-w-xl w-full px-2">
+      <div className="max-w-xl w-full px-6 lg:px-2">
         <div className="text-center text-2xl flex flex-wrap w-full gap-1.5 transition-colors tracking-tight">
           <div className="flex">For insights on</div>
           <div className="group flex">

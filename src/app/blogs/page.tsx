@@ -33,7 +33,9 @@ const Blog = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="max-w-xl w-full mt-6">
-        <div className="text-3xl font-medium leading-[-1%]">Blog Posts</div>
+        <div className="text-3xl font-medium leading-[-1%] px-6 lg:px-0">
+          Blog Posts
+        </div>
         <div className="flex flex-col gap-2 px-6 lg:px-0 xl:px-0 mt-6 text-content-secondary">
           Here, I share insights, tips, and musings on web dev and front-end
           techs.

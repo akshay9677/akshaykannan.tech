@@ -6,7 +6,7 @@ const RecentPosts = () => {
   let modifiedPosts = posts.splice(0, 3);
 
   return (
-    <div className="max-w-xl w-full my-4">
+    <div className="max-w-xl w-full px-4 lg:px-0 my-4">
       <div className="pb-2 px-2 font-medium text-2xl tracking-tight">
         Recent Posts
       </div>
