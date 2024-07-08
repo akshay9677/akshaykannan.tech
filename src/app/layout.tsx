@@ -20,6 +20,7 @@ export default function RootLayout({
       } bg-container-primary text-content-primary transition-colors overflow-hidden`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta property="og:image" content="<generated>" />
         <meta property="og:image:type" content="<generated>" />
         <meta property="og:image:width" content="<generated>" />
@@ -33,7 +34,7 @@ export default function RootLayout({
         <meta name="twitter:title" content="Akshay Kannan" />
         <meta
           name="twitter:description"
-          content="Personal portfolio of Akshay Kannan"
+          content="Personal portfolio of Akshay Kannan | Frontend Engineer"
         />
       </head>
       <body className="relative h-screen w-full">

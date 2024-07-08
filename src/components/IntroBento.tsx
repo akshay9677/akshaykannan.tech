@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import DeskSetupImg from "public/bento/desk-setup.svg";
 import AltrossImg from "public/bento/altross.svg";
 import VectorArtImg from "public/bento/vector-art.svg";
 
@@ -9,6 +8,7 @@ import GithubImg from "public/bento/socials/github.svg";
 import LinkedInImg from "public/bento/socials/linkedin.svg";
 import InstaImg from "public/bento/socials/insta.svg";
 import TwitterImg from "public/bento/socials/twitter.svg";
+import { useCallback } from "react";
 
 const SocialLink = () => {
   return (
@@ -58,17 +58,25 @@ const workExp = [
 const Card = ({
   className,
   children,
-  transparentBg,
+  customBg,
+  onClick,
 }: {
   className: string;
   children: React.ReactNode;
-  transparentBg?: boolean;
+  customBg?: string;
+  onClick?: () => void;
 }) => {
+  const clickHandler = useCallback(() => {
+    if (onClick) onClick();
+  }, [onClick]);
   return (
     <div
       className={`${
-        transparentBg ? `bg-[#000000]` : "bg-container-secondary"
-      } rounded-xl border border-border-primary cursor-pointer ${className}`}
+        customBg ? customBg : "bg-container-secondary"
+      } rounded-xl border border-border-primary shadow-sm ${className}
+      ${onClick ? "active:scale-95 transition cursor-pointer" : ""}
+      `}
+      onClick={clickHandler}
     >
       {children}
     </div>
@@ -96,7 +104,12 @@ const IntroBento = () => {
           <Card className="row-span-1 w-full h-full bg-container-secondary flex items-center justify-center group">
             <SocialLink />
           </Card>
-          <Card className="row-span-1 w-full h-full bg-container-secondary relative overflow-hidden relative group">
+          <Card
+            className="row-span-1 w-full h-full bg-container-secondary relative overflow-hidden relative group"
+            onClick={() =>
+              window.open("https://maps.app.goo.gl/JR1k1FerzyJ15o2QA")
+            }
+          >
             <InfoTag>Chennai, India</InfoTag>
             <Image
               src="/bento/location.png"
@@ -107,14 +120,25 @@ const IntroBento = () => {
             />
           </Card>
         </div>
-        <Card className="col-span-1 md:col-span-2 w-full h-[250px] bg-container-secondary relative overflow-hidden group">
-          <DeskSetupImg className="absolute top-[-80px] left-[-150px] lg:left-[-50px]" />
+        <Card
+          customBg={"bg-[#ffffff]"}
+          className="col-span-1 md:col-span-2 w-full h-[200px] lg:h-[250px] bg-container-secondary relative overflow-hidden group flex items-center group"
+          onClick={() => window.open("https://ak-palette.netlify.app/ ")}
+        >
+          <Image
+            src="/bento/palette.png"
+            alt="My Location"
+            height={"1000"}
+            width={"1000"}
+          />
+
+          <InfoTag>{"Palette Design System"}</InfoTag>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
         <Card
-          transparentBg={true}
+          customBg={"bg-[#000000]"}
           className="col-span-1 md:col-span-2 w-full h-[250px] relative overflow-hidden relative group"
         >
           <InfoTag>{"I also design websites ;-)"}</InfoTag>
@@ -145,7 +169,10 @@ const IntroBento = () => {
               );
             })}
           </Card>
-          <Card className="row-span-1 w-full h-full bg-container-secondary flex items-center justify-center relative group">
+          <Card
+            className="row-span-1 w-full h-full bg-container-secondary flex items-center justify-center relative group"
+            onClick={() => window.open("mailto:akshaykannan9677@gmail.com")}
+          >
             <InfoTag>Ping me if you want one!</InfoTag>
             <VectorArtImg />
           </Card>
