@@ -58,22 +58,21 @@ const workExp = [
 const Card = ({
   className,
   children,
-  customBg,
+  style,
   onClick,
 }: {
   className: string;
   children: React.ReactNode;
-  customBg?: string;
   onClick?: () => void;
+  style?: any;
 }) => {
   const clickHandler = useCallback(() => {
     if (onClick) onClick();
   }, [onClick]);
   return (
     <div
-      className={`${
-        customBg ? customBg : "bg-container-secondary"
-      } rounded-xl border border-border-primary shadow-sm ${className}
+      style={style}
+      className={`bg-container-secondary rounded-xl border border-border-primary shadow-sm ${className}
       ${onClick ? "active:scale-95 transition cursor-pointer" : ""}
       `}
       onClick={clickHandler}
@@ -121,9 +120,9 @@ const IntroBento = () => {
           </Card>
         </div>
         <Card
-          customBg={"bg-[#ffffff]"}
           className="col-span-1 md:col-span-2 w-full h-[200px] lg:h-[250px] bg-container-secondary relative overflow-hidden group flex items-center group"
           onClick={() => window.open("https://ak-palette.netlify.app/ ")}
+          style={{ backgroundColor: "#ffffff" }}
         >
           <Image
             src="/bento/palette.png"
@@ -138,7 +137,7 @@ const IntroBento = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
         <Card
-          customBg={"bg-[#000000]"}
+          style={{ backgroundColor: "#000000" }}
           className="col-span-1 md:col-span-2 w-full h-[250px] relative overflow-hidden relative group"
         >
           <InfoTag>{"I also design websites ;-)"}</InfoTag>
