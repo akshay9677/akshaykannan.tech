@@ -2,7 +2,10 @@ import { getBlogPosts } from "@/app/db/blog";
 import BlogList from "./blog/BlogList";
 
 const RecentPosts = () => {
-  const posts = getBlogPosts();
+  let posts = getBlogPosts();
+  posts = posts.sort(function (a: any, b: any) {
+    return b?.metadata?.id - a?.metadata?.id;
+  });
   let modifiedPosts = posts.splice(0, 3);
 
   return (

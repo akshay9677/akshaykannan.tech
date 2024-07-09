@@ -5,7 +5,7 @@ import BlogList from "@/components/blog/BlogList";
 const serializeBlogs = () => {
   let posts = getBlogPosts();
   posts = posts.sort(function (a: any, b: any) {
-    return b.id - a.id;
+    return b?.metadata?.id - a?.metadata?.id;
   });
   let groupedPosts: any = {};
   posts.forEach((post: any) => {
@@ -37,8 +37,7 @@ const Blog = () => {
           Blog Posts
         </div>
         <div className="flex flex-col gap-2 px-6 lg:px-0 xl:px-0 mt-6 text-content-secondary">
-          Here, I share insights, tips, and musings on web dev and front-end
-          techs.
+          Here, I share insights, tips, and musings on web dev and front-end.
           <br /> A lot of the informations here are opinionated 😉, feel free to
           browse through them and reach out to me for any discussions.
         </div>

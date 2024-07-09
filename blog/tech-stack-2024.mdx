@@ -1,0 +1,127 @@
+---
+title: "My Not-So-Obsolete 2024 Tech Stack 🔮"
+sysCreatedTime: "July 10, 2024"
+tags: ["Javascript", "Webdev", "Parser", "Bundlers"]
+body: "Unveiling the tech stack powering my 2024 projects! Explore the tools I'm leveraging to build my apps."
+id: 17
+---
+
+Hey guys, It's been a year since my last post. I've been busy with some personal stuff. Built a design system in my
+primary job.... additionally, I've been working on numerous personal projects this year. I've
+experimented with various tools and techs, and so I've finally settled on a few things, that will stick around for a while
+([hopefully](https://nadh.in/blog/javascript-ecosystem-software-development-are-a-hot-mess/)).
+
+## Framework
+
+To be honest, I haven't worked with many frameworks this year; it's mainly been Vue and React for me. If I had to choose
+between them, I'd prefer React. Consequently, I've been using React-based frameworks and even if you don't, people around you
+bully you into using one and the one I've adopted is [Next.js](https://nextjs.org/). Have been using page router for a few
+months recently moved to the App router and I have some mixed opinions on it.
+
+### Next.js - App router
+
+First of all, if you've been using page router extensively, there is some serious learning curve here. We won't have to use
+`getServerSideProps` and `getStaticProps` anymore, which is a pretty great thing ;-) . And it is a lot fun now to use react
+server components. I've discussed a few features of app router below,
+
+#### 1) Server components
+
+Next.js App Router's server components promise performance improvements. This approach allows you to render essential page
+sections on the server while maintaining client-side reactivity for interactive elements. Imagine an application fetching data
+for a list: the data fetching and list rendering components could be server components, while sorting and other interactive
+functionalities could remain client-side. Additionally, server components eliminate the complexity associated with managing
+useEffect hooks. `useEffect` can be tricky to manage. RSC simplifies things by eliminating the need for it entirely.
+
+```jsx
+async function getData() {
+  const res = await fetch("https://api.example.com/...");
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export default async function Page() {
+  const data = await getData();
+
+  return <main></main>;
+}
+```
+
+#### 2) Layouts
+
+Next.js App Router's layouts are a game-changer! Previously, I'd create separate layouts for different page types and import
+them into each page. Now, a single layout.js file at the root can define the layout structure, simplifying its application
+across various routes.
+
+#### 3) File based routing
+
+While file-based routing offers simplicity, it can introduce maintainability challenges. Having multiple files with the
+same name (e.g., page.tsx, metadata.tsx) makes searching difficult. Additionally, implementing dynamic routes with parameters
+in between routes (like /products/:productId/details) can become difficult, potentially requiring extra folders. Despite these
+drawbacks, file-based routing can be a viable option.
+
+<br />
+It's a strong option overall, also I've seen a few people complain about the development
+performance, it is the same as page router for me, nothing much to complain about
+it.
+
+## Typescript
+
+Just use them already 😉 !
+
+## Styling
+
+I've been using [Tailwind CSS](https://tailwindcss.com/) for the past two years and it's become my go-to for building
+design systems. Tailwind makes establishing themes and global tokens a breeze. You can write multiple css variables based on
+different themes under each class and simply switch the theme class to change the tokens,
+
+```css
+// global.css
+.theme-light {
+  --container: #ffffff;
+  --content: #000000;
+}
+
+.theme-dark {
+  --container: #000000;
+  --content: #ffffff;
+}
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    // ...
+    colors: {
+      container: "var(--container)",
+      content: "var(--content)",
+      // ...
+    },
+  },
+};
+```
+
+<br />
+Initially, I considered Uno.css, but Tailwind eventually caught up in features, this
+led me to switch back. Recently, I've been focusing on responsiveness in a few projects,
+which is also simpler with Tailwind. As a result, my CSS footprint has shrunk significantly.
+Now, I only write external CSS for complex animations and transitions.
+
+## Interactions & animations
+
+This year, I've been delving into user interactions and animations. I came across [this](https://rauno.me/craft/interaction-design)
+blog, which led me to focus on micro-interactions to enhance user experience. Animations play a crucial role in this approach.
+Initially, I was writing my own CSS for animation, but I've since transitioned to [Framer Motion](https://www.framer.com/motion/).
+You can do a lot with framer, I do recommend checking it out!
+
+<br />
+
+CSS clip-path has become a recent favorite tool. It allows for precise control over the visible portions of an element,
+effectively hiding anything outside the defined path. This technique unlocks creative possibilities for web design.
+Check out [this](https://css-tricks.com/animating-with-clip-path/) blog for more
+details. I'm planning on writting an entire blog about it, stay tuned :-).
