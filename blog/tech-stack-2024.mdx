@@ -15,22 +15,28 @@ experimented with various tools and techs, and so I've finally settled on a few 
 
 To be honest, I haven't worked with many frameworks this year; it's mainly been Vue and React for me. If I had to choose
 between them, I'd prefer React. Consequently, I've been using React-based frameworks and even if you don't, people around you
-bully you into using one and the one I've adopted is [Next.js](https://nextjs.org/). Have been using page router for a few
-months recently moved to the App router and I have some mixed opinions on it.
+bully you into using one and the one I've adopted is [Next.js](https://nextjs.org/). One interesting thing I did this year was to
+migrate to App router.
 
 ### Next.js - App router
 
 First of all, if you've been using page router extensively, there is some serious learning curve here. We won't have to use
-`getServerSideProps` and `getStaticProps` anymore, which is a pretty great thing ;-) . And it is a lot fun now to use react
-server components. I've discussed a few features of app router below,
+`getServerSideProps` and `getStaticProps` anymore, which is a pretty great thing ;-) . And it is quite fun to use react
+server components. But I've some mixed opinions about it, I've discussed a few of them below,
 
 #### 1) Server components
 
 Next.js App Router's server components promise performance improvements. This approach allows you to render essential page
 sections on the server while maintaining client-side reactivity for interactive elements. Imagine an application fetching data
 for a list: the data fetching and list rendering components could be server components, while sorting and other interactive
-functionalities could remain client-side. Additionally, server components eliminate the complexity associated with managing
-useEffect hooks. `useEffect` can be tricky to manage. RSC simplifies things by eliminating the need for it entirely.
+functionalities could remain client-side. For me this is a game changer, I was wrote a lot of server components and if I need
+interactivity I would simply write components with "use client" tag.
+
+<br />
+
+Additionally, server components eliminate the complexity
+associated with managing useEffect hooks. `useEffect` can be tricky to manage. RSC simplifies things by eliminating the need
+for it entirely.
 
 ```jsx
 async function getData() {
@@ -53,21 +59,21 @@ export default async function Page() {
 
 #### 2) Layouts
 
-Next.js App Router's layouts are a game-changer! Previously, I'd create separate layouts for different page types and import
-them into each page. Now, a single layout.js file at the root can define the layout structure, simplifying its application
-across various routes.
+App Router's layouts are a game-changer! Previously, I'd create separate layouts for different page types and import
+them into each page. Now, a single layout.js file at the root can define the layout structure, simplifying my application
+code across various routes.
 
 #### 3) File based routing
 
-While file-based routing offers simplicity, it can introduce maintainability challenges. Having multiple files with the
-same name (e.g., page.tsx, metadata.tsx) makes searching difficult. Additionally, implementing dynamic routes with parameters
-in between routes (like /products/:productId/details) can become difficult, potentially requiring extra folders. Despite these
-drawbacks, file-based routing can be a viable option.
+I've never been a fan of file based routing. While file-based routing offers simplicity, it can introduce maintainability
+challenges. Having multiple files with the same name (e.g., page.tsx, metadata.tsx) makes searching specific files difficult.
+Additionally, implementing dynamic routes with parameters in between routes (like /products/:productId/details) can become
+difficult, potentially requiring extra folders.
 
 <br />
-It's a strong option overall, also I've seen a few people complain about the development
-performance, it is the same as page router for me, nothing much to complain about
-it.
+
+Overall I would recommend using App router (for now), also I've seen a few people complain about the development
+performance, it is the same as page router for me, nothing much to complain about it.
 
 ## Typescript
 
@@ -112,7 +118,7 @@ led me to switch back. Recently, I've been focusing on responsiveness in a few p
 which is also simpler with Tailwind. As a result, my CSS footprint has shrunk significantly.
 Now, I only write external CSS for complex animations and transitions.
 
-## Interactions & animations
+## Interactions & Animations
 
 This year, I've been delving into user interactions and animations. I came across [this](https://rauno.me/craft/interaction-design)
 blog, which led me to focus on micro-interactions to enhance user experience. Animations play a crucial role in this approach.
@@ -125,3 +131,10 @@ CSS clip-path has become a recent favorite tool. It allows for precise control o
 effectively hiding anything outside the defined path. This technique unlocks creative possibilities for web design.
 Check out [this](https://css-tricks.com/animating-with-clip-path/) blog for more
 details. I'm planning on writting an entire blog about it, stay tuned :-).
+
+## Hosting
+
+Frontend application hosting has become a well-established landscape. While I previously used [Netlify](https://www.netlify.com/),
+I've migrated to [Vercel](https://vercel.com/home) several years ago and haven't looked back. I've also experimented with
+[AWS Amplify](https://aws.amazon.com/amplify/), which offers a solid solution. However, for my current needs, Vercel remains my
+preferred choice.
