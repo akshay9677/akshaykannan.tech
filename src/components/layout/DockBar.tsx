@@ -21,7 +21,7 @@ const DockBar: React.FC<DockBarType> = ({ isDark, changeTheme }) => {
             <HomeIcon />
           </div>
         </DockCard>
-        <DockCard id={"2"} handleClick={() => router.push("/blogs")}>
+        <DockCard id={"2"} handleClick={() => router.push("/blog")}>
           <div className="flex items-center justify-center">
             <PenIcon />
           </div>

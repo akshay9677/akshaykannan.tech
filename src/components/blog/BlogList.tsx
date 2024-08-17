@@ -48,7 +48,7 @@ const BlogList = ({ posts }: any) => {
             key={metaData?.id}
             className="w-full py-[14px] px-2 z-20 relative cursor-pointer"
             onMouseOver={() => setHoverItem(index)}
-            onClick={() => router.push(`/blogs/${post.slug}`)}
+            onClick={() => router.push(`/blog/${post.slug}`)}
           >
             <div className="text-lg font-medium tracking-tight">
               {metaData?.title}
