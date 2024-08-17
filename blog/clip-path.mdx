@@ -38,15 +38,17 @@ use `inset(50% 0px 0px 0px);`, or if you want to clip 50% from the right, you'd 
 {" "}
 
 <br />
-
-Animating it is so breezy, dynamically updating the clip-path should do the trick after giving the transition property.
+Now that we know how to clip elements, animating them is straightforward. After applying
+the transition property, dynamically updating the clip-path should do the trick.
 
 <ClipPath comp="animating" />
 
-## Applications
+## Examples
 
-There are many interactions and animations you can create using `clip-path`. One popular example is the image transition animation, which is commonly used across various websites.
-A notable implementation of this can be seen on the [Vercel Security page](https://vercel.com/security).
+### Image Clip
+
+There are many interactions and animations you can create using `clip-path`. One popular example is the image transition animation, which is commonly used in many websites
+these days. A notable implementation of this can be seen on the [Vercel Security page](https://vercel.com/security).
 
 <ClipPath comp="imageSwitch" />
 <br />
@@ -80,6 +82,11 @@ export default TextStroke;
 
 <br />
 
+Note: The above example has a vertical line moving over the image on mouse movement, which can be implemented using
+the `<motion.div />` tag of framer-motion library.
+
+### Tab Switch Transition
+
 Another interesting example is the tab switch animation, a widely used interaction. This effect is on [Stripe's blog](https://stripe.com/blog) page, providing a smooth and visually
 appealing transition between tabs.
 
@@ -95,7 +102,7 @@ element placed above the existing tabs.
 
 <ClipPath comp="tabSwitchDefault" />
 
-## Examples
+## Applications
 
 Clip-path can be used in various creative ways on the web. For example, [Anthony Fu's](https://antfu.me/) website features a classic
 implementation of clip-path in its theme switcher. By rendering the dark theme as the background and gradually

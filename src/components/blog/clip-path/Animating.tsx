@@ -7,7 +7,7 @@ const Animating = () => {
     <div className="my-2 flex flex-col">
       <pre className="border border-border-primary flex rounded-md bg-container-secondary text-xs">
         {`clip-path: ${
-          isRound ? "xywh(0 0 100% 100%)" : "xywh(0 0 100% 100% round 50%)"
+          isRound ? "xywh(0 0 100% 100%);" : "xywh(0 0 100% 100% round 50%);"
         }
 transition: clip-path 0.25s ease;`}
       </pre>
