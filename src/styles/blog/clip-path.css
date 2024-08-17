@@ -1,0 +1,11 @@
+.clip-intro-container {
+  clip-path: xywh(0 5px 100% 75% round 15% 0);
+}
+
+.image-switch-clip-path {
+  clip-path: inset(0px 100px 0px 0px);
+}
+
+.tab-switch-clip-path {
+  transition: clip-path 0.25s ease;
+}

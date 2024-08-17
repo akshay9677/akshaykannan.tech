@@ -1,0 +1,133 @@
+---
+title: "Web Interactions with clip-path ✨"
+sysCreatedTime: "Aug 5, 2024"
+tags: ["Javascript", "CSS", "Interactions", "Website"]
+body: "Explore the power of CSS clip-path to create stunning and interactive web designs with dynamic shapes and animations."
+id: 18
+---
+
+Effective web interactions are crucial for enhancing user engagement and improving overall usability. They make navigation intuitive and create a memorable user experience,
+reinforcing brand identity. In the current market, web interactions are the cherry on top, elevating a good design to an exceptional one.
+
+<br />
+One such tool that I've been using recently for improving web interactions is `clip-path`,
+and the things you could do with it is limitless.
+
+## Introduction
+
+The clip-path property in CSS is used to define a clipping region for an element, allowing you to control which parts of the element are visible.
+This property creates a "mask" that clips the element's content to a specific shape, effectively hiding the portions outside of that shape.
+
+<ClipPath comp="intro" />
+
+```css
+.clip-container {
+  clip-path: xywh(0 5px 100% 75% round 15% 0);
+}
+```
+
+It was challenging to create complex shapes at first, but after discovering [Clippy](https://bennettfeely.com/clippy/), I could easily generate any shape I needed.
+Just drag and arrange the shape you want, then copy the corresponding clip-path CSS.
+
+<br />
+
+So far, I've primarily been using the inset property in clip-path, which allows you to specify the position of the
+sides and define how much of the element you want to clip. For example, if you want to clip 50% from the top, you'd
+use `inset(50% 0px 0px 0px);`, or if you want to clip 50% from the right, you'd use `inset(0px 50% 0px 0px)`;
+
+{" "}
+
+<br />
+
+Animating it is so breezy, dynamically updating the clip-path should do the trick after giving the transition property.
+
+<ClipPath comp="animating" />
+
+## Applications
+
+There are many interactions and animations you can create using `clip-path`. One popular example is the image transition animation, which is commonly used across various websites.
+A notable implementation of this can be seen on the [Vercel Security page](https://vercel.com/security).
+
+<ClipPath comp="imageSwitch" />
+<br />
+
+This is a simple example involving two images: one without a text stroke and another with a text stroke positioned beneath the first (using position absolute). On mouse
+move, the top image is clipped based on the mouse position, revealing the image with the text stroke underneath.
+
+```jsx
+import React, { useState } from "react";
+import NormalText from "public/text.svg";
+import NormalTextWithStroke from "public/text-stroke.svg";
+
+const TextStroke = () => {
+  const [linePos, setLinPos] = useState(0);
+  return (
+    <div
+      className="flex w-full relative"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setLinPos(e.clientX - rect.left);
+      }}
+    >
+      <NormalText style={{ clipPath: `inset(0px 0px 0px ${linePos}px)` }} />
+      <NormalTextWithStroke />
+    </div>
+  );
+};
+
+export default TextStroke;
+```
+
+<br />
+
+Another interesting example is the tab switch animation, a widely used interaction. This effect is on [Stripe's blog](https://stripe.com/blog) page, providing a smooth and visually
+appealing transition between tabs.
+
+<br />
+
+The usual approach I used was to position an absolute element behind the tabs and adjust its position and width based on the selected tab. This method is currently implemented on the
+[blog list](https://akshaykannan.tech/blogs) page of this app. However, it becomes problematic when you need to switch the internal CSS of the selected item.
+
+<ClipPath comp="tabSwitch" />
+
+In this new approach, I render a list of tabs beneath the existing ones, and instead of adjusting positions, I simply clip the necessary element out of it. Below is the unclipped
+element placed above the existing tabs.
+
+<ClipPath comp="tabSwitchDefault" />
+
+## Examples
+
+Clip-path can be used in various creative ways on the web. For example, [Anthony Fu's](https://antfu.me/) website features a classic
+implementation of clip-path in its theme switcher. By rendering the dark theme as the background and gradually
+clipping away the necessary parts, the transition between themes is smooth and visually engaging.
+
+<br />
+<Image
+  alt={"theme"}
+  src="/gif/theme-switch.gif"
+  width={2200}
+  height={1350}
+  priority={true}
+  unoptimized={true}
+/>
+<br />
+Another interesting example is the path flow animation on [Superpower’s](https://superpower.com/)
+site. Although they didn't use clip-path for this effect, a similar path fill could
+be achieved by clipping the path tag inside the svg using clip-path.
+
+<br />
+<Image
+  alt={"path"}
+  src="/gif/path-flow.gif"
+  width={2200}
+  height={1350}
+  priority={true}
+  unoptimized={true}
+/>
+<br />
+
+## Resources
+
+- [Emil Kowalski's The Magic of Clip-Path](https://emilkowal.ski/ui/the-magic-of-clip-path) - This blog is inspired from this.
+- [Tab switch Animation](https://x.com/pacocoursey/status/1522639642155266048)
+- [Clip path basics](https://blog.logrocket.com/guide-to-css-animations-using-clip-path/)

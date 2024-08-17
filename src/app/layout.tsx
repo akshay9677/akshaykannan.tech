@@ -2,9 +2,9 @@
 
 import "./globals.css";
 import { GeistSans } from "geist/font/sans";
-import DockBar from "@/components/layout/DockBar";
 import { useState } from "react";
-import Header from "@/components/layout/Header";
+import { ThemeProvider } from "@/hooks/useTheme";
+import MainLayout from "@/components/layout/MainLayout";
 
 export default function RootLayout({
   children,
@@ -13,12 +13,7 @@ export default function RootLayout({
 }>) {
   const [isDark, setIsDark] = useState(true);
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.className} ${
-        isDark ? "theme-dark" : "theme-light"
-      } bg-container-primary text-content-primary transition-colors overflow-hidden`}
-    >
+    <html lang="en" id="palette-root" className={`${GeistSans.className}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta property="og:image" content="<generated>" />
@@ -37,18 +32,9 @@ export default function RootLayout({
           content="Personal portfolio of Akshay Kannan | Frontend Engineer"
         />
       </head>
-      <body className="relative h-screen w-full">
-        <div className="h-screen overflow-scroll pb-20">
-          <div className="w-full flex justify-center">
-            <Header />
-          </div>
-          {children}
-        </div>
-        <DockBar
-          isDark={isDark}
-          changeTheme={() => setIsDark((prev) => !prev)}
-        />
-      </body>
+      <ThemeProvider>
+        <MainLayout>{children}</MainLayout>
+      </ThemeProvider>
     </html>
   );
 }

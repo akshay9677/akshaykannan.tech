@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import ProsCons from "@/components/blog/ProsCons";
 import { highlight } from "sugar-high";
+import ClipPathComponents from "@/components/blog/clip-path";
 
 const BlogPosts = async ({ params }: any) => {
   let posts = getBlogPosts();
@@ -19,6 +20,7 @@ const BlogPosts = async ({ params }: any) => {
       let codeHTML = highlight(children);
       return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
     },
+    ClipPath: (props: any) => <ClipPathComponents {...props} />,
   };
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -35,7 +37,7 @@ const BlogPosts = async ({ params }: any) => {
             {currentPost.metadata.sysCreatedTime}
           </div>
         </div>
-        <div className="blog-content mb-6">
+        <div className="blog-content mb-6 relative">
           <MDXRemote source={currentPost.content} components={components} />
         </div>
       </div>

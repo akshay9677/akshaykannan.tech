@@ -22,6 +22,7 @@ const Intro = () => {
                 Software Engineer
               </div>
             </div>
+            /
             <div className="flex items-center gap-1">
               <DesignIcon />
               <div className="text-xs lg:text-sm text-content-secondary">
