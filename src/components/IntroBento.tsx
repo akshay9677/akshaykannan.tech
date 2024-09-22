@@ -3,6 +3,7 @@
 import Image from "next/image";
 import AltrossImg from "public/bento/altross.svg";
 import VectorArtImg from "public/bento/vector-art.svg";
+import PlatteIcon from "public/bento/palette-icons.svg";
 
 import GithubImg from "public/bento/socials/github.svg";
 import LinkedInImg from "public/bento/socials/linkedin.svg";
@@ -99,26 +100,6 @@ const IntroBento = () => {
   return (
     <div className="max-w-3xl w-full my-6 px-6 md:px-0 flex flex-col gap-2">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-        <div className="col-span-1 h-[250px] grid grid-rows-2 gap-2">
-          <Card className="row-span-1 w-full h-full bg-container-secondary flex items-center justify-center group">
-            <SocialLink />
-          </Card>
-          <Card
-            className="row-span-1 w-full h-full bg-container-secondary relative overflow-hidden relative group"
-            onClick={() =>
-              window.open("https://maps.app.goo.gl/JR1k1FerzyJ15o2QA")
-            }
-          >
-            <InfoTag>Chennai, India</InfoTag>
-            <Image
-              src="/bento/location.png"
-              alt="My Location"
-              height={"700"}
-              width={"700"}
-              className="absolute top-[-30px] lg:top-[-0px] xl:lg-0"
-            />
-          </Card>
-        </div>
         <Card
           className="col-span-1 md:col-span-2 w-full h-[200px] lg:h-[250px] bg-container-secondary relative overflow-hidden group flex items-center group"
           onClick={() => window.open("https://ak-palette.netlify.app/ ")}
@@ -133,6 +114,18 @@ const IntroBento = () => {
 
           <InfoTag>{"Palette Design System"}</InfoTag>
         </Card>
+        <div className="col-span-1 h-[250px] grid grid-rows-2 gap-2">
+          <Card className="row-span-1 w-full h-full bg-container-secondary flex items-center justify-center group">
+            <SocialLink />
+          </Card>
+          <Card
+            className="row-span-1 w-full h-full bg-container-secondary relative overflow-hidden relative group"
+            onClick={() => window.open("https://palette-icons.vercel.app/")}
+          >
+            <InfoTag>Palette Icons</InfoTag>
+            <PlatteIcon className="mt-[1px]" />
+          </Card>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2">

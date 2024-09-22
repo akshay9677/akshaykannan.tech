@@ -42,7 +42,6 @@ const Intro = () => {
           Currently working as a core front-end engineer @Facilio . I explore
           new front end techs, and occasionally write about them in my blog.
         </div>
-        <div>I too am social,</div>
       </div>
     </div>
   );
